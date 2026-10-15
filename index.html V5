@@ -572,10 +572,8 @@ const TYPES = [
     use:P("Recheio de moradia ou apartamento T3, equipamentos de feiras e stands, paletes com produtos e arquivos de contabilidade de grandes empresas.","Full 3-bedroom house contents, trade-show booth displays, inventory pallets, and extensive corporate accounting records."), unit:"month", price:"[00]", order:4 },
   { name:"Box XL", vert:"storage", group:"box", img:P("Porta-paletes a entrar numa box grande","Pallet truck entering a large unit"), dims:P("[a × b] m · 12,5 m²","[a × b] m · 12.5 m²"),
     use:P("Operações logísticas e armazenagem de médio porte, ferramentas de construção civil pesadas, mercadoria volumosa e mudanças completas de moradias T4+.","Mid-sized logistics operations, contractor equipment, bulky merchandise, and complete contents of large 4+ bedroom residences."), unit:"month", price:"[00]", order:5 },
-  { name:P("Hourly Pass · Open Space","Hourly Pass · Open Space"), short:"Hourly Pass", vert:"work", group:"cowork", img:P("Pessoa ao portátil no open space, de manhã","Person on a laptop in the open space, in the morning"), cap:P("1 pessoa","1 person"),
-    use:P("Umas horas de trabalho concentrado: um lugar no open space só para a manhã, a partir de 1 hora.","A few hours of focused work: a seat in the open space just for the morning, from 1 hour."), unit:"hour", price:"[00]", order:0 },
-  { name:P("Day Pass · Flex Desk","Day Pass · Flex Desk"), short:"Day Pass", vert:"work", group:"cowork", img:P("Pessoa a trabalhar no open space com luz natural","Person working in the open space in natural light"), cap:P("1 pessoa","1 person"),
-    use:P("Um dia de trabalho fora de casa, sem compromisso: chegar, sentar e começar.","A day of work away from home, no commitment: arrive, sit down and start."), unit:"day", price:"[00]", order:1 },
+  { name:P("Flex Desk · À hora ou ao dia","Flex Desk · Hourly or daily"), short:"Flex Desk", vert:"work", group:"cowork", img:P("Pessoa ao portátil no open space com luz natural","Person on a laptop in the naturally lit open space"), cap:P("1 pessoa","1 person"),
+    use:P("Um lugar no open space pelo tempo que for preciso: duas horas de manhã ou o dia inteiro, sem compromisso.","A seat in the open space for as long as you need: two hours in the morning or the whole day, no commitment."), unit:"hour", unitLabel:P("À hora ou ao dia","By the hour or day"), price:"[00]", order:1 },
   { name:P("Dedicated Desk · Mensal","Dedicated Desk · Monthly"), short:"Dedicated Desk", vert:"work", group:"cowork", img:P("Secretária fixa com cadeira ergonómica e cacifo","Dedicated desk with ergonomic chair and locker"), cap:P("1 pessoa","1 person"),
     use:P("A mesma secretária todos os dias, com cacifo e opção de sede fiscal.","The same desk every day, with a locker and an optional legal address."), unit:"month", price:"[00]", order:2 },
   { name:P("Meeting Room · À hora ou meio-dia","Meeting Room · Hourly or Half-Day"), short:"Meeting Room", vert:"work", group:"room", img:P("Reunião à volta da mesa oval, com ecrã 4K","Meeting around the oval table, with a 4K display"), cap:P("8 a 10 pessoas","8 to 10 people"),
@@ -612,7 +610,7 @@ const FAQ = [
     [P("Não pode guardar os bens excluídos nos Termos e Condições: [lista a fornecer pela ROOM2].","You can’t keep the goods excluded in the Terms and Conditions: [list to be supplied by ROOM2].")]],
   ["workspaces", P("Posso reservar a Meeting Room só por uma hora?","Can I book the Meeting Room for just one hour?"),
     [P("Sim. A Meeting Room reserva-se à hora ou ao meio-dia, para 8 a 10 pessoas, sem burocracias.","Yes. The Meeting Room is booked by the hour or half-day, for 8 to 10 people, with instant confirmation.")]],
-  ["workspaces", P("O que está incluído no Day Pass?","What’s included in the Day Pass?"),
+  ["workspaces", P("O que está incluído no Flex Desk?","What’s included with a Flex Desk?"),
     [P("Acesso imediato no mesmo dia a secretárias ergonómicas em open space, Wi-Fi fibra de alta velocidade, café de especialidade na copa e cabines telefónicas para chamadas privadas.","Same-day access to ergonomic desks in our open workspace, high-speed fiber Wi-Fi, specialty coffee in the lounge, and phone booths.")]],
   ["reservas", P("Qual é o período mínimo de reserva?","What’s the minimum booking period?"),
     [P("Boxes a partir de [período]; postos no open space e a Meeting Room a partir de uma hora.","Units from [period]; open-space desks and the Meeting Room from one hour.")]],
@@ -675,7 +673,7 @@ const unitCard = x => {
   const isS = x.vert === "storage";
   const facts = isS
     ? [[t("f_dims"), L(x.dims)], [t("f_use"), L(x.use)]]
-    : [[t("f_cap"), L(x.cap)], [t("f_unit"), t("ul_" + x.unit)], [t("f_use"), L(x.use)]];
+    : [[t("f_cap"), L(x.cap)], [t("f_unit"), x.unitLabel ? L(x.unitLabel) : t("ul_" + x.unit)], [t("f_use"), L(x.use)]];
   return `<li class="card unit">
     ${ph("img", x.img, "r-43")}
     <div class="in">
@@ -691,7 +689,7 @@ const priceTable = vert => {
   return `<div class="tbl-wrap" tabindex="0" role="region" aria-labelledby="h-prices"><table>
     <thead><tr><th scope="col">${t("th_type")}</th><th scope="col">${t(isS ? "th_dims" : "th_cap")}</th><th scope="col">${t("th_unit")}</th><th scope="col">${t("th_price")}</th></tr></thead>
     <tbody>${rows.map(x => `<tr><th scope="row" style="background:none;font-size:14px;color:var(--fg)">${esc(typeName(x))}<span class="sub" style="font-weight:400">${esc(t("g_" + x.group))}</span></th>
-      <td>${esc(isS ? L(x.dims) : L(x.cap))}</td><td>${esc(t("ul_" + x.unit))}</td>
+      <td>${esc(isS ? L(x.dims) : L(x.cap))}</td><td>${esc(x.unitLabel ? L(x.unitLabel) : t("ul_" + x.unit))}</td>
       <td class="num">${esc(t("from"))} ${esc(priceTxt(x))}<span class="sub" style="display:inline;margin-left:2px">${esc(t("u_" + x.unit))}</span></td></tr>`).join("")}</tbody>
   </table></div>
   <p class="note" style="margin-top:14px;display:flex;gap:10px;align-items:flex-start">${I.info}<span>${esc(t("price_note"))}</span></p>`;
@@ -822,7 +820,7 @@ const SERVICE = {
     moment:P("Isto podia ser uma reunião. Não tem de ser num café.","This could have been a meeting. It doesn’t have to be in a café."),
     typesTitle:P("Tipologias de espaços","Space types"),
     typesIntro:P("De uma hora no open space aos gabinetes para a equipa, com a capacidade e a unidade de reserva de cada espaço.","From an hour in the open space to an office for the team, with each space’s capacity and booking unit."),
-    cols:"g-5",
+    cols:"g-4",
     adv:[
       [P("Acesso 24/7","24/7 access"), P("Chave digital no smartphone e PIN pessoal de contingência, a qualquer hora do dia ou da noite.","Smartphone digital key and personal backup PIN, any time, day or night.")],
       [P("Sem fidelização obrigatória","No long-term lock-in"), P("Regime mês a mês, com aviso prévio de 15 a 30 dias na Área de cliente.","Rolling month-to-month, with 15 to 30 days notice via Member Login.")],
