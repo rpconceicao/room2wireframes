@@ -290,7 +290,7 @@ details .ans p + p{margin-top:8px}
 .err{font-size:12px;font-weight:500;color:var(--fg)} .err::before{content:"! ";font-weight:700}
 .err[hidden]{display:none}
 .check{display:flex;align-items:flex-start;gap:12px;font-size:13px;line-height:1.6;color:var(--muted);cursor:pointer}
-.check input{flex:0 0 18px;width:18px;height:18px;margin:2px 0 0;accent-color:var(--fg)}
+.check input{flex:0 0 18px;width:18px;height:18px;min-height:0;padding:0;margin:2px 0 0;accent-color:var(--fg)}
 .contact-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px 64px;align-items:start}
 @media (max-width:900px){ .contact-grid{grid-template-columns:1fr} }
 .dl{margin:0;display:flex;flex-direction:column;gap:12px}
@@ -320,6 +320,17 @@ details .ans p + p{margin-top:8px}
 
 /* ================= footer ================= */
 .site-footer{background:var(--band);border-top:1px solid var(--border);color:var(--muted)}
+.nl{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px 72px;align-items:end;padding-top:48px;padding-bottom:48px;border-bottom:1px solid var(--border)}
+.nl-txt{display:flex;flex-direction:column;gap:12px}
+.nl-form{display:flex;flex-direction:column;gap:12px}
+.nl-form[hidden]{display:none}
+.nl-row{display:flex;gap:12px;align-items:flex-end}
+.nl-ok{font-size:18px;font-weight:500;color:var(--fg);padding:16px;border:1px solid var(--border-2);border-radius:12px;margin:0}
+.nl-ok[hidden]{display:none}
+.wf-note{display:flex;flex-direction:column;gap:6px;align-self:flex-start;max-width:40rem;margin:0 0 8px;font-size:12px;line-height:1.5;color:var(--fg2);border:1px dashed var(--fg2);border-radius:10px;padding:10px 12px;background:repeating-linear-gradient(135deg,transparent 0 8px,rgba(255,255,255,.05) 8px 16px)}
+.wf-tag{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fg)}
+@media (max-width:900px){ .nl{grid-template-columns:1fr} }
+@media (max-width:520px){ .nl-row{flex-direction:column;align-items:stretch} }
 .f-top{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px 72px;padding-top:56px;padding-bottom:48px}
 .f-brand{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
 .f-brand .logo{font-size:30px}
@@ -332,12 +343,15 @@ details .ans p + p{margin-top:8px}
 .f-addr{font-style:normal;display:flex;flex-direction:column;gap:12px;font-size:13px;line-height:1.55;color:var(--muted)}
 .f-addr .k{display:block;font-size:11px;font-weight:600;color:var(--faint)}
 .f-addr small{font-size:11px;color:var(--faint)}
-.f-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 28px;border-top:1px solid var(--border);padding-top:10px;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 16px)}
+.f-bottom{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:4px 28px;border-top:1px solid var(--border);padding-top:10px;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 16px)}
+.f-bottom > .f-copy{grid-column:1;padding-top:12px}
+.f-bottom > .f-legal{grid-column:1}
+.f-bottom > .f-right{grid-column:2;grid-row:1 / span 2;justify-self:end;align-self:end}
 .f-legal{display:flex;flex-wrap:wrap;gap:0 22px}
 .f-bottom a,.f-bottom button{font-size:12px;color:var(--faint);text-decoration:none;padding:12px 0;background:none;border:0;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px}
 .f-bottom a:hover,.f-bottom button:hover{color:var(--fg2)}
 .f-copy{font-size:12px;color:var(--faint)}
-.f-right{display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px}
+.f-right{display:flex;align-items:center;justify-content:flex-end;gap:8px 28px}
 .f-loba{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:var(--faint);text-decoration:none}
 .f-loba:hover,.f-loba:focus-visible{color:#fff}
 .f-loba-txt{font-size:11px;letter-spacing:.06em;white-space:nowrap;opacity:0;transform:translateX(8px);transition:opacity .35s ease,transform .35s ease}
@@ -345,7 +359,7 @@ details .ans p + p{margin-top:8px}
 @media (hover:none){ .f-loba-txt{opacity:1;transform:none} }
 @media (prefers-reduced-motion:reduce){ .f-loba-txt{transition:none} }
 @media (max-width:960px){ .f-top{grid-template-columns:1fr} }
-@media (max-width:600px){ .f-cols{grid-template-columns:1fr 1fr} .f-cols > :nth-child(2){grid-column:1 / -1;grid-row:2} .f-bottom{flex-direction:column;align-items:flex-start} }
+@media (max-width:600px){ .f-cols{grid-template-columns:1fr 1fr} .f-cols > :nth-child(2){grid-column:1 / -1;grid-row:2} .f-bottom{grid-template-columns:1fr} .f-bottom > .f-right{grid-column:1;grid-row:auto;justify-self:stretch;justify-content:space-between} }
 .f-loba-mark{display:block;width:58px;height:16px;background:currentColor;-webkit-mask:url(data:image/png;base64,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) center / contain no-repeat;mask:url(data:image/png;base64,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) center / contain no-repeat}
 
 /* ================= overlays ================= */
@@ -465,7 +479,11 @@ pt: {
   ck_region:"Aviso de cookies", ck_text:"Utilizamos cookies essenciais para garantir o funcionamento do catálogo e guardar as suas preferências de idioma. Não partilhamos dados com terceiros para fins publicitários.", ck_title:"Respeitamos a sua privacidade", ck_policy:"Política de Cookies",
   ck_accept:"Aceitar", ck_reject:"Recusar", ck_choose:"Escolher", ck_hide:"Esconder opções",
   ck_ess:"Essenciais (sempre ativos)", ck_an:"Análise (Google Tag Manager, Microsoft Clarity)", ck_maps:"Mapas (Google Maps)", ck_save:"Guardar escolhas",
-  f_pages:"Páginas", f_contact:"Contactos", f_follow:"Redes sociais",
+  f_pages:"Sitemap", f_contact:"Contactos", f_follow:"Redes sociais",
+  nl_title:"Há espaço na sua caixa de entrada?", nl_text:"Novidades da ROOM2 em Aveiro: novos espaços, condições para empresas e eventos. Pode cancelar a qualquer momento.",
+  nl_label:"Email", nl_btn:"Inscrever", nl_consent:"Aceito receber a newsletter da ROOM2 e li a {privacy}.",
+  nl_e_email:"Falta um email válido.", nl_e_consent:"Para enviar a newsletter, precisamos do seu acordo.", nl_ok:"Já está. Inscrição feita, até breve.",
+  wf_note_t:"Nota de wireframe", wf_note:"Não previsto no caderno de encargos. A newsletter está fora do âmbito (secção 8) e pode ser orçamentada à parte, incluindo a ferramenta de email marketing e a gestão de consentimento.",
   copy:"© 2026 ROOM2. Operado por Unit2Rent Lda. Todos os direitos reservados. Flexible workspaces & storage em Aveiro.",
   privacy:"Política de Privacidade", cookies:"Política de Cookies", terms:"Termos e Condições", ck_settings:"Definições de cookies",
   complaints:"Livro de Reclamações Eletrónico", ral:"Resolução Alternativa de Litígios", back_top:"Voltar ao topo",
@@ -522,7 +540,11 @@ en: {
   ck_region:"Cookie notice", ck_text:"We use essential cookies to ensure portal functionality and remember your language preference. We never sell your personal data.", ck_title:"We value your privacy", ck_policy:"Cookie Policy",
   ck_accept:"Accept", ck_reject:"Reject", ck_choose:"Choose", ck_hide:"Hide options",
   ck_ess:"Essential (always on)", ck_an:"Analytics (Google Tag Manager, Microsoft Clarity)", ck_maps:"Maps (Google Maps)", ck_save:"Save choices",
-  f_pages:"Pages", f_contact:"Contact", f_follow:"Follow",
+  f_pages:"Sitemap", f_contact:"Contact", f_follow:"Follow",
+  nl_title:"Room in your inbox?", nl_text:"ROOM2 news from Aveiro: new spaces, business offers and events. Unsubscribe at any time.",
+  nl_label:"Email", nl_btn:"Subscribe", nl_consent:"I agree to receive the ROOM2 newsletter and have read the {privacy}.",
+  nl_e_email:"We need a valid email.", nl_e_consent:"We need your consent to send the newsletter.", nl_ok:"Done. You’re subscribed, talk soon.",
+  wf_note_t:"Wireframe note", wf_note:"Not included in the project brief. The newsletter is out of scope (section 8) and can be quoted separately, including the email marketing tool and consent management.",
   copy:"© 2026 ROOM2. Operated by Unit2Rent Lda. All rights reserved. Flexible workspaces & storage in Aveiro.",
   privacy:"Privacy Policy", cookies:"Cookie Policy", terms:"Terms and Conditions", ck_settings:"Cookie settings",
   complaints:"Electronic Complaints Book", ral:"Alternative Dispute Resolution", back_top:"Back to top",
@@ -1018,7 +1040,7 @@ const LEGAL = {
     [P("Essenciais","Essential"), P("Guardam a sua escolha de cookies e o idioma. Estão sempre ativos.","They store your cookie choice and language. Always on.")],
     [P("Análise","Analytics"), P("Google Tag Manager e Microsoft Clarity, só com o seu acordo. [Lista de cookies e prazos a gerar pela CMP.]","Google Tag Manager and Microsoft Clarity, only with your consent. [Cookie list and durations generated by the CMP.]")],
     [P("Mapas","Maps"), P("O mapa Google Maps da página Contactos só carrega com o seu acordo.","The Google Maps map on the Contact page only loads with your consent.")],
-    [P("Alterar a sua escolha","Changing your choice"), P("Pode mudar de ideias a qualquer momento em Definições de cookies, no rodapé.","You can change your mind at any time in Cookie settings, in the footer.")]
+    [P("Alterar a sua escolha","Changing your choice"), P("Pode mudar de ideias a qualquer momento no botão Definições de cookies, abaixo.","You can change your mind at any time with the Cookie settings button below.")]
   ],
   terms:[
     [P("Sobre este website","About this website"), P("Este website pertence à Unit2Rent Lda. (NIF 516 000 000), que opera a marca ROOM2.","This website belongs to Unit2Rent Lda. (VAT PT 516 000 000), which operates the ROOM2 brand.")],
@@ -1077,11 +1099,32 @@ function renderChrome(key){
     ${ext("account", `${esc(t("account"))} ${I.ext}`, "acct")}
     <div class="foot"><span>[email]@room2.pt</span><span>+351 [000 000 000]</span><span>Rua das Pombas, Zona Industrial de Taboeira, 3800-055 Aveiro</span></div>`;
   document.getElementById("siteFooter").innerHTML = `<div class="wrap">
+    <section class="nl" aria-labelledby="nl-title">
+      <div class="nl-txt">
+        <p class="wf-note" role="note"><span class="wf-tag">${esc(t("wf_note_t"))}</span>${esc(t("wf_note"))}</p>
+        <h2 class="h2" id="nl-title" style="font-size:24px">${esc(t("nl_title"))}</h2>
+        <p class="body" style="font-size:14px">${esc(t("nl_text"))}</p>
+      </div>
+      <div>
+        <form class="nl-form" id="nlform" novalidate aria-labelledby="nl-title">
+          <div class="nl-row">
+            <div class="field" style="flex:1"><label for="nl-email">${esc(t("nl_label"))}</label><input id="nl-email" type="email" autocomplete="email" required aria-describedby="e-nl-email"></div>
+            <button class="btn btn-solid" type="submit">${esc(t("nl_btn"))}</button>
+          </div>
+          <span class="err" id="e-nl-email" hidden>${esc(t("nl_e_email"))}</span>
+          <div class="field" style="gap:6px"><label class="check"><input type="checkbox" id="nl-consent" required aria-describedby="e-nl-consent"><span>${esc(t("nl_consent")).replace("{privacy}", `<a href="${href("privacy")}">${esc(t("privacy_inline"))}</a>`)}</span></label><span class="err" id="e-nl-consent" hidden>${esc(t("nl_e_consent"))}</span></div>
+        </form>
+        <p class="nl-ok" id="nlok" role="status" hidden></p>
+      </div>
+    </section>
     <div class="f-top">
       <div class="f-brand">
         <a class="brand" href="${href("home")}" aria-label="${esc(t("home_aria"))}"><span class="logo">room2</span></a>
         <span class="meta" lang="en">Flexible workspaces &amp; storage</span>
         <p class="f-claim" lang="en">Make room for what’s next.</p>
+        <p style="font-size:13px;line-height:1.65;color:var(--muted);max-width:36rem">${lang === "pt"
+          ? "A ROOM2 junta self storage e coworking em Aveiro: boxes para guardar recheios, stock e arquivo, postos de trabalho, escritórios privados e salas de reuniões, à hora, ao dia ou ao mês. Reserva online e acesso 24/7 pelo smartphone, junto à A25."
+          : "ROOM2 brings self storage and coworking together in Aveiro: units for household goods, stock and archives, desks, private offices and meeting rooms, by the hour, day or month. Online booking and 24/7 smartphone access, right off the A25."}</p>
         <div class="btn-row" style="margin-top:8px">${bookBtn("btn-sm")}${ext("account", `${esc(t("account"))} ${I.ext}`, "btn btn-line btn-sm")}</div>
       </div>
       <div class="f-cols">
@@ -1101,7 +1144,6 @@ function renderChrome(key){
       <span class="f-copy">${esc(t("copy"))}</span>
       <div class="f-legal">
         <a href="${href("terms")}">${esc(t("terms"))}</a><a href="${href("privacy")}">${esc(t("privacy"))}</a><a href="${href("cookies")}">${esc(t("cookies"))}</a>
-        <button type="button" data-cookie-open>${esc(t("ck_settings"))}</button>
         ${ext("complaints", `${esc(t("complaints"))} ${I.ext}`)}${ext("ral", `${esc(t("ral"))} ${I.ext}`)}
       </div>
       <div class="f-right">
@@ -1231,6 +1273,16 @@ document.addEventListener("input", e => {
 document.addEventListener("change", e => { if (e.target.id === "f-subject" || e.target.id === "f-consent") e.target.dispatchEvent(new Event("input", { bubbles:true })); });
 document.addEventListener("submit", e => {
   if (e.target.id === "gateForm"){ e.preventDefault(); tryGate(); return; }
+  if (e.target.id === "nlform"){
+    e.preventDefault();
+    const nf = e.target, em = nf.querySelector("#nl-email"), ck = nf.querySelector("#nl-consent");
+    setErr(em, "e-nl-email", !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim()));
+    setErr(ck, "e-nl-consent", !ck.checked);
+    const nbad = nf.querySelector('[aria-invalid="true"]');
+    if (nbad){ nbad.focus(); return; }
+    const ok = document.getElementById("nlok"); ok.textContent = t("nl_ok"); ok.hidden = false; nf.hidden = true; ok.setAttribute("tabindex", "-1"); ok.focus();
+    return;
+  }
   if (e.target.id !== "cform") return;
   e.preventDefault();
   const f = e.target, $ = s => f.querySelector(s);
