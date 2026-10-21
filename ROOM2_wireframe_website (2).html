@@ -1,0 +1,1398 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Self storage e coworking em Aveiro | ROOM2</title>
+<meta name="description" content="Self Storage e Workspaces em Aveiro: boxes de 4 a 14 m² a partir de 1 mês e Workspaces à hora, ao dia, à semana ou ao mês.">
+<!--
+  ROOM2 — WIREFRAME (fase Define) · segue o caderno de encargos v04 (14.10.2026)
+  Bilingue PT / EN (PT por omissão, URLs por idioma como na secção 9.1).
+  Nome, assinatura, claims e termos do conceito "Room to…" ficam sempre em inglês.
+  Conteúdos entre [parênteses retos] são provisórios, a fornecer ou validar pelo cliente.
+  Imagens: placeholders com indicação da fotografia pretendida (ação e função, momentos reais).
+  Botões Reservar / Área de cliente / reserva por tipologia: links externos, mostrados aqui num aviso.
+-->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","name":"ROOM2","legalName":"Unit2Rent Lda.","slogan":"Make room for what’s next.","url":"https://room2.pt","logo":"https://room2.pt/[logo].png","sameAs":["https://www.instagram.com/[handle]","https://www.linkedin.com/company/[handle]"]},
+{"@type":["LocalBusiness","SelfStorage"],"name":"ROOM2 Aveiro","description":"Soluções integradas de Self Storage e Workspaces em Aveiro, com reserva online e acesso 24/7 pelo smartphone.","url":"https://room2.pt","telephone":"+351 [000 000 000]","email":"[email]@room2.pt",
+"address":{"@type":"PostalAddress","streetAddress":"Rua das Pombas, Zona Industrial de Taboeira","postalCode":"3800-055","addressLocality":"Aveiro","addressCountry":"PT"},
+"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}}
+]}
+</script>
+<style>
+/* ================= tokens: zinc wireframe, dark base with light bands (as in the reference) ================= */
+:root{
+  color-scheme: dark;
+  --bg:#09090b; --band:#111113; --surface:#18181b; --surface-2:#27272a; --border:#27272a; --border-2:#3f3f46;
+  --fg:#fafafa; --fg2:#d4d4d8; --muted:#a1a1aa; --faint:#93939c;
+  --btn-bg:#fafafa; --btn-fg:#18181b; --btn-hover:#e4e4e7;
+  --ph-fill:#141416; --ph-line:#2a2a2e; --ph-border:#3f3f46; --ph-tag:#18181b;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --max:1280px; --pad:24px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ color-scheme: dark; } }
+.light{
+  color-scheme: light;
+  --bg:#fafafa; --band:#f4f4f5; --surface:#ffffff; --surface-2:#f4f4f5; --border:#e4e4e7; --border-2:#d4d4d8;
+  --fg:#18181b; --fg2:#52525b; --muted:#5f5f68; --faint:#63636b;
+  --btn-bg:#18181b; --btn-fg:#ffffff; --btn-hover:#3f3f46;
+  --ph-fill:#f4f4f5; --ph-line:#e4e4e7; --ph-border:#d4d4d8; --ph-tag:#ffffff;
+  background:var(--bg); color:var(--fg);
+}
+*,*::before,*::after{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px);background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--fg)} a:hover{color:var(--muted)}
+:focus-visible{outline:2px solid var(--fg);outline-offset:2px;border-radius:8px}
+button{font-family:inherit}
+h1,h2,h3,p{margin:0}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;z-index:300;background:var(--fg);color:var(--bg);padding:12px 18px;text-decoration:none;font-size:13px;border-radius:8px}
+.skip:focus{top:12px}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+#app{overflow-x:clip}
+#app > section{border-bottom:1px solid var(--border)}
+
+/* ================= type ================= */
+.kicker{font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--faint)}
+.display{font-weight:500;letter-spacing:-.035em;line-height:.98;color:var(--fg)}
+.h2{font-size:28px;font-weight:500;letter-spacing:-.015em;line-height:1.2;color:var(--fg)}
+.h3{font-size:17px;font-weight:600;line-height:1.35;color:var(--fg)}
+.lead{font-size:17px;line-height:1.65;color:var(--fg2);max-width:40rem}
+.body{font-size:15px;line-height:1.7;color:var(--muted)}
+.meta{font-size:12px;color:var(--faint)}
+.note{font-size:13px;line-height:1.55;color:var(--muted)}
+.link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;text-decoration:none;padding:10px 0;color:var(--fg);white-space:nowrap}
+.link:hover{color:var(--muted)}
+.ext-ico{flex-shrink:0;opacity:.7}
+
+/* ================= buttons ================= */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 22px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s;white-space:nowrap}
+.btn-solid{background:var(--btn-bg);color:var(--btn-fg);border-color:var(--btn-bg)}
+.btn-solid:hover{background:var(--btn-hover);color:var(--btn-fg)}
+.btn-line{background:transparent;color:var(--fg);border-color:var(--border-2)}
+.btn-line:hover{background:var(--surface-2);color:var(--fg)}
+.btn-sm{min-height:40px;padding:0 16px;font-size:13px}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* ================= image placeholders ================= */
+.ph{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;overflow:hidden;
+  background:linear-gradient(to top right,transparent calc(50% - .5px),var(--ph-line) calc(50% - .5px),var(--ph-line) calc(50% + .5px),transparent calc(50% + .5px)),linear-gradient(to top left,transparent calc(50% - .5px),var(--ph-line) calc(50% - .5px),var(--ph-line) calc(50% + .5px),transparent calc(50% + .5px)),var(--ph-fill);
+  border:1px dashed var(--ph-border);border-radius:12px;color:var(--faint);text-align:center}
+.ph-tag{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid var(--ph-border);border-radius:8px;background:var(--ph-tag);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ph-cap{max-width:28ch;font-size:12px;line-height:1.45;color:var(--faint);background:var(--ph-tag);padding:2px 8px;border-radius:6px}
+.ph svg{flex-shrink:0}
+.r-43{aspect-ratio:4/3}.r-32{aspect-ratio:3/2}.r-11{aspect-ratio:1/1}.r-45{aspect-ratio:4/5}.r-169{aspect-ratio:16/9}
+/* angular mask derived from the logo symbol (design to define the exact shape) */
+.mask-a{clip-path:polygon(0 0,100% 0,100% calc(100% - 56px),calc(100% - 56px) 100%,0 100%)}
+.mask-b{clip-path:polygon(56px 0,100% 0,100% 100%,0 100%,0 56px)}
+.angle{display:block;width:44px;height:22px;background:var(--border-2);clip-path:polygon(0 0,50% 100%,100% 0,78% 0,50% 56%,22% 0)}
+
+/* ================= password gate ================= */
+body.locked > :not(.gate):not(script){display:none !important}
+.gate{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;padding:24px;background:var(--bg);overflow:auto}
+.gate .ph{position:absolute;inset:0;border:0;border-radius:0;opacity:.6}
+.gate form{position:relative;width:100%;max-width:448px;display:flex;flex-direction:column;gap:20px;background:var(--surface);border:1px solid var(--border-2);border-radius:16px;padding:32px;box-shadow:0 25px 50px -12px #000000aa}
+.gate .logo{font-size:30px}
+.gate .sig{margin-top:-14px}
+.gate .pw{display:flex;align-items:center;border:1px solid var(--border-2);border-radius:8px;padding:0 6px 0 14px;background:var(--bg)}
+.gate .pw:focus-within{border-color:var(--fg);box-shadow:0 0 0 1px var(--fg)}
+.gate .pw:has(input[aria-invalid="true"]){border:2px solid var(--fg)}
+.gate .pw input{flex:1;min-width:0;border:0;background:transparent;color:var(--fg);font:inherit;font-size:14px;min-height:42px;outline:none}
+.gate .show{background:none;border:0;color:var(--muted);font-size:12px;font-weight:600;cursor:pointer;min-height:40px;padding:0 8px}
+.gate .btn{width:100%}
+.gate .shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@media (prefers-reduced-motion:reduce){ .gate .shake{animation:none} }
+
+/* ================= header ================= */
+.site-header{position:sticky;top:0;z-index:60;background:rgba(9,9,11,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding-top:env(safe-area-inset-top,0px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:61;background:rgba(9,9,11,.9);backdrop-filter:blur(8px)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px}
+.brand{display:inline-flex;align-items:center;gap:14px;text-decoration:none;min-height:44px}
+.logo{font-size:22px;font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--fg);text-transform:lowercase}
+.sig{font-size:12px;color:var(--faint);padding-left:14px;border-left:1px solid var(--border-2);white-space:nowrap}
+.nav{display:flex;align-items:center;gap:2px}
+.nav a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px}
+.nav a:hover{color:var(--fg)}
+.nav a[aria-current="page"]{color:var(--fg);background:var(--surface-2)}
+.actions{display:flex;align-items:center;gap:14px}
+.acct{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;min-height:44px}
+.acct:hover{color:var(--fg)}
+.lang{display:inline-flex;align-items:center;gap:0}
+.lang a{display:inline-flex;align-items:center;justify-content:center;min-width:34px;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--muted);text-decoration:none}
+.lang a[aria-current="true"]{color:var(--fg);text-decoration:underline;text-underline-offset:6px}
+.lang a:hover{color:var(--fg)}
+.lang .sep{color:var(--border-2);font-size:12px}
+.menu-btn{display:none;align-items:center;gap:10px;min-height:44px;padding:0 4px;background:none;border:0;color:var(--fg2);font-size:13px;font-weight:600;cursor:pointer}
+.menu-btn .lines{display:inline-flex;flex-direction:column;gap:5px}
+.menu-btn .lines i{display:block;width:20px;height:1.5px;background:currentColor}
+@media (max-width:1240px){ .brand .sig{display:none} }
+@media (max-width:1060px){ .nav,.actions .acct,.actions .lang{display:none} .menu-btn{display:inline-flex} }
+@media (max-width:380px){ .actions{gap:8px} .actions .btn-sm{padding:0 12px} }
+
+/* mobile menu */
+.menu-panel{position:fixed;inset:0;z-index:80;background:var(--bg);display:flex;flex-direction:column;overflow-y:auto;padding:calc(env(safe-area-inset-top,0px) + 10px) var(--pad) calc(env(safe-area-inset-bottom,0px) + 24px)}
+.menu-panel[hidden]{display:none}
+.menu-panel .top{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:54px}
+.menu-panel nav{display:flex;flex-direction:column;margin-top:20px}
+.menu-panel nav a{font-size:17px;font-weight:500;color:var(--fg2);text-decoration:none;padding:15px 12px;border-bottom:1px solid var(--border)}
+.menu-panel nav a[aria-current="page"]{color:var(--fg);background:var(--surface)}
+.menu-panel .acct{padding:0 12px;margin-top:12px;font-size:15px}
+.menu-panel .lang{margin:8px 0 0 4px}
+.menu-panel .lang a{font-size:14px;min-width:44px}
+.menu-panel .foot{margin-top:auto;padding-top:28px;display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--muted)}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;background:none;border:0;color:var(--fg);cursor:pointer;border-radius:8px}
+.icon-btn:hover{background:var(--surface-2)}
+
+/* ================= hero (homepage) ================= */
+.hero{position:relative;isolation:isolate;min-height:max(580px,82svh);display:flex;align-items:flex-end;overflow:hidden}
+.hero > .ph{position:absolute;inset:0;border:0;border-radius:0;z-index:-1;justify-content:flex-start;padding-top:12%}
+.hero-in{width:100%;padding-top:120px;padding-bottom:64px;display:flex;flex-direction:column;gap:18px}
+.hero .display{font-size:clamp(64px,12vw,168px)}
+.hero h1{font-size:clamp(20px,2.2vw,28px);font-weight:500;letter-spacing:-.015em;line-height:1.3;color:var(--fg);max-width:34rem}
+.hero .h1-sub{display:block;margin:-12px 0 0;font-size:clamp(14px,1.54vw,19.6px);font-weight:400;letter-spacing:0;line-height:1.45;color:var(--fg2);max-width:34rem}
+.hero .lead{margin-top:-8px}
+.hero .btn-row{margin-top:10px}
+.hero-card{display:flex;flex-direction:column;gap:18px;max-width:46rem;background:rgba(9,9,11,.78);border:1px solid var(--border);border-radius:16px;padding:28px 28px 30px}
+@media (max-width:600px){ .hero-card{padding:22px} .hero-in{padding-bottom:28px} }
+
+/* ================= page heads (inner pages) ================= */
+.page-head{position:relative;isolation:isolate;background:var(--band);border-bottom:1px solid var(--border)}
+.page-head .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px 56px;align-items:end;padding-top:64px;padding-bottom:64px}
+.page-head .txt{display:flex;flex-direction:column;gap:16px;min-width:0}
+.page-head .display{font-size:clamp(48px,8vw,108px)}
+.page-head h1{font-size:clamp(20px,2.2vw,26px);font-weight:500;letter-spacing:-.015em;line-height:1.3;color:var(--fg);max-width:34rem}
+.page-head h1.solo{font-size:clamp(36px,5vw,56px);letter-spacing:-.03em;line-height:1.08}
+.page-head .btn-row{margin-top:8px}
+.page-head .ph{width:100%}
+@media (max-width:900px){ .page-head .wrap{grid-template-columns:1fr;padding-top:44px;padding-bottom:44px} }
+
+/* ================= sections ================= */
+.sec{padding-top:72px;padding-bottom:72px}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 24px;margin-bottom:32px}
+.sec-head .txt{display:flex;flex-direction:column;gap:10px;max-width:44rem}
+.band{background:var(--band)}
+.grid{display:grid;gap:20px;list-style:none;margin:0;padding:0}
+.g-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:1100px){ .g-4,.g-5{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:860px){ .g-3{grid-template-columns:1fr} .g-2{grid-template-columns:1fr} }
+@media (max-width:560px){ .g-4,.g-5{grid-template-columns:1fr} }
+.card{display:flex;flex-direction:column;gap:10px;border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:22px;min-width:0}
+a.card{text-decoration:none;transition:border-color .15s}
+a.card:hover{border-color:var(--fg);color:var(--fg)}
+.ico{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px dashed var(--ph-border);border-radius:10px;color:var(--faint);margin-bottom:6px}
+
+/* need selector */
+.selector{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.vgroup{border:1px solid var(--border);border-radius:16px;background:var(--band);padding:20px;display:flex;flex-direction:column;gap:16px}
+.vgroup-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0 4px}
+.vgroup-head .h3{font-size:15px}
+.vcards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.need{display:flex;flex-direction:column;gap:12px;border:1px solid var(--border);border-radius:12px;background:var(--surface);overflow:hidden;text-decoration:none;color:var(--fg);transition:border-color .15s}
+.need:hover{border-color:var(--fg);color:var(--fg)}
+.need .ph{border-width:0 0 1px;border-style:solid;border-color:var(--border);border-radius:0}
+.need .in{display:flex;flex-direction:column;gap:8px;padding:2px 18px 20px}
+.need .term{font-size:22px;font-weight:600;letter-spacing:-.025em;line-height:1.15}
+.need .go{display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding:0 18px 18px;font-size:13px;font-weight:600}
+@media (max-width:1000px){ .selector{grid-template-columns:1fr} }
+@media (max-width:520px){ .vcards{grid-template-columns:1fr} }
+
+/* moment (brand line) */
+.moment{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;padding:88px 24px}
+.moment blockquote{margin:0;max-width:20em;font-size:clamp(28px,4vw,48px);font-weight:500;letter-spacing:-.03em;line-height:1.15;color:var(--fg)}
+
+/* typology cards (CMS) */
+.unit{padding:0;overflow:hidden;gap:0}
+.unit .ph{border-width:0 0 1px;border-style:solid;border-color:var(--border);border-radius:0}
+.unit .in{display:flex;flex-direction:column;gap:10px;padding:18px 20px 20px;flex:1}
+.tag{align-self:flex-start;font-size:11px;font-weight:600;color:var(--fg2);background:var(--surface-2);border:1px solid var(--border-2);border-radius:999px;padding:3px 10px}
+.unit .name{font-size:20px;font-weight:600;letter-spacing:-.02em;line-height:1.2;color:var(--fg)}
+.facts{margin:0;display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--border);padding-top:12px}
+.facts div{display:flex;flex-direction:column;gap:2px}
+.facts dt{font-size:11px;font-weight:600;color:var(--faint)}
+.facts dd{margin:0;font-size:14px;line-height:1.45;color:var(--fg2)}
+.unit .btn{margin-top:auto;width:100%}
+.unit .btn-wrap{margin-top:auto;padding-top:8px}
+.tip{display:flex;gap:12px;align-items:flex-start;margin-top:20px;padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--band);font-size:14px;color:var(--fg2)}
+
+/* price table */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;min-width:560px;font-size:14px}
+th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-size:12px;font-weight:600;color:var(--faint);background:var(--band)}
+tbody tr:last-child td{border-bottom:0}
+td.num{white-space:nowrap;font-weight:600;color:var(--fg)}
+table .sub{display:block;font-size:12px;color:var(--faint);margin-top:2px}
+
+/* benefits split */
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+@media (max-width:860px){ .split{grid-template-columns:1fr} }
+.checks{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column}
+.checks li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--border);font-size:14px;line-height:1.55;color:var(--fg2)}
+.checks li:first-child{border-top:0}
+.checks svg{flex-shrink:0;margin-top:3px;color:var(--fg)}
+
+/* CTA band */
+.cta{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:72px 24px;background:var(--band)}
+.cta .h2{max-width:22em}
+.cta-quote{max-width:18em;margin:0 0 10px;font-size:clamp(28px,3.6vw,44px);font-weight:500;letter-spacing:-.03em;line-height:1.15;color:var(--fg)}
+.cta .body{max-width:34rem}
+.cta .btn-row{justify-content:center;margin-top:8px}
+.cta .handoff{display:inline-flex;align-items:center;gap:8px;margin-top:4px}
+
+/* cross sell */
+.xsell{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--surface)}
+.xsell .ph{border-width:0 1px 0 0;border-style:solid;border-color:var(--border);border-radius:0;min-height:280px}
+.xsell .in{display:flex;flex-direction:column;justify-content:center;gap:14px;padding:40px}
+.xsell .display{font-size:clamp(36px,4.6vw,60px)}
+@media (max-width:820px){ .xsell{grid-template-columns:1fr} .xsell .ph{border-width:0 0 1px;min-height:200px} .xsell .in{padding:28px} }
+
+/* gallery slider */
+.slider{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,32%);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin}
+.slider > *{scroll-snap-align:start}
+@media (max-width:700px){ .slider{grid-auto-columns:82%} }
+.slide-nav{display:flex;gap:8px}
+
+/* FAQ */
+.faq-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px}
+.faq-nav a{font-size:13px;font-weight:500;text-decoration:none;color:var(--fg2);border:1px solid var(--border-2);border-radius:999px;padding:8px 14px;min-height:40px;display:inline-flex;align-items:center}
+.faq-nav a:hover{background:var(--surface-2);color:var(--fg)}
+.faq-cat{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:16px 48px;padding:40px 0;border-top:1px solid var(--border)}
+.faq-cat:first-of-type{border-top:0;padding-top:0}
+.faq-cat .h2{font-size:22px}
+@media (max-width:860px){ .faq-cat{grid-template-columns:1fr} }
+.faq-list{display:flex;flex-direction:column;gap:10px}
+details{border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+details[open]{border-color:var(--border-2)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 18px;font-size:15px;font-weight:600;color:var(--fg);min-height:52px}
+summary::-webkit-details-marker{display:none}
+summary .pm{flex-shrink:0;transition:transform .2s}
+details[open] summary .pm{transform:rotate(45deg)}
+@media (prefers-reduced-motion:reduce){ summary .pm{transition:none} }
+details .ans{padding:0 18px 18px;font-size:14px;line-height:1.7;color:var(--fg2);max-width:46rem}
+details .ans p + p{margin-top:8px}
+
+/* forms */
+.form{display:flex;flex-direction:column;gap:22px}
+.row-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:22px 20px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field > label:not(.check){font-size:12px;font-weight:600;color:var(--fg2)}
+.req{font-size:11px;font-weight:400;color:var(--faint);margin-left:4px}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--border-2);border-radius:8px;background:var(--surface);color:var(--fg);font:inherit;font-size:14px;padding:10px 14px;min-height:44px}
+.field textarea{resize:vertical;line-height:1.6}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--fg);outline:2px solid var(--fg);outline-offset:0}
+.field [aria-invalid="true"]{border-color:var(--fg);border-width:2px}
+.err{font-size:12px;font-weight:500;color:var(--fg)} .err::before{content:"! ";font-weight:700}
+.err[hidden]{display:none}
+.check{display:flex;align-items:flex-start;gap:12px;font-size:13px;line-height:1.6;color:var(--muted);cursor:pointer}
+.check input{flex:0 0 18px;width:18px;height:18px;min-height:0;padding:0;margin:2px 0 0;accent-color:var(--fg)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px 64px;align-items:start}
+@media (max-width:900px){ .contact-grid{grid-template-columns:1fr} }
+.dl{margin:0;display:flex;flex-direction:column;gap:12px}
+.dl > div{border:1px solid var(--border);border-radius:12px;padding:16px;background:var(--surface)}
+.dl dt{font-size:11px;font-weight:600;color:var(--faint);margin-bottom:4px}
+.dl dd{margin:0;font-size:14px;line-height:1.6;color:var(--fg2)}
+.dl dd small{display:block;font-size:12px;color:var(--faint)}
+.sent{display:flex;flex-direction:column;gap:16px;padding:28px;border:1px solid var(--border-2);border-radius:12px;background:var(--surface)}
+.sent[hidden]{display:none}
+.mapbox{position:relative}
+.mapbox .ph{min-height:280px}
+.map-gate{position:absolute;inset:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:20px;background:var(--surface);border:1px solid var(--border-2);border-radius:10px}
+.map-gate[hidden]{display:none}
+
+/* legal */
+.legal{max-width:46rem;display:flex;flex-direction:column}
+.legal section{border-top:1px solid var(--border);padding:28px 0;display:flex;flex-direction:column;gap:10px}
+.legal section:first-child{border-top:0;padding-top:0}
+.legal h2{font-size:17px;font-weight:600;color:var(--fg)}
+.legal p{font-size:14px;line-height:1.75;color:var(--fg2)}
+
+/* 404 */
+.nf{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:40px 56px;align-items:center;padding-top:80px;padding-bottom:96px}
+.nf .txt{display:flex;flex-direction:column;gap:18px}
+.nf h1{font-size:clamp(40px,6vw,72px);font-weight:500;letter-spacing:-.035em;line-height:1.02}
+@media (max-width:860px){ .nf{grid-template-columns:1fr;padding-top:48px} }
+
+/* ================= footer ================= */
+.site-footer{background:var(--band);border-top:1px solid var(--border);color:var(--muted)}
+.nl{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px 72px;align-items:end;padding-top:48px;padding-bottom:48px;border-bottom:1px solid var(--border)}
+.nl-txt{display:flex;flex-direction:column;gap:12px}
+.nl-form{display:flex;flex-direction:column;gap:12px}
+.nl-form[hidden]{display:none}
+.nl-row{display:flex;gap:12px;align-items:flex-end}
+.nl-ok{font-size:18px;font-weight:500;color:var(--fg);padding:16px;border:1px solid var(--border-2);border-radius:12px;margin:0}
+.nl-ok[hidden]{display:none}
+.wf-note{display:block;align-self:flex-start;max-width:34rem;margin:0 0 4px;font-size:10.5px;line-height:1.45;color:var(--faint);border-left:2px dashed var(--border-2);padding:2px 0 2px 8px;opacity:.85}
+.wf-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+@media (max-width:900px){ .nl{grid-template-columns:1fr} }
+@media (max-width:520px){ .nl-row{flex-direction:column;align-items:stretch} }
+.f-top{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px 72px;padding-top:56px;padding-bottom:48px}
+.f-brand{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.f-brand .logo{font-size:30px}
+.f-claim{font-size:22px;font-weight:500;letter-spacing:-.02em;line-height:1.25;color:var(--fg);margin-top:6px}
+.f-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 28px}
+.f-h{margin:0 0 12px;font-size:15px;font-weight:700;letter-spacing:-.005em;color:var(--fg)}
+.f-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.f-list a{display:inline-flex;align-items:center;gap:6px;padding:8px 0;font-size:13px;color:var(--muted);text-decoration:none}
+.f-list a:hover{color:var(--fg)}
+.f-addr{font-style:normal;display:flex;flex-direction:column;gap:12px;font-size:13px;line-height:1.55;color:var(--muted)}
+.f-addr .k{display:block;font-size:11px;font-weight:600;color:var(--faint)}
+.f-addr small{font-size:11px;color:var(--faint)}
+.f-bottom{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:4px 28px;border-top:1px solid var(--border);padding-top:10px;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 16px)}
+.f-bottom > .f-copy{grid-column:1;padding-top:12px}
+.f-bottom > .f-legal{grid-column:1}
+.f-bottom > .f-right{grid-column:2;grid-row:1 / span 2;justify-self:end;align-self:end}
+.f-legal{display:flex;flex-wrap:wrap;gap:0 22px}
+.f-bottom a,.f-bottom button{font-size:12px;color:var(--faint);text-decoration:none;padding:12px 0;background:none;border:0;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px}
+.f-bottom a:hover,.f-bottom button:hover{color:var(--fg2)}
+.f-copy{font-size:12px;color:var(--faint)}
+.f-right{display:flex;align-items:center;justify-content:flex-end;gap:8px 28px}
+.f-loba{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:var(--faint);text-decoration:none}
+.f-loba:hover,.f-loba:focus-visible{color:#fff}
+.f-loba-txt{font-size:11px;letter-spacing:.06em;white-space:nowrap;opacity:0;transform:translateX(8px);transition:opacity .35s ease,transform .35s ease}
+.f-loba:hover .f-loba-txt,.f-loba:focus-visible .f-loba-txt{opacity:1;transform:none}
+@media (hover:none){ .f-loba-txt{opacity:1;transform:none} }
+@media (prefers-reduced-motion:reduce){ .f-loba-txt{transition:none} }
+@media (max-width:960px){ .f-top{grid-template-columns:1fr} }
+@media (max-width:600px){ .f-cols{grid-template-columns:1fr 1fr} .f-cols > :nth-child(2){grid-column:1 / -1;grid-row:2} .f-bottom{grid-template-columns:1fr} .f-bottom > .f-right{grid-column:1;grid-row:auto;justify-self:stretch;justify-content:space-between} }
+.f-loba-mark{display:block;width:58px;height:16px;background:currentColor;-webkit-mask:url(data:image/png;base64,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) center / contain no-repeat;mask:url(data:image/png;base64,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) center / contain no-repeat}
+
+/* ================= overlays ================= */
+.cookie{position:fixed;left:20px;right:20px;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);z-index:90;max-width:460px;background:var(--surface);border:1px solid var(--border-2);border-radius:12px;box-shadow:0 10px 15px -3px #00000066;padding:20px;display:flex;flex-direction:column;gap:14px}
+.cookie[hidden]{display:none}
+.cookie p{font-size:13px;line-height:1.6;color:var(--fg2)}
+.cookie .opts{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--border);padding-top:14px}
+.cookie .opts[hidden]{display:none}
+.cookie .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.cookie .btn{padding:0 10px}
+.xdlg{width:min(520px,calc(100vw - 32px));padding:0;border:1px solid var(--border-2);border-radius:16px;background:var(--surface);color:var(--fg);box-shadow:0 25px 50px -12px #000000aa}
+.xdlg::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
+.xdlg .bar{min-height:56px;padding:0 8px 0 22px;border-bottom:1px solid var(--border)}
+.xdlg .in{padding:22px;display:flex;flex-direction:column;gap:14px}
+.xdlg .target{font-size:18px;font-weight:600;letter-spacing:-.01em;line-height:1.35}
+.xdlg .url{font-size:13px;color:var(--fg2);background:var(--band);border:1px dashed var(--border-2);border-radius:8px;padding:10px 12px;word-break:break-all}
+/* ================= copy database v1: hero badge, trust bar, steps ================= */
+.badge{align-self:flex-start;display:inline-flex;align-items:center;font-size:12px;font-weight:600;color:var(--fg2);background:rgba(9,9,11,.78);border:1px solid var(--border-2);border-radius:999px;padding:6px 14px}
+.hero .display{font-size:clamp(48px,8.6vw,124px);max-width:11ch}
+.hero > .ph{align-items:flex-end;justify-content:flex-start;padding:28px 24px}
+.claim{font-size:15px;font-weight:600;color:var(--fg)}
+.trust{background:var(--band)}
+.trust-list{list-style:none;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 24px;padding-top:32px;padding-bottom:32px}
+.trust-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--fg)}
+.trust-list li svg{margin-top:3px}
+.trust-list .t{display:block;font-weight:600}
+.trust-list .d{display:block;font-size:13px;line-height:1.5;color:var(--muted);margin-top:2px}
+@media (max-width:1000px){ .trust-list{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:520px){ .trust-list{grid-template-columns:1fr} }
+.steps{counter-reset:none}
+.steps .num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:999px;border:1px solid var(--border-2);font-size:14px;font-weight:600;color:var(--fg);margin-bottom:6px}
+.grid > li > .need{height:100%}
+@media (min-width:1101px){ .g-5 .unit .name{font-size:18px} }
+</style>
+</head>
+<body>
+<div class="gate" id="gate" hidden></div>
+<a class="skip" href="#/" data-skip></a>
+<header class="site-header" id="siteHeader"></header>
+<div class="menu-panel" id="menuPanel" hidden role="dialog" aria-modal="true"></div>
+<main id="app" tabindex="-1"></main>
+<footer class="site-footer" id="siteFooter"></footer>
+<dialog class="xdlg" id="xdlg" aria-labelledby="xdTitle"></dialog>
+<div class="cookie" id="cookie" role="region" hidden></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ================= language & routes (URLs as in section 9.1 of the brief) ================= */
+let lang = "pt";
+const P = (pt, en) => ({ pt, en });
+const L = o => (o && typeof o === "object" && !Array.isArray(o) && ("pt" in o)) ? o[lang] : o;
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+const EN = s => `<span lang="en">${s}</span>`; /* brand assets stay in English in both versions */
+
+const ROUTES = {
+  home:{ pt:"/", en:"/en" },
+  storage:{ pt:"/self-storage", en:"/en/self-storage" },
+  work:{ pt:"/workspaces", en:"/en/workspaces" },
+  about:{ pt:"/quem-somos", en:"/en/about" },
+  support:{ pt:"/suporte", en:"/en/support" },
+  contact:{ pt:"/contactos", en:"/en/contact" },
+  privacy:{ pt:"/privacidade", en:"/en/privacy" },
+  cookies:{ pt:"/cookies", en:"/en/cookies" },
+  terms:{ pt:"/termos", en:"/en/terms" }
+};
+const href = (key, l) => "#" + ROUTES[key][l || lang];
+function resolve(path){
+  for (const k in ROUTES){
+    if (ROUTES[k].pt === path) return { key:k, lang:"pt" };
+    if (ROUTES[k].en === path) return { key:k, lang:"en" };
+  }
+  return { key:null, lang: path === "/en" || path.startsWith("/en/") ? "en" : "pt" };
+}
+
+/* ================= UI text (EN microcopy = proposal to be validated by the client, section 12) ================= */
+const T = {
+pt: {
+  skip:"Saltar para o conteúdo", home_aria:"ROOM2, página inicial", nav_main:"Principal", nav_mobile:"Navegação", menu:"Menu", close_menu:"Fechar menu", lang_group:"Idioma",
+  nav_storage:"Self Storage", nav_work:"Workspaces", nav_about:"Quem somos", nav_support:"Suporte", nav_contact:"Contactos",
+  account:"Área de cliente", book:"Reservar", book_unit:"Reservar esta box", book_space:"Reservar este espaço",
+  see_units:"Ver boxes", see_spaces:"Ver espaços", req_unit:"Pedir esta box", req_any:"Pedir uma box", req_msg:"Olá, tenho interesse {x}. Podem enviar-me as condições e a disponibilidade?", req_msg_one:"numa box", req_msg_named:"na {n}", see_work:"Ver Workspaces", see_storage:"Ver Self Storage", talk:"Falar connosco", see_faq:"Ver perguntas frequentes",
+  ph_img:"Imagem", ph_video:"Vídeo", ph_hero:"Imagem ou vídeo · largura total", ph_map:"Mapa · Google Maps",
+  price_note:"Preço de referência. O valor final e a disponibilidade confirmam-se na reserva.",
+  handoff:"A reserva continua na plataforma segura de reservas ROOM2.",
+  size_tip:"Na dúvida entre dois tamanhos? Escolha o maior: pode mudar depois.",
+  from:"desde", u_hour:"/hora", u_day:"/dia", u_month:"/mês", ul_hour:"À hora", ul_day:"Ao dia", ul_month:"Ao mês",
+  th_type:"Tipologia", th_group:"Grupo", th_types:"Tipologias", th_dims:"Dimensões e área", th_cap:"Capacidade", th_unit:"Unidade de reserva", th_price:"Preço desde",
+  f_dims:"Dimensões e área", f_cap:"Capacidade", f_use:"Utilização aconselhada", f_incl:"O que inclui", f_unit:"Unidade de reserva",
+  g_box:"Box", g_cowork:"Coworking", g_room:"Sala", g_office:"Escritório",
+  prices:"Preços de referência", advantages:"Vantagens",
+  sel_title:"De que precisa?", sel_intro:"Comece pelo que precisa de fazer. O espaço certo vem a seguir.",
+  sel_store:"Mudanças, obras ou coisas a mais em casa.", sel_stock:"O negócio cresceu e a garagem já não chega.",
+  sel_work:"Um posto à hora, ao dia ou ao mês.", sel_meet:"Uma boa reunião começa por ter onde acontecer.",
+  aud_store:"Para particulares", aud_stock:"Para PME e lojas online", aud_work:"Para profissionais independentes", aud_meet:"Para equipas, PME e independentes",
+  hl_title:"Simples, do primeiro clique à porta.",
+  hl1_t:"Acesso 24/7", hl1_d:"Entre com o smartphone, a qualquer hora.",
+  hl2_t:"À hora, ao dia ou ao mês", hl2_d:"Pelo tempo que for preciso.",
+  hl3_t:"Reserva online", hl3_d:"Escolha, pague e use, sem papéis.",
+  hl4_t:"Em Aveiro", hl4_d:"Com acessos rápidos e estacionamento.",
+  gal_title:"Conheça o espaço", gal_intro:"Boxes, postos e salas, como são.", gal_aria:"Galeria das instalações", prev:"Anterior", next:"Seguinte",
+  final_text:"Um posto, uma sala, um escritório ou uma box, reservados online.",
+  faq_title:"Central de apoio e perguntas frequentes.", faq_intro:"Respostas claras sobre reservas, horários, controlo de acessos, segurança e faturação. Se precisar de apoio direto, fale com a nossa equipa local de Aveiro.", faq_jump:"Categorias",
+  faq_more:"Não encontrou a resposta?", faq_more_t:"Escreva-nos ou ligue. Do outro lado está uma pessoa.",
+  c_kicker:"Contactos", c_title:"Uma pergunta antes de reservar?", c_intro:"Escreva-nos ou ligue. Do outro lado está uma pessoa.",
+  c_form:"Escreva-nos", c_all:"Todos os campos são obrigatórios.", required:"(obrigatório)",
+  f_name:"Nome", f_email:"Email", f_subject:"Assunto", f_message:"Mensagem", f_pick:"Escolha um assunto",
+  subjects:["Storage","Workspaces","Empresas","Visita guiada","Outro"],
+  consent:"Li a {privacy} e aceito que a ROOM2 use estes dados para responder.", privacy_inline:"Política de Privacidade",
+  e_email:"Falta um email válido para respondermos.", e_empty:"Este campo ajuda-nos a responder melhor.", e_consent:"Para respondermos, precisamos do seu acordo.",
+  send:"Enviar mensagem", sent:"Já está. Mensagem recebida, respondemos em breve.", again:"Enviar outra mensagem",
+  direct:"Contactos diretos", d_address:"Morada", d_phone:"Telefone", d_call:"Chamada para a rede fixa nacional", d_email:"Email", d_hours:"Horário",
+  hours_v:"Acesso 24/7. Apoio: [dias e horas a confirmar].", how:"Como chegar",
+  how_v:"Apenas a 4 minutos da saída Taboeira / Zona Industrial da A25 e a 8 minutos do centro da cidade de Aveiro. Saída direta da A1 e A17 sem atravessar trânsito urbano. Estacionamento gratuito no local.",
+  map_title:"Localização", map_blocked:"O mapa usa cookies da Google e só aparece com o seu acordo.", map_accept:"Aceitar e ver o mapa", map_manage:"Gerir cookies",
+  ck_region:"Aviso de cookies", ck_text:"Usamos cookies para perceber o que funciona no site. Os não essenciais só com o seu acordo.", ck_title:"Respeitamos a sua privacidade", ck_policy:"Política de Cookies",
+  ck_accept:"Aceitar", ck_reject:"Recusar", ck_choose:"Escolher", ck_hide:"Esconder opções",
+  ck_ess:"Essenciais (sempre ativos)", ck_an:"Análise (Google Tag Manager, Microsoft Clarity)", ck_maps:"Mapas (Google Maps)", ck_save:"Guardar escolhas",
+  f_pages:"Sitemap", f_contact:"Contactos", f_follow:"Redes sociais",
+  nl_title:"Há espaço na sua caixa de entrada?", nl_text:"Novidades da ROOM2 em Aveiro: novos espaços, condições para empresas e eventos. Pode cancelar a qualquer momento.",
+  nl_label:"Email", nl_btn:"Inscrever", nl_consent:"Aceito receber a newsletter da ROOM2 e li a {privacy}.",
+  nl_e_email:"Falta um email válido.", nl_e_consent:"Para enviar a newsletter, precisamos do seu acordo.", nl_ok:"Já está. Inscrição feita, até breve.",
+  wf_note_t:"Nota de wireframe", wf_steps:"Conteúdo a confirmar após a escolha da plataforma (caderno de encargos, secção 9.4).", wf_serv:"Não previsto no caderno de encargos (secções 9.5 e 9.6). Serviços complementares do modelo de negócio, a validar com a UNIT2RENT.", wf_note:"Não previsto no caderno de encargos. A newsletter está fora do âmbito (secção 8) e pode ser orçamentada à parte, incluindo a ferramenta de email marketing e a gestão de consentimento.",
+  copy:"© 2026 ROOM2. Operado por Unit2Rent Lda. Todos os direitos reservados. Flexible workspaces & storage em Aveiro.",
+  privacy:"Política de Privacidade", cookies:"Política de Cookies", terms:"Termos e Condições", ck_settings:"Definições de cookies",
+  complaints:"Livro de Reclamações Eletrónico", ral:"Resolução Alternativa de Litígios", back_top:"Voltar ao topo",
+  developed:"Desenvolvido por", developed_aria:"Desenvolvido pela LOBA (abre num novo separador)",
+  x_title:"Link externo", x_close:"Fechar", x_same:"Abre no mesmo separador.", x_new:"Abre num novo separador.",
+  x_book:"Portal de reservas ROOM2", x_book_url:"[URL do portal de reservas, versão PT]", x_book_note:"Endereço a fornecer pelo cliente, por idioma.", booking_notice:"O website ROOM2 informa e orienta, mas não processa reservas nem pagamentos. A reserva, a disponibilidade em tempo real e o pagamento seguro acontecem na plataforma de reservas ROOM2.",
+  x_unit:"Plataforma de reservas: {name}", x_unit_url:"[Campo CMS “URL de reserva” · {name} · PT]", x_unit_note:"Cada tipologia aponta para o endereço do seu campo no CMS, atualizável sem desenvolvimento.",
+  x_account:"Área de cliente (portal do cliente)", x_account_url:"[URL do portal do cliente, versão PT]", x_account_note:"Para clientes existentes. Presença no menu a confirmar com o cliente.",
+  x_social_url:"[Perfil da ROOM2 em {name}]", x_social_note:"Perfil a indicar pelo cliente.",
+  x_complaints_url:"https://www.livroreclamacoes.pt", x_ral_url:"[Entidade RAL a indicar pelo cliente]", x_legal_note:"Ligação obrigatória no rodapé.",
+  nf_kicker:"Erro 404", nf_title:"Esta sala está vazia.", nf_text:"A página que procura mudou de sítio. O espaço que procura, não.",
+  g_note:"Pré-visualização privada dos wireframes do website ROOM2. Introduza a palavra-passe para continuar.",
+  g_pw:"Palavra-passe", g_show:"Mostrar", g_hide:"Esconder", g_err:"A palavra-passe não está correta. Confirme e tente de novo.", g_enter:"Entrar",
+  legal_intro:"[Texto legal a fornecer pelo cliente.] Estrutura de referência. Última atualização: [data]."
+},
+en: {
+  skip:"Skip to content", home_aria:"ROOM2, homepage", nav_main:"Main", nav_mobile:"Navigation", menu:"Menu", close_menu:"Close menu", lang_group:"Language",
+  nav_storage:"Self Storage", nav_work:"Workspaces", nav_about:"About", nav_support:"Support", nav_contact:"Contact",
+  account:"Member login", book:"Book now", book_unit:"Book this unit", book_space:"Book this space",
+  see_units:"See units", see_spaces:"See spaces", req_unit:"Request this unit", req_any:"Request a unit", req_msg:"Hi, I’m interested in {x}. Could you send me the terms and availability?", req_msg_one:"a storage unit", req_msg_named:"the {n}", see_work:"See Workspaces", see_storage:"See Self Storage", talk:"Talk to us", see_faq:"See the FAQ",
+  ph_img:"Image", ph_video:"Video", ph_hero:"Image or video · full width", ph_map:"Map · Google Maps",
+  price_note:"Reference price. The final price and availability are confirmed when you book.",
+  handoff:"Your booking continues on the secure ROOM2 booking platform.",
+  size_tip:"Torn between two sizes? Choose the larger one: you can change later.",
+  from:"from", u_hour:"/hour", u_day:"/day", u_month:"/month", ul_hour:"By the hour", ul_day:"By the day", ul_month:"By the month",
+  th_type:"Type", th_group:"Group", th_types:"Types", th_dims:"Dimensions and area", th_cap:"Capacity", th_unit:"Booked", th_price:"Price from",
+  f_dims:"Dimensions and area", f_cap:"Capacity", f_use:"Recommended use", f_incl:"What’s included", f_unit:"Booked",
+  g_box:"Unit", g_cowork:"Coworking", g_room:"Room", g_office:"Office",
+  prices:"Reference prices", advantages:"Why ROOM2",
+  sel_title:"What do you need room for?", sel_intro:"Start with what you need to do. The right space follows.",
+  sel_store:"Moving, renovating or just too much at home.", sel_stock:"The business grew and the garage no longer does.",
+  sel_work:"A desk by the hour, day or month.", sel_meet:"A good meeting starts with somewhere to have it.",
+  aud_store:"For individuals", aud_stock:"For SMEs and online shops", aud_work:"For independent professionals", aud_meet:"For teams, SMEs and freelancers",
+  hl_title:"Simple, from first click to front door.",
+  hl1_t:"24/7 access", hl1_d:"Get in with your phone, any time.",
+  hl2_t:"By the hour, day or month", hl2_d:"For as long as you need.",
+  hl3_t:"Online booking", hl3_d:"Choose, pay and use, no paperwork.",
+  hl4_t:"In Aveiro", hl4_d:"Quick road access and parking.",
+  gal_title:"Take a look around", gal_intro:"Units, desks and rooms, as they are.", gal_aria:"Gallery of the premises", prev:"Previous", next:"Next",
+  final_text:"A desk, a room, an office or a unit, booked online.",
+  faq_title:"Help center and frequently asked questions.", faq_intro:"Clear answers regarding bookings, access control, facility security, and billing. For direct assistance, talk to our Aveiro team.", faq_jump:"Categories",
+  faq_more:"Didn’t find your answer?", faq_more_t:"Write to us or call. There’s a person on the other side.",
+  c_kicker:"Contact", c_title:"A question before you book?", c_intro:"Write to us or call. There’s a person on the other side.",
+  c_form:"Write to us", c_all:"All fields are required.", required:"(required)",
+  f_name:"Name", f_email:"Email", f_subject:"Subject", f_message:"Message", f_pick:"Choose a subject",
+  subjects:["Storage","Workspaces","Business","Visit","Other"],
+  consent:"I’ve read the {privacy} and agree that ROOM2 may use this data to reply.", privacy_inline:"Privacy Policy",
+  e_email:"We need a valid email to reply.", e_empty:"This field helps us reply properly.", e_consent:"We need your agreement to reply.",
+  send:"Send message", sent:"Done. Message received, we’ll reply soon.", again:"Send another message",
+  direct:"Direct contacts", d_address:"Address", d_phone:"Phone", d_call:"Call to the Portuguese landline network", d_email:"Email", d_hours:"Hours",
+  hours_v:"24/7 access. Support: [days and hours to be confirmed].", how:"Getting here",
+  how_v:"Just 4 minutes from the Taboeira / Industrial Zone exit on the A25 motorway, and 8 minutes from central Aveiro. Direct connection to A1 and A17 motorways. Free on-site parking.",
+  map_title:"Location", map_blocked:"The map uses Google cookies and only loads with your consent.", map_accept:"Accept and show the map", map_manage:"Manage cookies",
+  ck_region:"Cookie notice", ck_text:"We use cookies to understand what works on the site. Non-essential ones only with your consent.", ck_title:"We value your privacy", ck_policy:"Cookie Policy",
+  ck_accept:"Accept", ck_reject:"Reject", ck_choose:"Choose", ck_hide:"Hide options",
+  ck_ess:"Essential (always on)", ck_an:"Analytics (Google Tag Manager, Microsoft Clarity)", ck_maps:"Maps (Google Maps)", ck_save:"Save choices",
+  f_pages:"Sitemap", f_contact:"Contact", f_follow:"Follow",
+  nl_title:"Room in your inbox?", nl_text:"ROOM2 news from Aveiro: new spaces, business offers and events. Unsubscribe at any time.",
+  nl_label:"Email", nl_btn:"Subscribe", nl_consent:"I agree to receive the ROOM2 newsletter and have read the {privacy}.",
+  nl_e_email:"We need a valid email.", nl_e_consent:"We need your consent to send the newsletter.", nl_ok:"Done. You’re subscribed, talk soon.",
+  wf_note_t:"Wireframe note", wf_steps:"Content to be confirmed once the booking platform is chosen (project brief, section 9.4).", wf_serv:"Not included in the project brief (sections 9.5 and 9.6). Additional services from the business model, to be validated with UNIT2RENT.", wf_note:"Not included in the project brief. The newsletter is out of scope (section 8) and can be quoted separately, including the email marketing tool and consent management.",
+  copy:"© 2026 ROOM2. Operated by Unit2Rent Lda. All rights reserved. Flexible workspaces & storage in Aveiro.",
+  privacy:"Privacy Policy", cookies:"Cookie Policy", terms:"Terms and Conditions", ck_settings:"Cookie settings",
+  complaints:"Electronic Complaints Book", ral:"Alternative Dispute Resolution", back_top:"Back to top",
+  developed:"Developed by", developed_aria:"Developed by LOBA (opens in a new tab)",
+  x_title:"External link", x_close:"Close", x_same:"Opens in the same tab.", x_new:"Opens in a new tab.",
+  x_book:"ROOM2 booking portal", x_book_url:"[Booking portal URL, EN version]", x_book_note:"Address to be supplied by the client, per language.", booking_notice:"The ROOM2 website informs and guides, but does not process bookings or payments. Booking, real-time availability and secure payment happen on the ROOM2 booking platform.",
+  x_unit:"Booking platform: {name}", x_unit_url:"[CMS field “Booking URL” · {name} · EN]", x_unit_note:"Each type points to the address in its CMS field, editable without development.",
+  x_account:"Member login (customer portal)", x_account_url:"[Customer portal URL, EN version]", x_account_note:"For existing customers. Menu placement to be confirmed with the client.",
+  x_social_url:"[ROOM2 profile on {name}]", x_social_note:"Profile to be supplied by the client.",
+  x_complaints_url:"https://www.livroreclamacoes.pt", x_ral_url:"[ADR entity to be supplied by the client]", x_legal_note:"Mandatory link in the footer.",
+  nf_kicker:"Error 404", nf_title:"This room is empty.", nf_text:"The page you’re looking for has moved. The space you’re looking for hasn’t.",
+  g_note:"Private preview of the ROOM2 website wireframes. Enter the password to continue.",
+  g_pw:"Password", g_show:"Show", g_hide:"Hide", g_err:"That password is not correct. Check it and try again.", g_enter:"Enter",
+  legal_intro:"[Legal text to be supplied by the client.] Reference structure. Last updated: [date]."
+}
+};
+const t = k => (T[lang][k] !== undefined ? T[lang][k] : T.pt[k]);
+
+/* ================= SEO: title (≤60) and meta description (≤155) per page, section 11.2 ================= */
+const SEO = {
+  home:{ title:P("Self storage e coworking em Aveiro | ROOM2","Storage and coworking in Aveiro | ROOM2"),
+    desc:P("Self Storage e Workspaces em Aveiro: boxes de 4 a 14 m² a partir de 1 mês e Workspaces à hora, ao dia, à semana ou ao mês.","Self Storage and Workspaces in Aveiro: units from 4 to 14 m² from 1 month, and Workspaces by the hour, day, week or month.") },
+  storage:{ title:P("Self Storage em Aveiro · Boxes 24/7 | ROOM2","Self storage in Aveiro · 24/7 units | ROOM2"),
+    desc:P("40 boxes de self storage em Aveiro, de 4 a 14 m², para casa e empresas. Reserva mensal, cadeado próprio e acesso 24/7.","40 self storage units in Aveiro, from 4 to 14 m², for homes and businesses. Monthly booking, own padlock and 24/7 access.") },
+  work:{ title:P("Coworking em Aveiro · Salas e escritórios | ROOM2","Coworking and office rental in Aveiro | ROOM2"),
+    desc:P("Coworking, 14 escritórios privados e sala de reuniões para 12 pessoas em Aveiro, à hora, ao dia, à semana ou ao mês.","Coworking, 14 private offices and a 12-seat meeting room in Aveiro, by the hour, day, week or month.") },
+  about:{ title:P("Quem somos · Storage e Workspaces em Aveiro | ROOM2","About · Storage and Workspaces in Aveiro | ROOM2"),
+    desc:P("A ROOM2 junta Storage e Workspaces no mesmo edifício, em Aveiro. Conheça a ideia e o compromisso.","ROOM2 brings storage and workspaces together in one place in Aveiro. The idea and the commitment behind it.") },
+  support:{ title:P("Perguntas frequentes · Storage e coworking | ROOM2","FAQ · Storage and coworking in Aveiro | ROOM2"),
+    desc:P("Tamanhos, preços, reservas, acessos e faturação: todas as respostas antes de reservar uma box ou um espaço de trabalho.","Sizes, prices, bookings, access and invoicing: every answer before you book a unit or a workspace.") },
+  contact:{ title:P("ROOM2 Aveiro · Contactos e como chegar","ROOM2 Aveiro · Contact and directions"),
+    desc:P("Morada, telefone, email e formulário de contacto da ROOM2 em Aveiro. Do outro lado está uma pessoa.","Address, phone, email and contact form for ROOM2 in Aveiro. There’s a person on the other side.") },
+  privacy:{ title:P("Política de Privacidade | ROOM2","Privacy Policy | ROOM2") },
+  cookies:{ title:P("Política de Cookies | ROOM2","Cookie Policy | ROOM2") },
+  terms:{ title:P("Termos e Condições | ROOM2","Terms and Conditions | ROOM2") }
+};
+
+/* ================= CMS: collection “Tipologias” (section 10.1) — every value is a placeholder ================= */
+const TYPES = [
+  { name:"Box S", vert:"storage", group:"box", img:P("Bicicletas, malas e caixas de roupa numa box pequena","Bikes, suitcases and boxed clothing in a small unit"), dims:P("[a × b] m · 4 m²","[a × b] m · 4 m²"),
+    use:P("Recheio de um quarto ou stock de loja online","One bedroom’s contents or online shop stock"), unit:"month", unitLabel:P("Ao mês, mínimo 1 mês","Monthly, 1-month minimum"), price:"[00]", order:1 },
+  { name:"Box M", vert:"storage", group:"box", img:P("Caixas de calçado e vestuário em estantes","Boxed shoes and apparel on shelving"), dims:P("[a × b] m · 5 m²","[a × b] m · 5 m²"),
+    use:P("Recheio de um T1 durante obras","A one-bedroom flat during renovation"), unit:"month", unitLabel:P("Ao mês, mínimo 1 mês","Monthly, 1-month minimum"), price:"[00]", order:2 },
+  { name:"Box L", vert:"storage", group:"box", img:P("Paletes de produto e material de feira","Product pallets and trade-show material"), dims:P("[a × b] m · 8 m²","[a × b] m · 8 m²"),
+    use:P("Recheio de um T2 ou arquivo de empresa","A two-bedroom flat or a company archive"), unit:"month", unitLabel:P("Ao mês, mínimo 1 mês","Monthly, 1-month minimum"), price:"[00]", order:3 },
+  { name:"Box XL", vert:"storage", group:"box", img:P("Porta-paletes a entrar numa box grande","Pallet truck entering a large unit"), dims:P("[a × b] m · 14 m²","[a × b] m · 14 m²"),
+    use:P("Recheio de um T3 ou T4, ou equipamento de obra","A three- or four-bedroom home, or site equipment"), unit:"month", unitLabel:P("Ao mês, mínimo 1 mês","Monthly, 1-month minimum"), price:"[00]", order:4 },
+  { name:P("Flex Desk · Open space","Flex Desk · Open space"), short:"Flex Desk", vert:"work", group:"cowork", img:P("Pessoa ao portátil no open space com luz natural","Person on a laptop in the naturally lit open space"), cap:P("1 pessoa","1 person"),
+    use:P("Um lugar no open space pelo tempo que for preciso: duas horas de manhã, um dia, uma semana ou um mês.","A seat in the open space for as long as you need: two hours in the morning, a day, a week or a month."), unit:"hour", unitLabel:P("À hora, ao dia, à semana ou ao mês","By the hour, day, week or month"), price:"[00]", order:1 },
+  { name:P("Dedicated Desk · Mensal","Dedicated Desk · Monthly"), short:"Dedicated Desk", vert:"work", group:"cowork", img:P("Secretária fixa com cadeira ergonómica e cacifo","Dedicated desk with ergonomic chair and locker"), cap:P("1 pessoa","1 person"),
+    use:P("A mesma secretária todos os dias, com cacifo, no open space.","The same desk every day, with a locker, in the open space."), unit:"month", price:"[00]", order:2 },
+  { name:P("Meeting Room · À hora","Meeting Room · Hourly"), short:"Meeting Room", vert:"work", group:"room", img:P("Reunião à volta da mesa, com ecrã 4K","Meeting around the table, with a 4K display"), cap:P("12 lugares · 30,18 m²","12 seats · 30.18 m²"),
+    use:P("Reuniões de equipa, apresentações a clientes e videochamadas até 12 pessoas.","Team meetings, client presentations and video calls for up to 12 people."), unit:"hour", price:"[00]", order:3 },
+  { name:P("Private Offices · Mensal","Private Offices · Monthly"), short:"Private Office", vert:"work", group:"office", img:P("Duas pessoas a trabalhar num escritório privado","Two people working in a private office"), cap:P("Cerca de 2 pessoas por escritório · 14 escritórios","About 2 people per office · 14 offices"),
+    use:P("Uma base privada para uma pequena equipa, com porta própria e chave digital.","A private base for a small team, with its own door and digital key."), unit:"month", price:"[00]", order:4 }
+];
+const typeName = x => L(x.name);
+const priceTxt = x => lang === "pt" ? `${x.price} €` : `€${x.price}`;
+
+/* ================= CMS: collection “FAQ” (sections 9.8, 10.2 and annex) ================= */
+const FAQ_CATS = [
+  { id:"comecar", name:P("Começar","Getting started") },
+  { id:"storage", name:P("Storage","Storage") },
+  { id:"workspaces", name:P("Workspaces","Workspaces") },
+  { id:"reservas", name:P("Reservas e pagamentos","Bookings and payments") },
+  { id:"acessos", name:P("Acessos e segurança","Access and security") },
+  { id:"faturacao", name:P("Faturação e empresas","Invoicing and business") }
+];
+const FAQ = [
+  ["comecar", P("O que é a ROOM2?","What is ROOM2?"),
+    [P("A ROOM2 reúne Self Storage e Workspaces em Aveiro: 40 boxes de 4 a 14 m², open space, 14 escritórios privados e uma sala de reuniões para 12 pessoas.","ROOM2 brings together Self Storage and Workspaces in Aveiro: 40 units from 4 to 14 m², an open space, 14 private offices and a meeting room for 12 people."),
+     P("Tudo se reserva online, na mesma Área de cliente.","Everything is booked online, via the same Member login.")]],
+  ["comecar", P("Onde fica a ROOM2?","Where is ROOM2?"),
+    [P("Na Rua das Pombas, Zona Industrial de Taboeira, 3800-055 Aveiro.","At Rua das Pombas, Zona Industrial de Taboeira, 3800-055 Aveiro."),
+     P("Apenas a 4 minutos da saída Taboeira / Zona Industrial da A25 e a 8 minutos do centro da cidade de Aveiro, com estacionamento gratuito no local.","Just 4 minutes from the Taboeira / Industrial Zone exit on the A25 motorway, and 8 minutes from central Aveiro, with free on-site parking.")]],
+  ["storage", P("Que tamanho de box preciso?","What size unit do I need?"),
+    [P("Uma box de 4 m² guarda o recheio de um quarto; uma de 8 m², o de um T2; uma de 14 m², o de um T3 ou T4.","A 4 m² unit holds one bedroom’s contents; an 8 m² unit, a two-bedroom flat; a 14 m² unit, a three- or four-bedroom home."),
+     P("Há 40 boxes, de 4 a 14 m². Na dúvida entre dois tamanhos, escolha o maior: pode mudar depois.","There are 40 units, from 4 to 14 m². Torn between two sizes? Choose the larger one: you can change later.")]],
+  ["storage", P("Como reservo uma box?","How do I book a unit?"),
+    [P("Online, no portal de reservas: escolhe a box, paga e recebe a confirmação. A reserva é mensal, com mínimo de 1 mês.","Online, on the booking portal: choose the unit, pay and get your confirmation. Bookings are monthly, with a 1-month minimum."),
+     P("O acesso à zona de storage e o cadeado da box são entregues em mão.","Access to the storage area and the unit’s padlock are handed over in person.")]],
+  ["storage", P("Posso guardar stock de uma loja online?","Can I store stock for an online shop?"),
+    [P("Sim. Pode guardar stock, embalagens e equipamento, exceto os bens excluídos nos Termos e Condições.","Yes. You can store stock, packaging and equipment, except for the goods excluded in the Terms and Conditions."),
+     P("A zona de descarga de 24 m² fica na cave, com acesso direto pela rampa.","The 24 m² unloading area is in the basement, with direct access via the ramp.")]],
+  ["storage", P("O que não posso guardar numa box?","What can’t I keep in a unit?"),
+    [P("Não pode guardar os bens excluídos nos Termos e Condições: [lista a fornecer pela ROOM2].","You can’t keep the goods excluded in the Terms and Conditions: [list to be supplied by ROOM2].")]],
+  ["workspaces", P("Posso reservar a Meeting Room só por uma hora?","Can I book the Meeting Room for just one hour?"),
+    [P("Sim. A Meeting Room reserva-se à hora, para até 12 pessoas, sem burocracias.","Yes. The Meeting Room is booked by the hour, for up to 12 people, with instant confirmation.")]],
+  ["workspaces", P("O que está incluído no Flex Desk?","What’s included with a Flex Desk?"),
+    [P("Um lugar no open space com secretária ergonómica, Wi-Fi em fibra de alta velocidade, copa e phone booths para chamadas privadas.","A seat in the open space with an ergonomic desk, high-speed fiber Wi-Fi, a kitchen lounge and phone booths for private calls."),
+     P("Pode reservá-lo à hora, ao dia, à semana ou ao mês.","You can book it by the hour, day, week or month.")]],
+  ["reservas", P("Qual é o período mínimo de reserva?","What’s the minimum booking period?"),
+    [P("Boxes a partir de 1 mês, ao mês; postos no open space e a Meeting Room a partir de uma hora.","Units from 1 month, monthly; open-space desks and the Meeting Room from one hour.")]],
+  ["reservas", P("Existe fidelização obrigatória?","Is there a minimum commitment?"),
+    [P("Não. As boxes reservam-se ao mês, a partir de 1 mês; os Workspaces à hora, ao dia, à semana ou ao mês.","No. Units are booked monthly, from 1 month; Workspaces by the hour, day, week or month."),
+     P("Para terminar ou mudar de tipologia, basta avisar na Área de cliente com 15 a 30 dias de antecedência.","To cancel or change, give 15 to 30 days notice via Member login.")]],
+  ["reservas", P("Como pago?","How do I pay?"),
+    [P("No portal de reservas, com cartão de crédito, MB WAY ou Multibanco, e faturação automática. As boxes são cobradas ao mês.","On the booking portal, by card, MB WAY or Multibanco (Portuguese payment methods), with an instant invoice. Units are billed monthly.")]],
+  ["reservas", P("Posso mudar para uma box maior ou mais pequena?","Can I move to a larger or smaller unit?"),
+    [P("Sim. Basta pedir a mudança na Área de cliente, com 15 a 30 dias de antecedência.","Yes. Just request it via Member login, with 15 to 30 days notice.")]],
+  ["acessos", P("Como entro nas instalações?","How do I get in?"),
+    [P("Nos Workspaces, assim que a reserva online é validada, recebe uma chave digital no smartphone e um código PIN pessoal.","For Workspaces, once your online booking is confirmed, you receive a digital key on your smartphone and a personal PIN."),
+     P("Nas boxes, depois da reserva, a equipa entrega-lhe em mão o acesso à zona de storage (cartão ou PIN) e o cadeado da sua box.","For units, once booked, the team hands you access to the storage area (card or PIN) and your unit’s padlock in person.")]],
+  ["acessos", P("O que acontece se ficar sem bateria no smartphone?","What if my phone battery runs out?"),
+    [P("As portas do piso de escritórios têm teclado numérico: pode sempre entrar com o seu PIN pessoal.","The office floor doors have numeric keypads: you can always get in with your personal PIN."),
+     P("Na zona de storage, o acesso é feito com cartão ou PIN, sem depender do smartphone.","In the storage area, access is by card or PIN, without relying on your phone.")]],
+  ["acessos", P("Posso receber visitas?","Can I have visitors?"),
+    [P("Sim. Os seus convidados recebem um acesso temporário aos Workspaces, que expira automaticamente.","Yes. Your guests receive temporary access to the Workspaces, which expires automatically.")]],
+  ["acessos", P("Que segurança têm as instalações?","How secure are the premises?"),
+    [P("Controlo eletrónico em todos os acessos ao edifício e à zona de storage, cadeado em cada box e videovigilância nas áreas comuns.","Electronic access control on every entrance to the building and the storage area, a padlock on each unit and CCTV in common areas.")]],
+  ["acessos", P("O que está coberto pelo seguro incluído?","What does the included insurance cover?"),
+    [P("Todas as boxes incluem uma apólice multirrisco base até 2000 € que cobre danos por incêndio, inundação e roubo qualificado.","All units include base multi-risk protection up to €2,000 covering fire, water damage, and qualified burglary."),
+     P("Se tiver mercadoria de valor superior, pode optar por uma extensão de cobertura no ato da reserva.","Additional valuation top-ups can be selected during booking.")]],
+  ["faturacao", P("A fatura pode ser emitida com o NIF da empresa?","Can the invoice carry my company’s tax number?"),
+    [P("Sim. A fatura é emitida automaticamente com o NIF indicado na reserva.","Yes. The invoice is issued automatically with the tax number (NIF) given in the booking.")]],
+  ["faturacao", P("Posso ter uma box e um escritório na mesma conta?","Can I have a unit and an office on the same account?"),
+    [P("Sim. Storage e Workspaces ficam na mesma Área de cliente, com reservas e faturas no mesmo sítio.","Yes. Storage and Workspaces sit in the same Member login, with bookings and invoices in one place.")]],
+  ["faturacao", P("A ROOM2 tem serviços de domiciliação e logística?","Does ROOM2 offer business address and logistics services?"),
+    [P("Sim. A domiciliação empresarial e o apoio logístico são serviços à parte, independentes do espaço contratado. [Condições a confirmar.]","Yes. Business address and logistics support are separate services, independent of the space you rent. [Terms to be confirmed.]")]]
+];
+
+/* ================= icons (inline stroke SVG) ================= */
+const svg = (w, h, d, extra) => `<svg aria-hidden="true" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" ${extra || ""}>${d}</svg>`;
+const I = {
+  arrow: svg(14, 10, '<path d="M0.5 5h12.5M9 1l4 4-4 4"/>'),
+  ext: svg(12, 12, '<path d="M3.5 1.5h7v7M10.5 1.5l-9 9"/>', 'class="ext-ico"'),
+  check: svg(16, 16, '<path d="M2.5 8.5l3.5 3.5 7.5-8"/>'),
+  plus: svg(14, 14, '<path d="M7 1v12M1 7h12"/>', 'class="pm"'),
+  close: svg(14, 14, '<path d="M1 1l12 12M13 1L1 13"/>'),
+  left: svg(16, 16, '<path d="M10 3L5 8l5 5"/>'),
+  right: svg(16, 16, '<path d="M6 3l5 5-5 5"/>'),
+  up: svg(10, 14, '<path d="M5 13V1M1 5l4-4 4 4"/>'),
+  info: svg(18, 18, '<circle cx="9" cy="9" r="7.5"/><path d="M9 8v5M9 5.2v.1"/>'),
+  img: svg(18, 18, '<rect x="1.5" y="2.5" width="15" height="13" rx="2"/><circle cx="6" cy="7" r="1.6"/><path d="M2 14l4.5-4.5 3.5 3 2.5-2 3.5 3"/>'),
+  video: svg(18, 18, '<circle cx="9" cy="9" r="7.5"/><path d="M7.5 6v6l5-3z"/>'),
+  map: svg(18, 18, '<path d="M9 16.5s5.5-5 5.5-9a5.5 5.5 0 0 0-11 0c0 4 5.5 9 5.5 9z"/><circle cx="9" cy="7.5" r="2"/>'),
+  sq: svg(18, 18, '<rect x="3" y="3" width="12" height="12" rx="2"/>')
+};
+I.hero = I.video;
+
+/* image placeholder: kind + the photography it stands for (brand guide: action and function, real moments) */
+const ph = (kind, desc, cls, attrs) => {
+  const lab = t("ph_" + kind), d = desc ? L(desc) : "";
+  return `<div class="ph ${cls || ""}" role="img" aria-label="${esc(lab + (d ? ": " + d : ""))}" ${attrs || ""}><span class="ph-tag" aria-hidden="true">${I[kind]}${esc(lab)}</span>${d ? `<span class="ph-cap" aria-hidden="true">${esc(d)}</span>` : ""}</div>`;
+};
+/* external links (booking platform, customer portal, social, legal): shown in a notice in the wireframe */
+const ext = (type, label, cls, name) => `<a href="#ext-${type}" class="${cls || ""}" data-ext="${type}"${name ? ` data-name="${esc(name)}"` : ""}>${label}</a>`;
+const reqMsg = n => t("req_msg").replace("{x}", n ? t("req_msg_named").replace("{n}", n) : t("req_msg_one"));
+const reqBtn = (cls, n) => `<a class="${cls}" href="${href("contact")}" data-prefill="0|${esc(reqMsg(n))}">${esc(t(n ? "req_unit" : "req_any"))}</a>`;
+const bookBtn = (cls) => ext("book", esc(t("book")), "btn btn-solid " + (cls || ""));
+const handoff = () => `<p class="note handoff">${I.info}<span>${esc(t("handoff"))}</span></p>`;
+const secHead = (id, title, intro, right) => `<div class="sec-head"><div class="txt"><h2 class="h2" id="${id}">${title}</h2>${intro ? `<p class="body">${intro}</p>` : ""}</div>${right || ""}</div>`;
+
+/* ================= shared blocks ================= */
+const unitCard = x => {
+  const isS = x.vert === "storage";
+  const facts = isS
+    ? [[t("f_dims"), L(x.dims)], [t("f_unit"), L(x.unitLabel)], [t("f_use"), L(x.use)]]
+    : [[t("f_cap"), L(x.cap)], [t("f_unit"), x.unitLabel ? L(x.unitLabel) : t("ul_" + x.unit)], [t("f_use"), L(x.use)]];
+  return `<li class="card unit">
+    ${ph("img", x.img, "r-43")}
+    <div class="in">
+      <span class="tag">${esc(t("g_" + x.group))}</span>
+      <h3 class="name">${esc(typeName(x))}</h3>
+      <dl class="facts">${facts.map(f => `<div><dt>${esc(f[0])}</dt><dd>${esc(f[1])}</dd></div>`).join("")}</dl>
+      <div class="btn-wrap">${ext("unit", esc(t(isS ? "book_unit" : "book_space")), "btn btn-line", x.short || typeName(x))}</div>
+    </div></li>`;
+};
+const priceTable = vert => {
+  const rows = TYPES.filter(x => x.vert === vert).sort((a, b) => a.order - b.order);
+  const groups = [...new Set(rows.map(x => x.group))];
+  return `<div class="tbl-wrap" tabindex="0" role="region" aria-labelledby="h-prices"><table>
+    <thead><tr><th scope="col">${t("th_group")}</th><th scope="col">${t("th_types")}</th><th scope="col">${t("th_price")}</th></tr></thead>
+    <tbody>${groups.map(g => { const items = rows.filter(x => x.group === g), first = items[0];
+      return `<tr><th scope="row" style="background:none;font-size:14px;color:var(--fg)">${esc(t("g_" + g))}</th>
+      <td>${esc(items.map(x => x.short || typeName(x)).join(", "))}</td>
+      <td class="num">${esc(t("from"))} ${esc(priceTxt(first))}<span class="sub" style="display:inline;margin-left:2px">${esc(t("u_" + first.unit))}</span></td></tr>`; }).join("")}</tbody>
+  </table></div>
+  <p class="note" style="margin-top:14px;display:flex;gap:10px;align-items:flex-start">${I.info}<span>${esc(t("price_note"))}</span></p>`;
+};
+const ctaBand = (title, text, buttons, withHandoff, light, quote) => `<section class="cta ${light ? "light" : ""}" aria-labelledby="h-cta">
+  <span class="angle" aria-hidden="true"></span>
+  ${quote ? `<p class="cta-quote">${quote}</p>` : ""}
+  <h2 class="h2" id="h-cta">${title}</h2>${text ? `<p class="body">${text}</p>` : ""}
+  <div class="btn-row">${buttons}</div>${withHandoff ? handoff() : ""}</section>`;
+const moment = (line, sub) => `<section class="light moment" aria-label="${esc(line.replace(/<[^>]+>/g, ""))}"><span class="angle" aria-hidden="true"></span><blockquote>${line}</blockquote>${sub ? `<p class="body">${sub}</p>` : ""}</section>`;
+
+/* ================= views ================= */
+const V = {};
+
+V.home = () => `
+<section class="hero" aria-labelledby="h-hero">
+  ${ph("hero", P("Pessoas reais a chegar, a carregar e a trabalhar no edifício de Aveiro","Real people arriving, loading and working at the Aveiro building"))}
+  <div class="wrap hero-in">
+    <p class="badge" lang="en">Flexible workspaces &amp; storage · Aveiro</p>
+    <p class="display" lang="en">Room to…</p>
+    <div class="hero-card">
+      <p class="claim" lang="en">Got plans? Get a room.</p>
+      <h1 id="h-hero" data-focus>${lang === "pt" ? "Self Storage e Workspaces em Aveiro." : "Self Storage and Workspaces in Aveiro."}</h1>
+      <p class="h1-sub">${lang === "pt" ? "Coworking, escritórios privados e sala de reuniões, à hora, ao dia, à semana ou ao mês, com reserva online. Boxes de 4 a 14 m², a partir de 1 mês, com acesso 24/7." : "Coworking, private offices and a meeting room, by the hour, day, week or month, booked online. Units from 4 to 14 m², from 1 month, with 24/7 access."}</p>
+      
+      <div class="btn-row">${bookBtn()}</div>
+    </div>
+  </div>
+</section>
+
+<section id="de-que-precisa" aria-labelledby="h-sel"><div class="wrap sec">
+  ${secHead("h-sel", esc(t("sel_title")), esc(t("sel_intro")))}
+  <div class="selector">
+    ${[["storage", "nav_storage", "see_units", [
+          ["Room to store.", P("Mudanças, obras ou coisas a mais em casa. Boxes de 4 a 14 m², a partir de 1 mês.","Moving, renovating or just too much at home. Units from 4 to 14 m², from 1 month."), P("Para particulares","For individuals"), P("Caixas de uma mudança a entrar numa box","Moving boxes going into a unit")],
+          ["Room to stock up.", P("O negócio cresceu e a garagem já não chega. Stock e arquivo com zona de descarga e acesso 24/7.","The business grew and the garage no longer does. Stock and archive with an unloading area and 24/7 access."), P("Para PME e lojas online","For SMEs and online shops"), P("Prateleiras com stock e embalagens","Shelves with stock and packaging")]]],
+       ["work", "nav_work", "see_spaces", [
+          ["Room to work.", P("Um posto à hora, ao dia, à semana ou ao mês, secretárias dedicadas e 14 escritórios privados.","A desk by the hour, day, week or month, dedicated desks and 14 private offices."), P("Para profissionais independentes","For independent professionals"), P("Pessoa a trabalhar num posto do open space","Person working at an open-space desk")],
+          ["Room to meet.", P("Uma boa reunião começa por ter onde acontecer. Sala de 30,18 m² para 12 pessoas, à hora.","A good meeting starts with somewhere to have it. A 30.18 m² room for 12 people, by the hour."), P("Para equipas, PME e independentes","For teams, SMEs and freelancers"), P("Equipa reunida à volta da mesa oval","Team gathered around the oval table")]]]
+      ].map(g => `<div class="vgroup" role="group" aria-labelledby="vg-${g[0]}">
+        <div class="vgroup-head"><h3 class="h3" id="vg-${g[0]}">${esc(t(g[1]))}</h3><a class="link" href="${href(g[0])}">${esc(t(g[2]))} ${I.arrow}</a></div>
+        <div class="vcards">${g[3].map(c => `<a class="need" href="${href(g[0])}">
+          ${ph("img", c[3], "r-32")}
+          <span class="in"><span class="term" lang="en">${c[0]}</span><span class="body" style="font-size:14px;line-height:1.55">${esc(L(c[1]))}</span><span class="meta">${esc(L(c[2]))}</span></span>
+          <span class="go" aria-hidden="true">${esc(t(g[1]))} ${I.arrow}</span></a>`).join("")}</div>
+      </div>`).join("")}
+  </div>
+</div></section>
+
+<section class="trust" aria-label="${lang === "pt" ? "Destaques" : "Highlights"}"><ul class="wrap trust-list">
+  ${[[P("Acesso 24/7","24/7 access"), P("À zona de storage, com cartão ou PIN, a qualquer hora.","To the storage area, with a card or PIN, any time.")],
+     [P("À hora, ao dia, à semana ou ao mês","By the hour, day, week or month"), P("Workspaces pelo tempo que for preciso; boxes a partir de 1 mês.","Workspaces for as long as you need; units from 1 month.")],
+     [P("Seguro","Secure"), P("Só entra quem tem reserva, com PIN, cartão ou chave digital pessoal.","Only people with a booking get in, with a personal PIN, card or digital key.")],
+     [P("Em Aveiro","In Aveiro"), P("Junto à A25, com estacionamento gratuito e zona de descarga.","Right off the A25, with free parking and an unloading area.")]]
+    .map(x => `<li>${I.check}<span><span class="t">${esc(L(x[0]))}</span><span class="d">${esc(L(x[1]))}</span></span></li>`).join("")}
+</ul></section>
+
+<section class="light" aria-labelledby="h-steps"><div class="wrap sec">
+  <p class="wf-note" role="note"><span class="wf-tag">${esc(t("wf_note_t"))}</span>${esc(t("wf_steps"))}</p>
+  ${secHead("h-steps", lang === "pt" ? "Simples, do primeiro contacto à porta." : "Simple, from first contact to front door.")}
+  <ol class="grid g-3 steps">
+    ${[[P("Escolha a tipologia","Choose your space"), P("Escolha a tipologia ideal no catálogo online, com as dimensões, a área ou a capacidade e a utilização aconselhada de cada espaço.","Select your ideal unit or space in the online catalogue, with the dimensions, area or capacity and recommended use of each one.")],
+       [P("Reserva online","Online booking"), P("Reserve no portal em poucos minutos, com pagamento online e fatura automática: Workspaces à hora, ao dia, à semana ou ao mês; boxes ao mês, a partir de 1 mês.","Book on the portal in a few minutes, with online payment and automatic invoicing: Workspaces by the hour, day, week or month; units monthly, from 1 month.")],
+       [P("Acesso ao seu espaço","Access to your space"), P("Nos Workspaces, recebe a chave digital no smartphone e um PIN. Nas boxes, a equipa entrega-lhe em mão o acesso à zona de storage e o cadeado da box.","For Workspaces, you get a digital key on your smartphone and a PIN. For units, the team hands you access to the storage area and your padlock in person.")]
+      ].map((st, i) => `<li class="card"><span class="num" aria-hidden="true">${i + 1}</span><h3 class="h3">${esc(L(st[0]))}</h3><p class="body" style="font-size:14px">${esc(L(st[1]))}</p></li>`).join("")}
+  </ol>
+  <div class="btn-row" style="margin-top:28px">${bookBtn()}</div>
+</div></section>
+
+<section aria-labelledby="h-gal"><div class="wrap sec">
+  ${secHead("h-gal", esc(t("gal_title")), esc(t("gal_intro")), `<div class="slide-nav"><button class="icon-btn" type="button" data-slide="-1" aria-controls="gal" aria-label="${esc(t("prev"))}" style="border:1px solid var(--border-2)">${I.left}</button><button class="icon-btn" type="button" data-slide="1" aria-controls="gal" aria-label="${esc(t("next"))}" style="border:1px solid var(--border-2)">${I.right}</button></div>`)}
+  <div class="slider" id="gal" role="region" aria-label="${esc(t("gal_aria"))}" tabindex="0">
+    ${[P("Corredor das boxes, com cadeado em cada porta","Unit corridor, a padlock on each door"), P("Zona de descarga e rampa de acesso à cave","Unloading area and basement ramp"), P("Open space com luz natural","Open space in natural light"),
+       P("Sala de reuniões para 12 pessoas","Meeting room for 12 people"), P("Entrada com chave digital no smartphone","Entrance with phone digital key"), P("Copa e phone booths","Kitchen lounge and phone booths")]
+       .map((d, i) => ph("img", d, "r-43" + (i === 0 ? " mask-a" : ""))).join("")}
+  </div>
+</div></section>
+
+${ctaBand(EN("Make room for what’s next."), esc(t("final_text")), bookBtn() + `<a class="btn btn-line" href="${href("contact")}">${esc(t("talk"))}</a>`, true, true)}`;
+
+/* ---------- one template, two pages (section 6.3): Self Storage and Workspaces ---------- */
+const SERVICE = {
+  storage: {
+    display:"Room to store.",
+    h1:P("Self Storage em Aveiro, com acesso 24/7.","Self Storage in Aveiro, with 24/7 access."),
+    intro:P(`40 boxes privativas, de 4 a 14 m², na cave, com acesso 24/7 pela rampa. Reserve online, ao mês, a partir de 1 mês; o acesso e o cadeado da box são entregues em mão.`,
+            `40 private units, from 4 to 14 m², in the basement, with 24/7 access via the ramp. Book online, monthly, from 1 month; access and the unit’s padlock are handed over in person.`),
+    img:P("Mãos a fechar uma caixa dentro de uma box","Hands closing a box inside a unit"),
+    benTitle:P("O que ganha com uma box","What a unit gives you"),
+    benefits: () => `<div class="split">${[
+      [P("Para casa","For your home"), P("Mudanças, obras ou falta de espaço.","Moving, renovating or short on space."), [
+        P("40 boxes privativas, de 4 a 14 m², cada uma fechada com o seu cadeado.","40 private units, from 4 to 14 m², each locked with its own padlock."),
+        P("Pé-direito de 2,80 m: mais volume útil e espaço para estantes verticais.","2.80 m ceiling height: more usable volume and room for vertical shelving."),
+        P("Acesso 24/7 à zona de storage, com cartão ou PIN, sem marcar visita.","24/7 access to the storage area, by card or PIN, no appointments."),
+        P("Seguro multirrisco base incluído.","Base multi-risk insurance included.")]],
+      [P("Para empresas","For business"), P("Arquivo, stock ou equipamento.","Archive, stock or equipment."), [
+        P("Stock e arquivo perto da A25, com acesso 24/7 para preparar envios.","Stock and archive close to the A25, with 24/7 access to prepare shipments."),
+        P("Zona de descarga de 24 m² na cave, com acesso direto pela rampa.","24 m² unloading area in the basement, with direct access via the ramp."),
+        P("Fatura automática com o NIF da empresa.","Automatic invoices with your company’s tax number."),
+        P("Reserva mensal, a partir de 1 mês: mudar de box quando o negócio muda.","Monthly booking, from 1 month: change units as the business changes.")]]
+    ].map(b => `<div class="card"><h3 class="h3" style="font-size:20px">${esc(L(b[0]))}</h3><p class="body" style="font-size:14px">${esc(L(b[1]))}</p>
+      <ul class="checks">${b[2].map(i => `<li>${I.check}<span>${esc(L(i))}</span></li>`).join("")}</ul></div>`).join("")}</div>`,
+    moment:EN("Too much stuff. Not enough room."),
+    typesTitle:P("Tipologias de boxes","Unit sizes"),
+    typesIntro:P("40 boxes, de 4 a 14 m². As dimensões, a área e a utilização aconselhada de cada box funcionam como guia de tamanhos.","40 units, from 4 to 14 m². Each unit’s dimensions, area and recommended use work as a size guide."),
+    tip:true, cols:"g-4",
+    adv:[
+      [P("Reserva mensal","Monthly booking"), P("A partir de 1 mês. Para mudar de box ou terminar, basta avisar na Área de cliente com 15 a 30 dias de antecedência.","From 1 month. To change units or cancel, give 15 to 30 days notice via Member login.")],
+      [P("Zona de descarga","Unloading area"), P("Zona de descarga de 24 m² na cave, com acesso direto pela rampa, sem passar pelos escritórios.","A 24 m² unloading area in the basement, with direct access via the ramp, without going through the offices.")],
+      [P("Acessos rodoviários","Road access"), P("A 4 minutos da saída Taboeira / Zona Industrial da A25 e a 8 minutos do centro de Aveiro. Ligação direta à A1 e à A17.","4 minutes from the Taboeira / Industrial Zone exit on the A25, and 8 minutes from central Aveiro. Direct connection to the A1 and A17.")]
+    ],
+    ctaTitle:P("Precisa de mais espaço?","Need more room?"),
+    ctaText:P("Escolha a box e reserve online, ao mês, a partir de 1 mês. O acesso e o cadeado são entregues em mão.","Choose your unit and book online, monthly, from 1 month. Access and the padlock are handed over in person."),
+    x:{ to:"work", kicker:"nav_work", btn:"see_work", img:P("Equipa a trabalhar num escritório privado","Team working in a private office"),
+        text:P("Começou com uma caixa. Agora precisa de uma sala. Workspaces para quem também precisa de onde trabalhar ou reunir, no mesmo edifício e na mesma Área de cliente.","It started with a box. Now you need a room. Workspaces for when you also need somewhere to work or meet, in the same building, with the same Member login.") }
+  },
+  work: {
+    display:"Room to work.",
+    h1:P("Coworking, escritórios privados e sala de reuniões em Aveiro, à hora, ao dia, à semana ou ao mês.","Coworking, private offices and a meeting room in Aveiro, by the hour, day, week or month."),
+    intro:P("O ambiente ideal para profissionais independentes, nómadas digitais, PME e equipas em crescimento, e para reuniões com clientes. Fibra gigabit redundante, climatização inteligente e acesso 24/7 com o seu smartphone.",
+            "The ideal environment for independent professionals, digital nomads, SMEs and growing teams, and for client meetings. Gigabit fiber, smart climate control, and 24/7 smartphone access."),
+    img:P("Pessoas a trabalhar no open space com luz natural","People working in the naturally lit open space"),
+    benTitle:P("O que está incluído","What’s included"),
+    benefits: () => `<ul class="grid g-5">${[
+      [P("Internet de alta velocidade","High-speed internet"), P("Wi-Fi em fibra gigabit redundante, em todo o piso.","Redundant gigabit fiber Wi-Fi across the whole floor.")],
+      [P("Mobiliário ergonómico","Ergonomic furniture"), P("Secretárias ergonómicas e cadeiras de gama alta.","Ergonomic desks and high-end chairs.")],
+      [P("Iluminação natural","Natural light"), P("Luz do dia no open space e janelas exteriores nos escritórios.","Daylight in the open space and outside windows in the private offices.")],
+      [P("Climatização","Air conditioning"), P("Climatização autónoma inverter nos escritórios e no cowork.","Individual inverter climate control in the offices and coworking area.")],
+      [P("Zonas de pausa","Break areas"), P("Copa com café de especialidade e phone booths para chamadas privadas.","Kitchen lounge with specialty coffee and phone booths for private calls.")]
+    ].map(b => `<li class="card"><span class="ico" aria-hidden="true">${I.sq}</span><h3 class="h3">${esc(L(b[0]))}</h3><p class="body" style="font-size:14px">${esc(L(b[1]))}</p></li>`).join("")}</ul>`,
+    moment:P("Isto podia ser uma reunião. Não tem de ser num café.","This could have been a meeting. It doesn’t have to be in a café."),
+    typesTitle:P("Tipologias de espaços","Space types"),
+    typesIntro:P("De uma hora no open space aos 14 escritórios privados, com a capacidade e a unidade de reserva de cada espaço.","From an hour in the open space to the 14 private offices, with each space’s capacity and booking unit."),
+    cols:"g-4",
+    adv:[
+      [P("Acesso 24/7","24/7 access"), P("Chave digital no smartphone e PIN pessoal de contingência, a qualquer hora do dia ou da noite.","Smartphone digital key and personal backup PIN, any time, day or night.")],
+      [P("Sem fidelização obrigatória","No long-term lock-in"), P("Regime mês a mês, com aviso prévio de 15 a 30 dias na Área de cliente.","Rolling month-to-month, with 15 to 30 days notice via Member login.")],
+      [P("Domiciliação de sede fiscal","Business address"), P("Sede fiscal da empresa na morada da ROOM2, como serviço à parte. [Conteúdo a confirmar.]","Your company’s registered address at ROOM2, as a separate service. [Content to be confirmed.]")],
+      [P("Localização","Location"), P("Junto ao nó da A25, a 8 minutos do centro de Aveiro, com estacionamento gratuito no local.","Right off the A25, 8 minutes from central Aveiro, with free on-site parking.")]
+    ],
+    ctaTitle:P("Precisa de uma sala para quinta-feira?","Need a room for Thursday?"),
+    ctaText:P("Escolha o espaço, reserve online e entre com o smartphone.","Choose your space, book online and get in with your phone."),
+    x:{ to:"storage", kicker:"nav_storage", btn:"see_storage", img:P("Arquivo e equipamento arrumados numa box","Archive and equipment stored in a unit"),
+        text:P("Boxes de Self Storage para quem trabalha nos Workspaces: arquivo, equipamento ou stock fora do escritório, no mesmo edifício e na mesma Área de cliente.","Self Storage units for those who work in the Workspaces: archive, equipment or stock out of the office, in the same building, with the same Member login.") }
+  }
+};
+V.service = key => {
+  const s = SERVICE[key];
+  const types = TYPES.filter(x => x.vert === key).sort((a, b) => a.order - b.order);
+  return `
+<section class="page-head" aria-labelledby="h-page"><div class="wrap">
+  <div class="txt">
+    <p class="kicker">${esc(t("nav_" + key))}</p>
+    <p class="display" lang="en">${s.display}</p>
+    <h1 id="h-page" data-focus>${esc(L(s.h1))}</h1>
+    <p class="lead">${L(s.intro)}</p>
+    <div class="btn-row">${bookBtn()}<a class="btn btn-line" href="${href(key)}" data-scroll="#tipologias">${esc(t(key === "storage" ? "see_units" : "see_spaces"))}</a></div>
+  </div>
+  ${ph("img", s.img, "r-45 mask-b")}
+</div></section>
+
+<section aria-labelledby="h-ben"><div class="wrap sec">
+  ${secHead("h-ben", esc(L(s.benTitle)))}
+  ${s.benefits()}
+</div></section>
+
+<section id="tipologias" aria-labelledby="h-types"><div class="wrap sec">
+  ${secHead("h-types", esc(L(s.typesTitle)), esc(L(s.typesIntro)))}
+  <ul class="grid ${s.cols}">${types.map(unitCard).join("")}</ul>
+  ${s.tip ? `<p class="tip">${I.info}<span>${esc(t("size_tip"))}</span></p>` : ""}
+</div></section>
+
+<section class="light" aria-labelledby="h-prices"><div class="wrap sec">
+  ${secHead("h-prices", esc(t("prices")))}
+  ${priceTable(key)}
+</div></section>
+
+<section aria-labelledby="h-adv"><div class="wrap sec">
+  ${secHead("h-adv", esc(t("advantages")))}
+  <ul class="grid g-${s.adv.length}">${s.adv.map(a => `<li class="card"><span class="ico" aria-hidden="true">${I.sq}</span><h3 class="h3">${esc(L(a[0]))}</h3><p class="body" style="font-size:14px">${esc(L(a[1]))}</p></li>`).join("")}</ul>
+</div></section>
+
+${ctaBand(esc(L(s.ctaTitle)), esc(L(s.ctaText)), bookBtn() + `<a class="btn btn-line" href="${href("support")}">${esc(t("see_faq"))}</a>`, true, false, typeof s.moment === "string" ? s.moment : esc(L(s.moment)))}
+
+<section aria-labelledby="h-x"><div class="wrap sec">
+  <div class="xsell">
+    ${ph("img", s.x.img, "")}
+    <div class="in">
+      <p class="kicker">${esc(t(s.x.kicker))}</p>
+      <h2 class="display" id="h-x" lang="en">Room to grow.</h2>
+      <p class="body">${esc(L(s.x.text))}</p>
+      <div class="btn-row"><a class="btn btn-line" href="${href(s.x.to)}">${esc(t(s.x.btn))}</a></div>
+    </div>
+  </div>
+</div></section>`;
+};
+
+V.about = () => `
+<section class="page-head" aria-labelledby="h-page"><div class="wrap">
+  <div class="txt">
+    <p class="kicker">${esc(t("nav_about"))}</p>
+    <p class="display" lang="en">Room to grow.</p>
+    <h1 id="h-page" data-focus>${lang === "pt" ? "Tornar mais simples o acesso ao espaço certo para cada necessidade." : "Making the right space simpler to reach, for every need."}</h1>
+    <p class="lead">${lang === "pt"
+      ? "A ROOM2 nasceu de uma ideia simples: o espaço deve adaptar-se às pessoas e aos negócios, e não o contrário. Juntámos Storage e Workspaces no mesmo sítio para que ninguém tenha de escolher entre guardar, trabalhar, reunir ou crescer. Aveiro é o primeiro endereço."
+      : "ROOM2 started from a simple idea: space should adapt to people and businesses, not the other way round. We brought Storage and Workspaces together so nobody has to choose between storing, working, meeting or growing. Aveiro is the first address."}</p>
+    <p class="body">${["store", "stock up", "work", "meet", "grow"].map(v => EN("Room to " + v)).join(", ") + "."}</p>
+  </div>
+  ${ph("img", P("O edifício de Aveiro, com pessoas a chegar","The Aveiro building, with people arriving"), "r-45 mask-b")}
+</div></section>
+
+${moment(lang === "pt"
+  ? "«A ROOM2 transcende a definição tradicional de espaço físico. Não é um destino final, mas o meio flexível que permite criar, colaborar e fazer acontecer.»"
+  : "“ROOM2 transcends the traditional definition of physical space. It is not a final destination, but the flexible vehicle that empowers people and businesses to create, collaborate, and make things happen.”")}
+
+<section aria-labelledby="h-concept"><div class="wrap sec">
+  <h2 class="sr-only" id="h-concept">${lang === "pt" ? "O conceito" : "The concept"}</h2>
+  <div class="split" style="gap:40px 56px">
+    ${[[P("O espaço para além da dimensão física","Space beyond the physical"),
+        P("A ROOM2 transcende a definição tradicional de espaço físico, reunindo múltiplas soluções sem se fechar numa única categoria. Mais do que um local para ser ocupado, é um catalisador de oportunidades. A ROOM2 não é um destino final, mas o meio flexível que permite a pessoas e empresas criarem, colaborarem e fazerem acontecer. É o espaço que se ajusta à ambição de cada cliente.",
+          "ROOM2 transcends the traditional definition of physical space, bringing together multiple solutions without confining itself to a single category. More than a place to occupy, it is a catalyst for opportunities. ROOM2 is not a final destination, but the flexible vehicle that empowers people and businesses to create, collaborate, and make things happen.")],
+       [P("A experiência contemporânea","A contemporary experience"),
+        P("Um conceito contemporâneo, focado na própria experiência. Transmitimos segurança e profissionalismo com um acompanhamento próximo e uma experiência digital simples que permite combinar diferentes soluções à medida da realidade de cada um. É o acesso ao espaço de que as pessoas e empresas precisam: Room to store, Room to stock up, Room to work, Room to meet, Room to grow.",
+          "A contemporary concept focused on the experience itself. We convey security and professionalism with close guidance and a friction-free digital experience that pairs different solutions tailored to individual realities. Access to the space people and businesses need: Room to store, Room to stock up, Room to work, Room to meet, Room to grow.")]
+      ].map(c => `<div style="display:flex;flex-direction:column;gap:14px"><h3 class="h2" style="font-size:22px">${esc(L(c[0]))}</h3><p class="lead" style="font-size:16px">${esc(L(c[1])).replace(/Room to (store|stock up|work|meet|grow)/g, m => EN(m))}</p></div>`).join("")}
+  </div>
+</div></section>
+
+<section class="light" aria-labelledby="h-diff"><div class="wrap sec">
+  ${secHead("h-diff", lang === "pt" ? "O que nos distingue" : "What makes us different")}
+  <ul class="grid g-3">${[
+    [P("Partimos da necessidade","We start from the need"), P("Começa pelo que precisa de fazer, não pelo nome do serviço. O espaço certo vem a seguir.","You start with what you need to do, not the name of a service. The right space follows.")],
+    [P("Storage e Workspaces, no mesmo sítio","Storage and Workspaces, in one place"), P("Uma box e um escritório no mesmo edifício e na mesma conta de cliente, com reservas e faturas juntas.","A unit and an office in the same building and on the same customer account, with bookings and invoices together.")],
+    [P("Digital, com acompanhamento próximo","Digital, with people close by"), P("Reserva e pagamento online, chave digital no smartphone nos Workspaces e acesso entregue em mão nas boxes. Quando é preciso, responde uma pessoa da equipa local de Aveiro.","Online booking and payment, a smartphone digital key for Workspaces and access handed over in person for units. When it matters, a person from our Aveiro team replies.")]
+  ].map(d => `<li class="card"><span class="ico" aria-hidden="true">${I.sq}</span><h3 class="h3">${esc(L(d[0]))}</h3><p class="body" style="font-size:14px">${esc(L(d[1]))}</p></li>`).join("")}</ul>
+</div></section>
+
+<section aria-labelledby="h-comp"><div class="wrap sec">
+  <div class="split" style="align-items:center;gap:40px 56px">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <h2 class="h2" id="h-comp">${lang === "pt" ? "O nosso compromisso" : "Our commitment"}</h2>
+      <p class="lead">${lang === "pt"
+        ? "Queremos ser referência em espaços flexíveis na região Centro e no país, com cultura de detalhe e proximidade."
+        : "We want to set the standard for flexible space in central Portugal and across the country, with a culture of detail and closeness."}</p>
+      <p class="body">${lang === "pt"
+        ? "Aveiro é a primeira localização de uma rede pensada para crescer com o mesmo padrão de experiência: a mesma Área de cliente, a mesma forma de reservar e de entrar, em cada nova morada."
+        : "Aveiro is the first location in a network designed to grow with the same standard of experience: the same Member login, the same way to book and get in, at every new address."}</p>
+    </div>
+    ${ph("img", P("Fachada do edifício na Zona Industrial de Taboeira","Building façade in the Taboeira Industrial Zone"), "r-32 mask-a")}
+  </div>
+</div></section>
+
+${ctaBand(lang === "pt" ? "Seja o que for, há espaço para isso." : "Whatever it is, there’s room for it.", "",
+  `<a class="btn btn-solid" href="${href("work")}">${esc(t("see_spaces"))}</a><a class="btn btn-line" href="${href("contact")}">${esc(t("talk"))}</a>`)}`;
+
+V.support = () => `
+<section class="page-head" aria-labelledby="h-page"><div class="wrap" style="grid-template-columns:1fr">
+  <div class="txt"><p class="kicker">${esc(t("nav_support"))}</p><h1 class="solo" id="h-page" data-focus>${esc(t("faq_title"))}</h1><p class="lead">${esc(t("faq_intro"))}</p></div>
+</div></section>
+<section aria-label="${esc(t("faq_title"))}"><div class="wrap sec">
+  <nav class="faq-nav" aria-label="${esc(t("faq_jump"))}">${FAQ_CATS.map(c => `<a href="${href("support")}" data-scroll="#faq-${c.id}">${esc(L(c.name))}</a>`).join("")}</nav>
+  ${FAQ_CATS.map(c => `<div class="faq-cat" id="faq-${c.id}">
+    <h2 class="h2">${esc(L(c.name))}</h2>
+    <div class="faq-list">${FAQ.filter(f => f[0] === c.id).map(f => `<details><summary>${esc(L(f[1]))}${I.plus}</summary><div class="ans">${f[2].map(p => `<p>${esc(L(p))}</p>`).join("")}</div></details>`).join("")}</div>
+  </div>`).join("")}
+</div></section>
+${ctaBand(esc(t("faq_more")), esc(t("faq_more_t")), `<a class="btn btn-solid" href="${href("contact")}">${esc(t("talk"))}</a>`)}`;
+
+const mapBox = () => `<div class="mapbox" id="mapbox">
+  ${ph("map", P("Localização da ROOM2 em Aveiro","ROOM2 location in Aveiro"), "", 'style="min-height:300px"')}
+  <div class="map-gate" ${consent && consent.maps ? "hidden" : ""}>
+    <p class="note" style="max-width:30ch;color:var(--fg2)">${esc(t("map_blocked"))}</p>
+    <div class="btn-row" style="justify-content:center"><button class="btn btn-solid btn-sm" type="button" data-maps-ok>${esc(t("map_accept"))}</button><button class="btn btn-line btn-sm" type="button" data-cookie-open>${esc(t("map_manage"))}</button></div>
+  </div></div>`;
+
+V.contact = () => {
+  const consentTxt = esc(t("consent")).replace("{privacy}", `<a href="${href("privacy")}">${esc(t("privacy_inline"))}</a>`);
+  return `
+<section class="page-head" aria-labelledby="h-page"><div class="wrap" style="grid-template-columns:1fr">
+  <div class="txt"><p class="kicker">${esc(t("c_kicker"))}</p><h1 class="solo" id="h-page" data-focus>${esc(t("c_title"))}</h1><p class="lead">${esc(t("c_intro"))}</p></div>
+</div></section>
+<section aria-label="${esc(t("c_kicker"))}"><div class="wrap sec">
+  <div class="contact-grid">
+    <div>
+      <h2 class="h2" id="h-form" style="margin-bottom:6px">${esc(t("c_form"))}</h2>
+      <p class="note" style="margin-bottom:26px">${esc(t("c_all"))}</p>
+      <div class="sent" id="sent" role="status" hidden></div>
+      <form class="form" id="cform" novalidate aria-labelledby="h-form">
+        <div class="row-2">
+          <div class="field"><label for="f-name">${esc(t("f_name"))}</label><input id="f-name" name="name" autocomplete="name" required aria-describedby="e-name"><span class="err" id="e-name" hidden>${esc(t("e_empty"))}</span></div>
+          <div class="field"><label for="f-email">${esc(t("f_email"))}</label><input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email"><span class="err" id="e-email" hidden>${esc(t("e_email"))}</span></div>
+        </div>
+        <div class="field"><label for="f-subject">${esc(t("f_subject"))}</label><select id="f-subject" name="subject" required aria-describedby="e-subject"><option value="">${esc(t("f_pick"))}</option>${t("subjects").map(s => `<option>${esc(s)}</option>`).join("")}</select><span class="err" id="e-subject" hidden>${esc(t("e_empty"))}</span></div>
+        <div class="field"><label for="f-msg">${esc(t("f_message"))}</label><textarea id="f-msg" name="message" rows="6" required aria-describedby="e-msg"></textarea><span class="err" id="e-msg" hidden>${esc(t("e_empty"))}</span></div>
+        <div class="field" style="gap:6px"><label class="check"><input type="checkbox" id="f-consent" required aria-describedby="e-consent"><span>${consentTxt}</span></label><span class="err" id="e-consent" hidden>${esc(t("e_consent"))}</span></div>
+        <button class="btn btn-solid" type="submit" style="align-self:flex-start;min-height:48px;padding:0 32px">${esc(t("send"))}</button>
+      </form>
+    </div>
+    <aside aria-labelledby="h-direct" style="display:flex;flex-direction:column;gap:16px">
+      <h2 class="h2" id="h-direct">${esc(t("direct"))}</h2>
+      <dl class="dl">
+        <div><dt>${esc(t("d_address"))}</dt><dd>Rua das Pombas, Zona Industrial de Taboeira<br>3800-055 Aveiro, Portugal</dd></div>
+        <div><dt>${esc(t("d_phone"))}</dt><dd>+351 [000 000 000]<small>${esc(t("d_call"))}</small></dd></div>
+        <div><dt>${esc(t("d_email"))}</dt><dd>[email]@room2.pt</dd></div>
+        <div><dt>${esc(t("d_hours"))}</dt><dd>${esc(t("hours_v"))}</dd></div>
+        <div><dt>${esc(t("how"))}</dt><dd>${esc(t("how_v"))}</dd></div>
+      </dl>
+    </aside>
+  </div>
+</div></section>
+<section class="light" aria-labelledby="h-map"><div class="wrap sec">
+  ${secHead("h-map", esc(t("map_title")))}
+  ${mapBox()}
+</div></section>`;
+};
+
+const LEGAL = {
+  privacy:[
+    [P("Responsável pelo tratamento","Data controller"), P("A sociedade gestora Unit2Rent Lda. (NIF 516 000 000), operadora da marca ROOM2 com sede em Aveiro, garante o cumprimento rigoroso do Regulamento Geral sobre a Proteção de Dados (RGPD - Regulamento UE 2016/679).","Unit2Rent Lda. (VAT PT 516 000 000), operating the ROOM2 brand headquartered in Aveiro, strictly complies with the General Data Protection Regulation (GDPR - EU 2016/679).")],
+    [P("Que dados recolhemos","What data we collect"), P("No formulário de contacto: nome, email, assunto e mensagem. Durante a navegação, e só com o seu acordo, dados de utilização através do Google Tag Manager e do Microsoft Clarity.","In the contact form: name, email, subject and message. While you browse, and only with your consent, usage data through Google Tag Manager and Microsoft Clarity.")],
+    [P("Para que os usamos","Why we use it"), P("Os dados do formulário servem apenas para responder à sua mensagem. O fundamento é o consentimento dado no formulário.","Form data is used only to reply to your message. The legal basis is the consent given in the form.")],
+    [P("Reservas e pagamentos","Bookings and payments"), P("As reservas e os pagamentos são feitos na plataforma de reservas ROOM2, que tem a sua própria política de privacidade. [Ligação a indicar.]","Bookings and payments happen on the ROOM2 booking platform, which has its own privacy policy. [Link to be supplied.]")],
+    [P("Prazo de conservação","How long we keep it"), P("[Período a definir pelo cliente.]","[Period to be defined by the client.]")],
+    [P("Os seus direitos","Your rights"), P("Pode pedir o acesso, a retificação, o apagamento ou a portabilidade dos seus dados, e retirar o consentimento, através de [email de privacidade]. Pode também apresentar reclamação à CNPD.","You can ask to access, correct, delete or port your data, and withdraw consent, via [privacy email]. You can also complain to the CNPD.")]
+  ],
+  cookies:[
+    [P("O que são cookies","What cookies are"), P("Pequenos ficheiros guardados no navegador que permitem ao site funcionar e, com o seu acordo, medir a utilização.","Small files stored in your browser that keep the site working and, with your consent, measure how it is used.")],
+    [P("Essenciais","Essential"), P("Guardam a sua escolha de cookies e o idioma. Estão sempre ativos.","They store your cookie choice and language. Always on.")],
+    [P("Análise","Analytics"), P("Google Tag Manager e Microsoft Clarity, só com o seu acordo. [Lista de cookies e prazos a gerar pela CMP.]","Google Tag Manager and Microsoft Clarity, only with your consent. [Cookie list and durations generated by the CMP.]")],
+    [P("Mapas","Maps"), P("O mapa Google Maps da página Contactos só carrega com o seu acordo.","The Google Maps map on the Contact page only loads with your consent.")],
+    [P("Alterar a sua escolha","Changing your choice"), P("Pode mudar de ideias a qualquer momento no botão Definições de cookies, abaixo.","You can change your mind at any time with the Cookie settings button below.")]
+  ],
+  terms:[
+    [P("Sobre este website","About this website"), P("Este website pertence à Unit2Rent Lda. (NIF 516 000 000), que opera a marca ROOM2.","This website belongs to Unit2Rent Lda. (VAT PT 516 000 000), which operates the ROOM2 brand.")],
+    [P("Natureza do serviço e pagamentos","Nature of the service and payments"), P("Este website informa e orienta. As reservas, a verificação de disponibilidade em tempo real e os pagamentos são feitos na plataforma de reservas ROOM2, com as suas próprias condições.","This website informs and guides. Bookings, real-time availability checks and payments are made on the ROOM2 booking platform, under its own terms.")],
+    [P("Bens excluídos","Excluded goods"), P("[Lista de bens que não podem ser guardados nas boxes, a fornecer pelo cliente.]","[List of goods that cannot be kept in the units, to be supplied by the client.]")],
+    [P("Propriedade intelectual","Intellectual property"), P("A marca ROOM2, textos e imagens estão protegidos e não podem ser reproduzidos sem autorização.","The ROOM2 brand, texts and images are protected and may not be reproduced without permission.")],
+    [P("Litígios","Disputes"), P("Em caso de litígio de consumo, pode recorrer a [entidade de Resolução Alternativa de Litígios]. Lei aplicável: portuguesa.","For consumer disputes, you may turn to [Alternative Dispute Resolution entity]. Applicable law: Portuguese.")]
+  ]
+};
+const LEGAL_H1 = {
+  privacy:P("Política de Privacidade e Proteção de Dados Pessoais","Privacy Policy & Personal Data Protection"),
+  terms:P("Termos e Condições Gerais de Utilização dos Serviços","General Terms and Conditions of Service")
+};
+V.legal = k => `
+<section class="page-head" aria-labelledby="h-page"><div class="wrap" style="grid-template-columns:1fr">
+  <div class="txt"><h1 class="solo" id="h-page" data-focus>${esc(L(LEGAL_H1[k] || t(k)))}</h1><p class="lead">${esc(t("legal_intro"))}</p></div>
+</div></section>
+<section aria-label="${esc(t(k))}"><div class="wrap sec"><div class="legal">
+  ${LEGAL[k].map(s => `<section><h2>${esc(L(s[0]))}</h2><p>${esc(L(s[1]))}</p></section>`).join("")}
+  ${k === "cookies" ? `<section><div><button class="btn btn-line" type="button" data-cookie-open>${esc(t("ck_settings"))}</button></div></section>` : ""}
+</div></div></section>`;
+
+V.notFound = () => `<section aria-labelledby="h-page"><div class="wrap nf">
+  <div class="txt">
+    <p class="kicker">${esc(t("nf_kicker"))}</p>
+    <h1 id="h-page" data-focus>${esc(t("nf_title"))}</h1>
+    <p class="lead">${esc(t("nf_text"))}</p>
+    <div class="btn-row"><a class="btn btn-solid" href="${href("storage")}">${esc(t("see_storage"))}</a><a class="btn btn-line" href="${href("work")}">${esc(t("see_work"))}</a></div>
+  </div>
+  ${ph("img", P("Sala vazia, porta aberta","Empty room, open door"), "r-43 mask-a")}
+</div></section>`;
+
+/* ================= chrome: header, mobile menu, footer ================= */
+const NAV = ["storage", "work", "about", "support", "contact"];
+const langSwitch = key => {
+  const k = key || "home";
+  return `<div class="lang" role="group" aria-label="${esc(t("lang_group"))}">
+    <a href="${href(k, "pt")}" lang="pt-PT" hreflang="pt-PT" aria-label="Português" aria-current="${lang === "pt"}">PT</a><span class="sep" aria-hidden="true">|</span><a href="${href(k, "en")}" lang="en" hreflang="en" aria-label="English" aria-current="${lang === "en"}">EN</a></div>`;
+};
+const brand = () => `<a class="brand" href="${href("home")}" aria-label="${esc(t("home_aria"))}"><span class="logo">room2</span><span class="sig" lang="en">Flexible workspaces &amp; storage</span></a>`;
+function renderChrome(key){
+  document.getElementById("siteHeader").innerHTML = `<div class="wrap bar">
+    ${brand()}
+    <nav class="nav" aria-label="${esc(t("nav_main"))}">${NAV.map(k => `<a href="${href(k)}"${k === key ? ' aria-current="page"' : ""}>${esc(t("nav_" + k))}</a>`).join("")}</nav>
+    <div class="actions">
+      ${langSwitch(key)}
+      ${ext("account", `${esc(t("account"))} ${I.ext}`, "acct")}
+      ${bookBtn("btn-sm")}
+      <button class="menu-btn" id="menuOpen" type="button" aria-expanded="false" aria-controls="menuPanel">${esc(t("menu"))} <span class="lines" aria-hidden="true"><i></i><i></i></span></button>
+    </div></div>`;
+  const panel = document.getElementById("menuPanel");
+  panel.setAttribute("aria-label", t("menu"));
+  panel.innerHTML = `<div class="top">${brand()}<div class="actions">${bookBtn("btn-sm")}<button class="icon-btn" id="menuClose" type="button" aria-label="${esc(t("close_menu"))}">${I.close}</button></div></div>
+    <nav aria-label="${esc(t("nav_mobile"))}">${NAV.map(k => `<a href="${href(k)}"${k === key ? ' aria-current="page"' : ""}>${esc(t("nav_" + k))}</a>`).join("")}</nav>
+    ${langSwitch(key)}
+    ${ext("account", `${esc(t("account"))} ${I.ext}`, "acct")}
+    <div class="foot"><span>[email]@room2.pt</span><span>+351 [000 000 000]</span><span>Rua das Pombas, Zona Industrial de Taboeira, 3800-055 Aveiro</span></div>`;
+  document.getElementById("siteFooter").innerHTML = `<div class="wrap">
+    <div class="f-top">
+      <div class="f-brand">
+        <a class="brand" href="${href("home")}" aria-label="${esc(t("home_aria"))}"><span class="logo">room2</span></a>
+        <span class="meta" lang="en">Flexible workspaces &amp; storage</span>
+        <p class="f-claim" lang="en">Make room for what’s next.</p>
+        <p style="font-size:13px;line-height:1.65;color:var(--muted);max-width:36rem">${lang === "pt"
+          ? "A ROOM2 junta self storage e coworking em Aveiro: 40 boxes de 4 a 14 m² para guardar recheios, stock e arquivo, a partir de 1 mês, e postos de trabalho, 14 escritórios privados e sala de reuniões, à hora, ao dia, à semana ou ao mês. Junto à A25."
+          : "ROOM2 brings self storage and coworking together in Aveiro: 40 units from 4 to 14 m² for household goods, stock and archives, from 1 month, plus desks, 14 private offices and a meeting room, by the hour, day, week or month. Right off the A25."}</p>
+        <div class="btn-row" style="margin-top:8px">${bookBtn("btn-sm")}${ext("account", `${esc(t("account"))} ${I.ext}`, "btn btn-line btn-sm")}</div>
+      </div>
+      <div class="f-cols">
+        <nav aria-labelledby="fh-pages"><h2 class="f-h" id="fh-pages">${esc(t("f_pages"))}</h2>
+          <ul class="f-list">${["home"].concat(NAV).map(k => `<li><a href="${href(k)}">${esc(k === "home" ? (lang === "pt" ? "Início" : "Home") : t("nav_" + k))}</a></li>`).join("")}</ul></nav>
+        <div><h2 class="f-h">${esc(t("f_contact"))}</h2>
+          <address class="f-addr">
+            <span><span class="k">${esc(t("d_address"))}</span>Rua das Pombas, Zona Industrial de Taboeira<br>3800-055 Aveiro, Portugal</span>
+            <span><span class="k">${esc(t("d_phone"))}</span>+351 [000 000 000]<br><small>${esc(t("d_call"))}</small></span>
+            <span><span class="k">${esc(t("d_email"))}</span>[email]@room2.pt</span>
+          </address></div>
+        <div><h2 class="f-h" id="fh-follow">${esc(t("f_follow"))}</h2>
+          <ul class="f-list" aria-labelledby="fh-follow">${["Instagram", "LinkedIn", "Facebook"].map(n => `<li>${ext("social", `${n} ${I.ext}`, "", n)}</li>`).join("")}</ul></div>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span class="f-copy">${esc(t("copy"))}</span>
+      <div class="f-legal">
+        <a href="${href("terms")}">${esc(t("terms"))}</a><a href="${href("privacy")}">${esc(t("privacy"))}</a><a href="${href("cookies")}">${esc(t("cookies"))}</a>
+        ${ext("complaints", `${esc(t("complaints"))} ${I.ext}`)}${ext("ral", `${esc(t("ral"))} ${I.ext}`)}
+      </div>
+      <div class="f-right">
+        <button type="button" id="backTop">${esc(t("back_top"))} ${I.up}</button>
+        <a class="f-loba" href="https://www.loba.com/" target="_blank" rel="noopener" title="LOBA" aria-label="${esc(t("developed_aria"))}"><span class="f-loba-txt" aria-hidden="true">${esc(t("developed"))}</span><span class="f-loba-mark" aria-hidden="true"></span></a>
+      </div>
+    </div></div>`;
+  const sk = document.querySelector("[data-skip]"); sk.textContent = t("skip");
+}
+
+/* ================= router ================= */
+const app = document.getElementById("app");
+let unlocked = false, prev = { key:undefined, lang:undefined }, prefill = null;
+function route(){
+  let raw = location.hash.replace(/^#/, "") || "/";
+  if (raw[0] !== "/") return;
+  let path = raw.split("?")[0];
+  if (path.length > 1 && path.endsWith("/")) path = path.slice(0, -1);
+  const r = resolve(path);
+  lang = r.lang;
+  document.documentElement.lang = lang === "pt" ? "pt-PT" : "en";
+  if (!unlocked){ renderGate(); return; }
+  const key = r.key;
+  let html;
+  if (key === "home") html = V.home();
+  else if (key === "storage" || key === "work") html = V.service(key);
+  else if (key === "about") html = V.about();
+  else if (key === "support") html = V.support();
+  else if (key === "contact") html = V.contact();
+  else if (key === "privacy" || key === "cookies" || key === "terms") html = V.legal(key);
+  else html = V.notFound();
+  const langOnly = prev.key === key && prev.lang !== lang;
+  renderChrome(key);
+  app.innerHTML = html;
+  if (key === "contact" && prefill){
+    const sel = app.querySelector("#f-subject"), msg = app.querySelector("#f-msg");
+    if (sel) sel.value = t("subjects")[prefill[0]] || "";
+    if (msg) msg.value = prefill[1] || "";
+    prefill = null;
+  }
+  const seo = key && SEO[key];
+  document.title = seo ? L(seo.title) : t("nf_title") + " | ROOM2";
+  const md = document.querySelector('meta[name="description"]');
+  if (md && seo && seo.desc) md.setAttribute("content", L(seo.desc));
+  closeMenu(false);
+  if (!cookieEl.hidden) renderCookie();
+  if (!langOnly){
+    window.scrollTo(0, 0);
+    if (prev.key !== undefined){ const f = app.querySelector("[data-focus]"); if (f){ f.setAttribute("tabindex", "-1"); f.focus({ preventScroll:true }); } }
+  }
+  prev = { key, lang };
+}
+window.addEventListener("hashchange", route);
+
+/* ================= interactions ================= */
+const reduce = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+const xdlg = document.getElementById("xdlg");
+let xOpener = null;
+function openExt(a){
+  const type = a.dataset.ext, name = a.dataset.name || "";
+  let target, url, note, same = true;
+  if (type === "book"){ target = t("x_book"); url = t("x_book_url"); note = t("x_book_note"); }
+  else if (type === "unit"){ target = t("x_unit").replace("{name}", name); url = t("x_unit_url").replace("{name}", name); note = t("x_unit_note"); }
+  else if (type === "account"){ target = t("x_account"); url = t("x_account_url"); note = t("x_account_note"); }
+  else if (type === "social"){ target = name; url = t("x_social_url").replace("{name}", name); note = t("x_social_note"); same = false; }
+  else if (type === "complaints"){ target = t("complaints"); url = t("x_complaints_url"); note = t("x_legal_note"); same = false; }
+  else { target = t("ral"); url = t("x_ral_url"); note = t("x_legal_note"); same = false; }
+  xdlg.innerHTML = `<div class="bar" style="display:flex;align-items:center;justify-content:space-between;gap:12px"><p class="kicker" id="xdTitle">${esc(t("x_title"))}</p><button class="icon-btn" type="button" data-xclose aria-label="${esc(t("x_close"))}">${I.close}</button></div>
+    <div class="in"><p class="target">${esc(target)}</p><p class="url">${esc(url)}</p>
+    <p class="note">${esc(note)} ${esc(same ? t("x_same") : t("x_new"))}</p>
+    ${type === "book" || type === "unit" ? `<p class="note" style="display:flex;gap:10px">${I.info}<span>${esc(t("booking_notice"))}</span></p>` : ""}
+    <div><button class="btn btn-solid btn-sm" type="button" data-xclose>${esc(t("x_close"))}</button></div></div>`;
+  xOpener = a;
+  if (typeof xdlg.showModal === "function") xdlg.showModal(); else xdlg.setAttribute("open", "");
+}
+const closeX = () => { if (typeof xdlg.close === "function") xdlg.close(); else { xdlg.removeAttribute("open"); if (xOpener) xOpener.focus(); } };
+xdlg.addEventListener("close", () => { if (xOpener && document.contains(xOpener)) xOpener.focus(); });
+xdlg.addEventListener("click", e => { if (e.target === xdlg || e.target.closest("[data-xclose]")) closeX(); });
+
+/* mobile menu, with focus kept inside while open */
+const panel = document.getElementById("menuPanel");
+function openMenu(){ panel.hidden = false; const b = document.getElementById("menuOpen"); if (b) b.setAttribute("aria-expanded", "true"); document.body.style.overflow = "hidden"; const c = document.getElementById("menuClose"); if (c) c.focus(); }
+function closeMenu(restore){ if (panel.hidden) return; panel.hidden = true; document.body.style.overflow = ""; const b = document.getElementById("menuOpen"); if (b){ b.setAttribute("aria-expanded", "false"); if (restore) b.focus(); } }
+panel.addEventListener("keydown", e => {
+  if (e.key === "Escape"){ closeMenu(true); return; }
+  if (e.key !== "Tab") return;
+  const f = [...panel.querySelectorAll("a,button")].filter(x => x.offsetParent !== null);
+  if (!f.length) return;
+  const first = f[0], last = f[f.length - 1];
+  if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+});
+window.addEventListener("resize", () => { if (window.innerWidth > 1060) closeMenu(false); });
+
+document.addEventListener("click", e => {
+  const pf = e.target.closest("[data-prefill]");
+  if (pf){ const parts = pf.dataset.prefill.split("|"); prefill = [Number(parts[0]), parts.slice(1).join("|")]; }
+  const x = e.target.closest("[data-ext]");
+  if (x){ e.preventDefault(); if (!panel.hidden) closeMenu(false); openExt(x); return; }
+  if (e.target.closest("#menuOpen")){ openMenu(); return; }
+  if (e.target.closest("#menuClose")){ closeMenu(true); return; }
+  const sk = e.target.closest("[data-skip]");
+  if (sk){ e.preventDefault(); app.focus(); return; }
+  const sc = e.target.closest("[data-scroll]");
+  if (sc){
+    e.preventDefault();
+    const el = document.querySelector(sc.dataset.scroll);
+    if (el){ el.scrollIntoView({ behavior: reduce() ? "auto" : "smooth" }); const h = el.querySelector("h2"); if (h){ h.setAttribute("tabindex", "-1"); h.focus({ preventScroll:true }); } }
+    return;
+  }
+  const sl = e.target.closest("[data-slide]");
+  if (sl){
+    const g = document.getElementById("gal"); if (!g) return;
+    const first = g.firstElementChild, step = first ? first.getBoundingClientRect().width + 16 : 300;
+    g.scrollBy({ left: step * Number(sl.dataset.slide), behavior: reduce() ? "auto" : "smooth" });
+    return;
+  }
+  if (e.target.closest("#backTop")){ window.scrollTo({ top:0, behavior: reduce() ? "auto" : "smooth" }); const f = app.querySelector("[data-focus]"); if (f){ f.setAttribute("tabindex", "-1"); f.focus({ preventScroll:true }); } return; }
+  if (e.target.closest("[data-cookie-open]")){ showCookie(true); return; }
+  if (e.target.closest("[data-maps-ok]")){ consent = Object.assign({ analytics:false }, consent || {}, { maps:true }); refreshMap(); hideCookie(); return; }
+  if (e.target.closest("#again")){
+    const form = document.getElementById("cform"), sent = document.getElementById("sent");
+    form.reset(); form.hidden = false; sent.hidden = true; document.getElementById("f-name").focus(); return;
+  }
+});
+
+/* contact form: inline validation and inline success message (section 9.9) */
+function setErr(el, id, bad){ el.setAttribute("aria-invalid", bad ? "true" : "false"); document.getElementById(id).hidden = !bad; }
+document.addEventListener("input", e => {
+  const el = e.target; if (el.getAttribute("aria-invalid") !== "true") return;
+  const id = el.getAttribute("aria-describedby"); if (!id) return;
+  const ok = el.type === "checkbox" ? el.checked : el.type === "email" ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()) : el.value.trim().length > 0;
+  if (ok) setErr(el, id, false);
+});
+document.addEventListener("change", e => { if (e.target.id === "f-subject" || e.target.id === "f-consent") e.target.dispatchEvent(new Event("input", { bubbles:true })); });
+document.addEventListener("submit", e => {
+  if (e.target.id === "gateForm"){ e.preventDefault(); tryGate(); return; }
+  if (e.target.id === "nlform"){
+    e.preventDefault();
+    const nf = e.target, em = nf.querySelector("#nl-email"), ck = nf.querySelector("#nl-consent");
+    setErr(em, "e-nl-email", !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim()));
+    setErr(ck, "e-nl-consent", !ck.checked);
+    const nbad = nf.querySelector('[aria-invalid="true"]');
+    if (nbad){ nbad.focus(); return; }
+    const ok = document.getElementById("nlok"); ok.textContent = t("nl_ok"); ok.hidden = false; nf.hidden = true; ok.setAttribute("tabindex", "-1"); ok.focus();
+    return;
+  }
+  if (e.target.id !== "cform") return;
+  e.preventDefault();
+  const f = e.target, $ = s => f.querySelector(s);
+  const name = $("#f-name"), email = $("#f-email"), subj = $("#f-subject"), msg = $("#f-msg"), ok = $("#f-consent");
+  setErr(name, "e-name", !name.value.trim());
+  setErr(email, "e-email", !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()));
+  setErr(subj, "e-subject", !subj.value);
+  setErr(msg, "e-msg", !msg.value.trim());
+  setErr(ok, "e-consent", !ok.checked);
+  const bad = f.querySelector('[aria-invalid="true"]');
+  if (bad){ bad.focus(); return; }
+  const sent = document.getElementById("sent");
+  sent.innerHTML = `<p class="h2" tabindex="-1" style="font-size:24px">${esc(t("sent"))}</p><div><button class="btn btn-line" type="button" id="again">${esc(t("again"))}</button></div>`;
+  sent.hidden = false; f.hidden = true; sent.querySelector("p").focus();
+});
+
+/* cookies (CMP, in memory): Accept, Reject and Choose with equal visual weight (section 12.4) */
+const cookieEl = document.getElementById("cookie");
+let consent = null, ckOpen = false;
+function renderCookie(){
+  cookieEl.setAttribute("aria-label", t("ck_region"));
+  cookieEl.innerHTML = `<p>${esc(t("ck_text"))} <a href="${href("cookies")}">${esc(t("ck_policy"))}</a>.</p>
+    <div class="opts" id="ckOpts" ${ckOpen ? "" : "hidden"}>
+      <label class="check"><input type="checkbox" checked disabled> <span>${esc(t("ck_ess"))}</span></label>
+      <label class="check"><input type="checkbox" id="ckAn" ${consent && consent.analytics ? "checked" : ""}> <span>${esc(t("ck_an"))}</span></label>
+      <label class="check"><input type="checkbox" id="ckMaps" ${consent && consent.maps ? "checked" : ""}> <span>${esc(t("ck_maps"))}</span></label>
+      <button class="btn btn-line btn-sm" type="button" data-ck="save" style="align-self:flex-start">${esc(t("ck_save"))}</button>
+    </div>
+    <div class="row">
+      <button class="btn btn-line" type="button" data-ck="all">${esc(t("ck_accept"))}</button>
+      <button class="btn btn-line" type="button" data-ck="none">${esc(t("ck_reject"))}</button>
+      <button class="btn btn-line" type="button" data-ck="choose" aria-expanded="${ckOpen}" aria-controls="ckOpts">${esc(ckOpen ? t("ck_hide") : t("ck_choose"))}</button>
+    </div>`;
+}
+function showCookie(open){
+  ckOpen = !!open; renderCookie(); cookieEl.hidden = false;
+  requestAnimationFrame(() => { const h = cookieEl.offsetHeight + 40; document.documentElement.style.scrollPaddingBottom = h + "px"; document.body.style.paddingBottom = h + "px"; });
+  if (open){ const b = cookieEl.querySelector("#ckAn"); if (b) b.focus(); }
+}
+function hideCookie(){ cookieEl.hidden = true; document.documentElement.style.scrollPaddingBottom = ""; document.body.style.paddingBottom = ""; }
+function refreshMap(){ const m = document.getElementById("mapbox"); if (m) m.outerHTML = mapBox(); }
+cookieEl.addEventListener("click", e => {
+  const b = e.target.closest("[data-ck]"); if (!b) return;
+  const k = b.dataset.ck;
+  if (k === "choose"){ ckOpen = !ckOpen; renderCookie(); showCookie(ckOpen); cookieEl.querySelector('[data-ck="choose"]').focus(); return; }
+  if (k === "all") consent = { analytics:true, maps:true };
+  else if (k === "none") consent = { analytics:false, maps:false };
+  else consent = { analytics: cookieEl.querySelector("#ckAn").checked, maps: cookieEl.querySelector("#ckMaps").checked };
+  hideCookie(); refreshMap();
+});
+
+/* ================= password gate (preview only: client-side check, not real security) ================= */
+const GATE_HASH = "d111372e6999eed7d34733ee30966772f8ba522624020069c70320e635f66d4e";
+function sha256hex(str){
+  const K=[1116352408,1899447441,3049323471,3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,604807628,770255983,1249150122,1555081692,1996064986,2554220882,2821834349,2952996808,3210313671,3336571891,3584528711,113926993,338241895,666307205,773529912,1294757372,1396182291,1695183700,1986661051,2177026350,2456956037,2730485921,2820302411,3259730800,3345764771,3516065817,3600352804,4094571909,275423344,430227734,506948616,659060556,883997877,958139571,1322822218,1537002063,1747873779,1955562222,2024104815,2227730452,2361852424,2428436474,2756734187,3204031479,3329325298];
+  const bytes = Array.from(new TextEncoder().encode(str)); const l = bytes.length * 8;
+  bytes.push(0x80); while (bytes.length % 64 !== 56) bytes.push(0);
+  for (let i = 7; i >= 0; i--) bytes.push(i > 3 ? 0 : (l >>> (i * 8)) & 255);
+  let h=[1779033703,3144134277,1013904242,2773480762,1359893119,2600822924,528734635,1541459225];
+  const r=(x,n)=>(x>>>n)|(x<<(32-n));
+  for (let o = 0; o < bytes.length; o += 64){
+    const w = new Array(64);
+    for (let i = 0; i < 16; i++) w[i] = (bytes[o+i*4]<<24)|(bytes[o+i*4+1]<<16)|(bytes[o+i*4+2]<<8)|bytes[o+i*4+3];
+    for (let i = 16; i < 64; i++){ const s0=r(w[i-15],7)^r(w[i-15],18)^(w[i-15]>>>3), s1=r(w[i-2],17)^r(w[i-2],19)^(w[i-2]>>>10); w[i]=(w[i-16]+s0+w[i-7]+s1)|0; }
+    let [a,b,c,d,e,f,g,hh]=h;
+    for (let i = 0; i < 64; i++){ const t1=(hh+(r(e,6)^r(e,11)^r(e,25))+((e&f)^(~e&g))+K[i]+w[i])|0, t2=((r(a,2)^r(a,13)^r(a,22))+((a&b)^(a&c)^(b&c)))|0; hh=g; g=f; f=e; e=(d+t1)|0; d=c; c=b; b=a; a=(t1+t2)|0; }
+    h=h.map((v,i)=>(v+[a,b,c,d,e,f,g,hh][i])|0);
+  }
+  return h.map(v=>(v>>>0).toString(16).padStart(8,"0")).join("");
+}
+const gate = document.getElementById("gate");
+function renderGate(){
+  document.title = "ROOM2 — Wireframe";
+  const typed = document.getElementById("gatePw");
+  const val = typed ? typed.value : "";
+  gate.innerHTML = `${ph("hero", "")}
+  <form id="gateForm" novalidate aria-labelledby="gateTitle">
+    <div class="lang" role="group" aria-label="${esc(t("lang_group"))}" style="align-self:flex-start;margin-bottom:-8px">
+      <a href="#/" lang="pt-PT" aria-label="Português" aria-current="${lang === "pt"}">PT</a><span class="sep" aria-hidden="true">|</span><a href="#/en" lang="en" aria-label="English" aria-current="${lang === "en"}">EN</a></div>
+    <h1 id="gateTitle" class="logo">room2</h1>
+    <p class="sig" lang="en" style="border:0;padding:0">Flexible workspaces &amp; storage</p>
+    <p class="note">${esc(t("g_note"))}</p>
+    <div class="field"><label for="gatePw">${esc(t("g_pw"))}</label>
+      <div class="pw"><input id="gatePw" type="password" autocomplete="current-password" aria-describedby="gateErr"><button class="show" type="button" id="gateShow" aria-pressed="false" aria-controls="gatePw">${esc(t("g_show"))}</button></div>
+      <span class="err" id="gateErr" role="alert" hidden>${esc(t("g_err"))}</span></div>
+    <button class="btn btn-solid" type="submit">${esc(t("g_enter"))}</button>
+  </form>`;
+  const pw = document.getElementById("gatePw"); pw.value = val; pw.focus();
+  pw.addEventListener("input", () => { document.getElementById("gateErr").hidden = true; pw.setAttribute("aria-invalid", "false"); });
+  document.getElementById("gateShow").addEventListener("click", function(){
+    const show = pw.type === "password"; pw.type = show ? "text" : "password";
+    this.setAttribute("aria-pressed", String(show)); this.textContent = show ? t("g_hide") : t("g_show"); pw.focus();
+  });
+}
+function tryGate(){
+  const pw = document.getElementById("gatePw");
+  if (sha256hex(pw.value.trim().toLowerCase()) === GATE_HASH){ unlock(); return; }
+  document.getElementById("gateErr").hidden = false; pw.setAttribute("aria-invalid", "true"); pw.select();
+  const f = document.getElementById("gateForm"); f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake");
+}
+function unlock(){
+  try { sessionStorage.setItem("room2-preview", GATE_HASH); } catch(e){}
+  gate.remove(); document.body.classList.remove("locked"); unlocked = true;
+  route(); showCookie(false);
+}
+unlock();
+})();
+</script>
+</body>
+</html>
