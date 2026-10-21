@@ -459,7 +459,7 @@ pt: {
   ck_accept:"Aceitar", ck_reject:"Recusar", ck_choose:"Escolher", ck_hide:"Esconder opções",
   ck_ess:"Essenciais (sempre ativos)", ck_an:"Análise (Google Tag Manager, Microsoft Clarity)", ck_maps:"Mapas (Google Maps)", ck_save:"Guardar escolhas",
   f_pages:"Sitemap", f_contact:"Contactos", f_follow:"Redes sociais",
-  wf_note_t:"Nota de wireframe", wf_facts:"Factos a validar com o cliente antes de mostrar como definitivos: seguro até 2000 €; pé-direito de 2,80 m; aviso prévio de 15 a 30 dias; 40 boxes e 14 escritórios; sala de 30,18 m²; videovigilância.", wf_steps:"Conteúdo a confirmar após a escolha da plataforma (caderno de encargos, secção 9.4).", wf_note:"Não previsto no caderno de encargos. A newsletter está fora do âmbito (secção 8) e pode ser orçamentada à parte, incluindo a ferramenta de email marketing e a gestão de consentimento.",
+  wf_note_t:"Nota de wireframe", wf_steps:"Conteúdo a confirmar após a escolha da plataforma (caderno de encargos, secção 9.4).", wf_note:"Não previsto no caderno de encargos. A newsletter está fora do âmbito (secção 8) e pode ser orçamentada à parte, incluindo a ferramenta de email marketing e a gestão de consentimento.",
   copy:"© 2026 ROOM2. Operado por Unit2Rent Lda. Todos os direitos reservados. Flexible workspaces & storage em Aveiro.",
   privacy:"Política de Privacidade", cookies:"Política de Cookies", terms:"Termos e Condições", ck_settings:"Definições de cookies",
   complaints:"Livro de Reclamações Eletrónico", ral:"Resolução Alternativa de Litígios", back_top:"Voltar ao topo",
@@ -515,7 +515,7 @@ en: {
   ck_accept:"Accept", ck_reject:"Reject", ck_choose:"Choose", ck_hide:"Hide options",
   ck_ess:"Essential (always on)", ck_an:"Analytics (Google Tag Manager, Microsoft Clarity)", ck_maps:"Maps (Google Maps)", ck_save:"Save choices",
   f_pages:"Sitemap", f_contact:"Contact", f_follow:"Follow",
-  wf_note_t:"Wireframe note", wf_facts:"Facts to validate with the client before presenting them as final: insurance up to €2,000; 2.80 m ceiling height; 15 to 30 days notice; 40 units and 14 offices; 30.18 m² meeting room; CCTV.", wf_steps:"Content to be confirmed once the booking platform is chosen (project brief, section 9.4).", wf_note:"Not included in the project brief. The newsletter is out of scope (section 8) and can be quoted separately, including the email marketing tool and consent management.",
+  wf_note_t:"Wireframe note", wf_steps:"Content to be confirmed once the booking platform is chosen (project brief, section 9.4).", wf_note:"Not included in the project brief. The newsletter is out of scope (section 8) and can be quoted separately, including the email marketing tool and consent management.",
   copy:"© 2026 ROOM2. Operated by Unit2Rent Lda. All rights reserved. Flexible workspaces & storage in Aveiro.",
   privacy:"Privacy Policy", cookies:"Cookie Policy", terms:"Terms and Conditions", ck_settings:"Cookie settings",
   complaints:"Electronic Complaints Book", ral:"Alternative Dispute Resolution", back_top:"Back to top",
@@ -778,7 +778,7 @@ const SERVICE = {
     img:P("Mãos a fechar uma caixa dentro de uma box","Hands closing a box inside a unit"),
     benTitle:P("O que ganha com uma box","What a unit gives you"),
     benefits: () => `<div class="split">${[
-      [P("Para casa","For your home"), P("Mudanças, obras ou falta de espaço.","Moving, renovating or short on space."), [
+      [P("Para particulares","For individuals"), P("Mudanças, obras ou falta de espaço.","Moving, renovating or short on space."), [
         P("40 boxes privativas, de 4 a 14 m², cada uma fechada com o seu cadeado.","40 private units, from 4 to 14 m², each locked with its own padlock."),
         P("Pé-direito de 2,80 m: mais volume útil e espaço para estantes verticais.","2.80 m ceiling height: more usable volume and room for vertical shelving."),
         P("Acesso 24/7 à zona de storage, com cartão ou PIN, sem marcar visita.","24/7 access to the storage area, by card or PIN, no appointments."),
@@ -818,12 +818,13 @@ const SERVICE = {
       [P("Climatização","Air conditioning"), P("Climatização autónoma inverter nos escritórios e no cowork.","Individual inverter climate control in the offices and coworking area.")],
       [P("Zonas de pausa","Break areas"), P("Copa com café de especialidade e phone booths para chamadas privadas.","Kitchen lounge with specialty coffee and phone booths for private calls.")]
     ].map(b => `<li class="card"><span class="ico" aria-hidden="true">${I.sq}</span><h3 class="h3">${esc(L(b[0]))}</h3><p class="body" style="font-size:14px">${esc(L(b[1]))}</p></li>`).join("")}</ul>
-    <div class="card" style="margin-top:20px"><h3 class="h3" style="font-size:20px">${esc(L(P("Para empresas","For business")))}</h3><p class="body" style="font-size:14px">${esc(L(P("Uma base para a equipa e um sítio para receber clientes.","A base for the team and a place to welcome clients.")))}</p>
+    <div class="card" style="margin-top:20px"><h3 class="h3" style="font-size:20px">${esc(L(P("Para profissionais e empresas","For professionals and business")))}</h3><p class="body" style="font-size:14px">${esc(L(P("Trabalhar fora de casa, receber clientes ou instalar a equipa.","Work away from home, welcome clients or settle the team.")))}</p>
       <ul class="checks biz">${[
-        P("Escritórios privados para equipas pequenas, com porta própria e chave digital.","Private offices for small teams, with their own door and digital key."),
-        P("Sala de reuniões para 12 pessoas, para receber clientes ou reunir a equipa.","A meeting room for 12 people, to welcome clients or bring the team together."),
-        P("Fatura automática com o NIF da empresa.","Automatic invoices with your company’s tax number."),
-        P("Boxes de Self Storage no mesmo edifício e na mesma conta, para arquivo ou equipamento.","Self Storage units in the same building and on the same account, for archive or equipment.")
+        P("Um lugar no open space à hora ou uma secretária dedicada ao mês.","A seat in the open space by the hour or a dedicated desk by the month."),
+        P("Escritórios privados para equipas pequenas, com porta própria.","Private offices for small teams, with their own door."),
+        P("Sala de reuniões para 12 pessoas, à hora.","A meeting room for 12 people, by the hour."),
+        P("Fatura automática com NIF.","Automatic invoices with your tax number."),
+        P("Boxes de Self Storage no mesmo edifício e na mesma conta.","Self Storage units in the same building and on the same account.")
       ].map(i => `<li>${I.check}<span>${esc(L(i))}</span></li>`).join("")}</ul></div>`,
     moment:P("Isto podia ser uma reunião. Não tem de ser num café.","This could have been a meeting. It doesn’t have to be in a café."),
     typesTitle:P("Tipologias de espaços","Space types"),
@@ -1084,7 +1085,6 @@ function renderChrome(key){
     ${ext("account", `${esc(t("account"))} ${I.ext}`, "acct")}
     <div class="foot"><span>[email]@room2.pt</span><span>+351 [000 000 000]</span><span>Rua das Pombas, Zona Industrial de Taboeira, 3800-055 Aveiro</span></div>`;
   document.getElementById("siteFooter").innerHTML = `<div class="wrap">
-    <p class="wf-note" role="note" style="margin:28px 0 0"><span class="wf-tag">${esc(t("wf_note_t"))}</span>${esc(t("wf_facts"))}</p>
     <div class="f-top">
       <div class="f-brand">
         <a class="brand" href="${href("home")}" aria-label="${esc(t("home_aria"))}"><span class="logo">room2</span></a>
