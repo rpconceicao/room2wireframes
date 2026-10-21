@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Self storage e coworking em Aveiro | ROOM2</title>
-<meta name="description" content="Self Storage e Workspaces em Aveiro: boxes de 4 a 14 m² a partir de 1 mês e Workspaces à hora, ao dia, à semana ou ao mês.">
+<title>Self Storage e coworking em Aveiro | ROOM2</title>
+<meta name="description" content="Self Storage e Workspaces em Aveiro: boxes de 4 a 14 m² a partir de 1 mês e Workspaces à hora, ao dia ou ao mês.">
 <!--
-  ROOM2 — WIREFRAME (fase Define) · segue o caderno de encargos v04 (14.10.2026)
+  ROOM2 — WIREFRAME (fase Define) · segue o caderno de encargos V6 (20.10.2026)
   Bilingue PT / EN (PT por omissão, URLs por idioma como na secção 9.1).
   Nome, assinatura, claims e termos do conceito "Room to…" ficam sempre em inglês.
   Conteúdos entre [parênteses retos] são provisórios, a fornecer ou validar pelo cliente.
@@ -91,22 +91,6 @@ h1,h2,h3,p{margin:0}
 .mask-b{clip-path:polygon(56px 0,100% 0,100% 100%,0 100%,0 56px)}
 .angle{display:block;width:44px;height:22px;background:var(--border-2);clip-path:polygon(0 0,50% 100%,100% 0,78% 0,50% 56%,22% 0)}
 
-/* ================= password gate ================= */
-body.locked > :not(.gate):not(script){display:none !important}
-.gate{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;padding:24px;background:var(--bg);overflow:auto}
-.gate .ph{position:absolute;inset:0;border:0;border-radius:0;opacity:.6}
-.gate form{position:relative;width:100%;max-width:448px;display:flex;flex-direction:column;gap:20px;background:var(--surface);border:1px solid var(--border-2);border-radius:16px;padding:32px;box-shadow:0 25px 50px -12px #000000aa}
-.gate .logo{font-size:30px}
-.gate .sig{margin-top:-14px}
-.gate .pw{display:flex;align-items:center;border:1px solid var(--border-2);border-radius:8px;padding:0 6px 0 14px;background:var(--bg)}
-.gate .pw:focus-within{border-color:var(--fg);box-shadow:0 0 0 1px var(--fg)}
-.gate .pw:has(input[aria-invalid="true"]){border:2px solid var(--fg)}
-.gate .pw input{flex:1;min-width:0;border:0;background:transparent;color:var(--fg);font:inherit;font-size:14px;min-height:42px;outline:none}
-.gate .show{background:none;border:0;color:var(--muted);font-size:12px;font-weight:600;cursor:pointer;min-height:40px;padding:0 8px}
-.gate .btn{width:100%}
-.gate .shake{animation:shake .35s}
-@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
-@media (prefers-reduced-motion:reduce){ .gate .shake{animation:none} }
 
 /* ================= header ================= */
 .site-header{position:sticky;top:0;z-index:60;background:rgba(9,9,11,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding-top:env(safe-area-inset-top,0px)}
@@ -237,6 +221,9 @@ table .sub{display:block;font-size:12px;color:var(--faint);margin-top:2px}
 .checks{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column}
 .checks li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--border);font-size:14px;line-height:1.55;color:var(--fg2)}
 .checks li:first-child{border-top:0}
+.checks.biz{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}
+.checks.biz li:nth-child(2){border-top:0}
+@media (max-width:760px){ .checks.biz{grid-template-columns:1fr} .checks.biz li:nth-child(2){border-top:1px solid var(--border)} }
 .checks svg{flex-shrink:0;margin-top:3px;color:var(--fg)}
 
 /* CTA band */
@@ -322,17 +309,8 @@ details .ans p + p{margin-top:8px}
 
 /* ================= footer ================= */
 .site-footer{background:var(--band);border-top:1px solid var(--border);color:var(--muted)}
-.nl{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px 72px;align-items:end;padding-top:48px;padding-bottom:48px;border-bottom:1px solid var(--border)}
-.nl-txt{display:flex;flex-direction:column;gap:12px}
-.nl-form{display:flex;flex-direction:column;gap:12px}
-.nl-form[hidden]{display:none}
-.nl-row{display:flex;gap:12px;align-items:flex-end}
-.nl-ok{font-size:18px;font-weight:500;color:var(--fg);padding:16px;border:1px solid var(--border-2);border-radius:12px;margin:0}
-.nl-ok[hidden]{display:none}
 .wf-note{display:block;align-self:flex-start;max-width:34rem;margin:0 0 4px;font-size:10.5px;line-height:1.45;color:var(--faint);border-left:2px dashed var(--border-2);padding:2px 0 2px 8px;opacity:.85}
 .wf-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:6px}
-@media (max-width:900px){ .nl{grid-template-columns:1fr} }
-@media (max-width:520px){ .nl-row{flex-direction:column;align-items:stretch} }
 .f-top{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px 72px;padding-top:56px;padding-bottom:48px}
 .f-brand{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
 .f-brand .logo{font-size:30px}
@@ -398,7 +376,6 @@ details .ans p + p{margin-top:8px}
 </style>
 </head>
 <body>
-<div class="gate" id="gate" hidden></div>
 <a class="skip" href="#/" data-skip></a>
 <header class="site-header" id="siteHeader"></header>
 <div class="menu-panel" id="menuPanel" hidden role="dialog" aria-modal="true"></div>
@@ -444,7 +421,7 @@ pt: {
   skip:"Saltar para o conteúdo", home_aria:"ROOM2, página inicial", nav_main:"Principal", nav_mobile:"Navegação", menu:"Menu", close_menu:"Fechar menu", lang_group:"Idioma",
   nav_storage:"Self Storage", nav_work:"Workspaces", nav_about:"Quem somos", nav_support:"Suporte", nav_contact:"Contactos",
   account:"Área de cliente", book:"Reservar", book_unit:"Reservar esta box", book_space:"Reservar este espaço",
-  see_units:"Ver boxes", see_spaces:"Ver espaços", req_unit:"Pedir esta box", req_any:"Pedir uma box", req_msg:"Olá, tenho interesse {x}. Podem enviar-me as condições e a disponibilidade?", req_msg_one:"numa box", req_msg_named:"na {n}", see_work:"Ver Workspaces", see_storage:"Ver Self Storage", talk:"Falar connosco", see_faq:"Ver perguntas frequentes",
+  see_units:"Ver boxes", see_spaces:"Ver espaços", see_work:"Ver Workspaces", see_storage:"Ver Self Storage", talk:"Falar connosco", see_faq:"Ver perguntas frequentes",
   ph_img:"Imagem", ph_video:"Vídeo", ph_hero:"Imagem ou vídeo · largura total", ph_map:"Mapa · Google Maps",
   price_note:"Preço de referência. O valor final e a disponibilidade confirmam-se na reserva.",
   handoff:"A reserva continua na plataforma segura de reservas ROOM2.",
@@ -482,10 +459,7 @@ pt: {
   ck_accept:"Aceitar", ck_reject:"Recusar", ck_choose:"Escolher", ck_hide:"Esconder opções",
   ck_ess:"Essenciais (sempre ativos)", ck_an:"Análise (Google Tag Manager, Microsoft Clarity)", ck_maps:"Mapas (Google Maps)", ck_save:"Guardar escolhas",
   f_pages:"Sitemap", f_contact:"Contactos", f_follow:"Redes sociais",
-  nl_title:"Há espaço na sua caixa de entrada?", nl_text:"Novidades da ROOM2 em Aveiro: novos espaços, condições para empresas e eventos. Pode cancelar a qualquer momento.",
-  nl_label:"Email", nl_btn:"Inscrever", nl_consent:"Aceito receber a newsletter da ROOM2 e li a {privacy}.",
-  nl_e_email:"Falta um email válido.", nl_e_consent:"Para enviar a newsletter, precisamos do seu acordo.", nl_ok:"Já está. Inscrição feita, até breve.",
-  wf_note_t:"Nota de wireframe", wf_steps:"Conteúdo a confirmar após a escolha da plataforma (caderno de encargos, secção 9.4).", wf_serv:"Não previsto no caderno de encargos (secções 9.5 e 9.6). Serviços complementares do modelo de negócio, a validar com a UNIT2RENT.", wf_note:"Não previsto no caderno de encargos. A newsletter está fora do âmbito (secção 8) e pode ser orçamentada à parte, incluindo a ferramenta de email marketing e a gestão de consentimento.",
+  wf_note_t:"Nota de wireframe", wf_facts:"Factos a validar com o cliente antes de mostrar como definitivos: seguro até 2000 €; pé-direito de 2,80 m; aviso prévio de 15 a 30 dias; 40 boxes e 14 escritórios; sala de 30,18 m²; videovigilância.", wf_steps:"Conteúdo a confirmar após a escolha da plataforma (caderno de encargos, secção 9.4).", wf_note:"Não previsto no caderno de encargos. A newsletter está fora do âmbito (secção 8) e pode ser orçamentada à parte, incluindo a ferramenta de email marketing e a gestão de consentimento.",
   copy:"© 2026 ROOM2. Operado por Unit2Rent Lda. Todos os direitos reservados. Flexible workspaces & storage em Aveiro.",
   privacy:"Política de Privacidade", cookies:"Política de Cookies", terms:"Termos e Condições", ck_settings:"Definições de cookies",
   complaints:"Livro de Reclamações Eletrónico", ral:"Resolução Alternativa de Litígios", back_top:"Voltar ao topo",
@@ -497,15 +471,13 @@ pt: {
   x_social_url:"[Perfil da ROOM2 em {name}]", x_social_note:"Perfil a indicar pelo cliente.",
   x_complaints_url:"https://www.livroreclamacoes.pt", x_ral_url:"[Entidade RAL a indicar pelo cliente]", x_legal_note:"Ligação obrigatória no rodapé.",
   nf_kicker:"Erro 404", nf_title:"Esta sala está vazia.", nf_text:"A página que procura mudou de sítio. O espaço que procura, não.",
-  g_note:"Pré-visualização privada dos wireframes do website ROOM2. Introduza a palavra-passe para continuar.",
-  g_pw:"Palavra-passe", g_show:"Mostrar", g_hide:"Esconder", g_err:"A palavra-passe não está correta. Confirme e tente de novo.", g_enter:"Entrar",
   legal_intro:"[Texto legal a fornecer pelo cliente.] Estrutura de referência. Última atualização: [data]."
 },
 en: {
   skip:"Skip to content", home_aria:"ROOM2, homepage", nav_main:"Main", nav_mobile:"Navigation", menu:"Menu", close_menu:"Close menu", lang_group:"Language",
   nav_storage:"Self Storage", nav_work:"Workspaces", nav_about:"About", nav_support:"Support", nav_contact:"Contact",
   account:"Member login", book:"Book now", book_unit:"Book this unit", book_space:"Book this space",
-  see_units:"See units", see_spaces:"See spaces", req_unit:"Request this unit", req_any:"Request a unit", req_msg:"Hi, I’m interested in {x}. Could you send me the terms and availability?", req_msg_one:"a storage unit", req_msg_named:"the {n}", see_work:"See Workspaces", see_storage:"See Self Storage", talk:"Talk to us", see_faq:"See the FAQ",
+  see_units:"See units", see_spaces:"See spaces", see_work:"See Workspaces", see_storage:"See Self Storage", talk:"Talk to us", see_faq:"See the FAQ",
   ph_img:"Image", ph_video:"Video", ph_hero:"Image or video · full width", ph_map:"Map · Google Maps",
   price_note:"Reference price. The final price and availability are confirmed when you book.",
   handoff:"Your booking continues on the secure ROOM2 booking platform.",
@@ -543,10 +515,7 @@ en: {
   ck_accept:"Accept", ck_reject:"Reject", ck_choose:"Choose", ck_hide:"Hide options",
   ck_ess:"Essential (always on)", ck_an:"Analytics (Google Tag Manager, Microsoft Clarity)", ck_maps:"Maps (Google Maps)", ck_save:"Save choices",
   f_pages:"Sitemap", f_contact:"Contact", f_follow:"Follow",
-  nl_title:"Room in your inbox?", nl_text:"ROOM2 news from Aveiro: new spaces, business offers and events. Unsubscribe at any time.",
-  nl_label:"Email", nl_btn:"Subscribe", nl_consent:"I agree to receive the ROOM2 newsletter and have read the {privacy}.",
-  nl_e_email:"We need a valid email.", nl_e_consent:"We need your consent to send the newsletter.", nl_ok:"Done. You’re subscribed, talk soon.",
-  wf_note_t:"Wireframe note", wf_steps:"Content to be confirmed once the booking platform is chosen (project brief, section 9.4).", wf_serv:"Not included in the project brief (sections 9.5 and 9.6). Additional services from the business model, to be validated with UNIT2RENT.", wf_note:"Not included in the project brief. The newsletter is out of scope (section 8) and can be quoted separately, including the email marketing tool and consent management.",
+  wf_note_t:"Wireframe note", wf_facts:"Facts to validate with the client before presenting them as final: insurance up to €2,000; 2.80 m ceiling height; 15 to 30 days notice; 40 units and 14 offices; 30.18 m² meeting room; CCTV.", wf_steps:"Content to be confirmed once the booking platform is chosen (project brief, section 9.4).", wf_note:"Not included in the project brief. The newsletter is out of scope (section 8) and can be quoted separately, including the email marketing tool and consent management.",
   copy:"© 2026 ROOM2. Operated by Unit2Rent Lda. All rights reserved. Flexible workspaces & storage in Aveiro.",
   privacy:"Privacy Policy", cookies:"Cookie Policy", terms:"Terms and Conditions", ck_settings:"Cookie settings",
   complaints:"Electronic Complaints Book", ral:"Alternative Dispute Resolution", back_top:"Back to top",
@@ -558,8 +527,6 @@ en: {
   x_social_url:"[ROOM2 profile on {name}]", x_social_note:"Profile to be supplied by the client.",
   x_complaints_url:"https://www.livroreclamacoes.pt", x_ral_url:"[ADR entity to be supplied by the client]", x_legal_note:"Mandatory link in the footer.",
   nf_kicker:"Error 404", nf_title:"This room is empty.", nf_text:"The page you’re looking for has moved. The space you’re looking for hasn’t.",
-  g_note:"Private preview of the ROOM2 website wireframes. Enter the password to continue.",
-  g_pw:"Password", g_show:"Show", g_hide:"Hide", g_err:"That password is not correct. Check it and try again.", g_enter:"Enter",
   legal_intro:"[Legal text to be supplied by the client.] Reference structure. Last updated: [date]."
 }
 };
@@ -567,12 +534,12 @@ const t = k => (T[lang][k] !== undefined ? T[lang][k] : T.pt[k]);
 
 /* ================= SEO: title (≤60) and meta description (≤155) per page, section 11.2 ================= */
 const SEO = {
-  home:{ title:P("Self storage e coworking em Aveiro | ROOM2","Storage and coworking in Aveiro | ROOM2"),
-    desc:P("Self Storage e Workspaces em Aveiro: boxes de 4 a 14 m² a partir de 1 mês e Workspaces à hora, ao dia, à semana ou ao mês.","Self Storage and Workspaces in Aveiro: units from 4 to 14 m² from 1 month, and Workspaces by the hour, day, week or month.") },
+  home:{ title:P("Self Storage e coworking em Aveiro | ROOM2","Storage and coworking in Aveiro | ROOM2"),
+    desc:P("Self Storage e Workspaces em Aveiro: boxes de 4 a 14 m² a partir de 1 mês e Workspaces à hora, ao dia ou ao mês.","Self Storage and Workspaces in Aveiro: units from 4 to 14 m² from 1 month, and Workspaces by the hour, day or month.") },
   storage:{ title:P("Self Storage em Aveiro · Boxes 24/7 | ROOM2","Self storage in Aveiro · 24/7 units | ROOM2"),
-    desc:P("40 boxes de self storage em Aveiro, de 4 a 14 m², para casa e empresas. Reserva mensal, cadeado próprio e acesso 24/7.","40 self storage units in Aveiro, from 4 to 14 m², for homes and businesses. Monthly booking, own padlock and 24/7 access.") },
+    desc:P("40 boxes de Self Storage em Aveiro, de 4 a 14 m², para casa e empresas. Reserva mensal, cadeado próprio e acesso 24/7.","40 Self Storage units in Aveiro, from 4 to 14 m², for homes and businesses. Monthly booking, own padlock and 24/7 access.") },
   work:{ title:P("Coworking em Aveiro · Salas e escritórios | ROOM2","Coworking and office rental in Aveiro | ROOM2"),
-    desc:P("Coworking, 14 escritórios privados e sala de reuniões para 12 pessoas em Aveiro, à hora, ao dia, à semana ou ao mês.","Coworking, 14 private offices and a 12-seat meeting room in Aveiro, by the hour, day, week or month.") },
+    desc:P("Coworking, 14 escritórios privados e sala de reuniões para 12 pessoas em Aveiro, à hora, ao dia ou ao mês.","Coworking, 14 private offices and a 12-seat meeting room in Aveiro, by the hour, day or month.") },
   about:{ title:P("Quem somos · Storage e Workspaces em Aveiro | ROOM2","About · Storage and Workspaces in Aveiro | ROOM2"),
     desc:P("A ROOM2 junta Storage e Workspaces no mesmo edifício, em Aveiro. Conheça a ideia e o compromisso.","ROOM2 brings storage and workspaces together in one place in Aveiro. The idea and the commitment behind it.") },
   support:{ title:P("Perguntas frequentes · Storage e coworking | ROOM2","FAQ · Storage and coworking in Aveiro | ROOM2"),
@@ -587,15 +554,15 @@ const SEO = {
 /* ================= CMS: collection “Tipologias” (section 10.1) — every value is a placeholder ================= */
 const TYPES = [
   { name:"Box S", vert:"storage", group:"box", img:P("Bicicletas, malas e caixas de roupa numa box pequena","Bikes, suitcases and boxed clothing in a small unit"), dims:P("[a × b] m · 4 m²","[a × b] m · 4 m²"),
-    use:P("Recheio de um quarto ou stock de loja online","One bedroom’s contents or online shop stock"), unit:"month", unitLabel:P("Ao mês, mínimo 1 mês","Monthly, 1-month minimum"), price:"[00]", order:1 },
+    use:P("Recheio de um quarto ou stock de loja online","One bedroom’s contents or online shop stock"), unit:"month", price:"[00]", order:1 },
   { name:"Box M", vert:"storage", group:"box", img:P("Caixas de calçado e vestuário em estantes","Boxed shoes and apparel on shelving"), dims:P("[a × b] m · 5 m²","[a × b] m · 5 m²"),
-    use:P("Recheio de um T1 durante obras","A one-bedroom flat during renovation"), unit:"month", unitLabel:P("Ao mês, mínimo 1 mês","Monthly, 1-month minimum"), price:"[00]", order:2 },
+    use:P("Recheio de um T1 durante obras","A one-bedroom flat during renovation"), unit:"month", price:"[00]", order:2 },
   { name:"Box L", vert:"storage", group:"box", img:P("Paletes de produto e material de feira","Product pallets and trade-show material"), dims:P("[a × b] m · 8 m²","[a × b] m · 8 m²"),
-    use:P("Recheio de um T2 ou arquivo de empresa","A two-bedroom flat or a company archive"), unit:"month", unitLabel:P("Ao mês, mínimo 1 mês","Monthly, 1-month minimum"), price:"[00]", order:3 },
+    use:P("Recheio de um T2 ou arquivo de empresa","A two-bedroom flat or a company archive"), unit:"month", price:"[00]", order:3 },
   { name:"Box XL", vert:"storage", group:"box", img:P("Porta-paletes a entrar numa box grande","Pallet truck entering a large unit"), dims:P("[a × b] m · 14 m²","[a × b] m · 14 m²"),
-    use:P("Recheio de um T3 ou T4, ou equipamento de obra","A three- or four-bedroom home, or site equipment"), unit:"month", unitLabel:P("Ao mês, mínimo 1 mês","Monthly, 1-month minimum"), price:"[00]", order:4 },
+    use:P("Recheio de um T3 ou T4, ou equipamento de obra","A three- or four-bedroom home, or site equipment"), unit:"month", price:"[00]", order:4 },
   { name:P("Flex Desk · Open space","Flex Desk · Open space"), short:"Flex Desk", vert:"work", group:"cowork", img:P("Pessoa ao portátil no open space com luz natural","Person on a laptop in the naturally lit open space"), cap:P("1 pessoa","1 person"),
-    use:P("Um lugar no open space pelo tempo que for preciso: duas horas de manhã, um dia, uma semana ou um mês.","A seat in the open space for as long as you need: two hours in the morning, a day, a week or a month."), unit:"hour", unitLabel:P("À hora, ao dia, à semana ou ao mês","By the hour, day, week or month"), price:"[00]", order:1 },
+    use:P("Umas horas de trabalho concentrado no open space, sem lugar fixo.","A few hours of focused work in the open space, no fixed desk."), unit:"hour", price:"[00]", order:1 },
   { name:P("Dedicated Desk · Mensal","Dedicated Desk · Monthly"), short:"Dedicated Desk", vert:"work", group:"cowork", img:P("Secretária fixa com cadeira ergonómica e cacifo","Dedicated desk with ergonomic chair and locker"), cap:P("1 pessoa","1 person"),
     use:P("A mesma secretária todos os dias, com cacifo, no open space.","The same desk every day, with a locker, in the open space."), unit:"month", price:"[00]", order:2 },
   { name:P("Meeting Room · À hora","Meeting Room · Hourly"), short:"Meeting Room", vert:"work", group:"room", img:P("Reunião à volta da mesa, com ecrã 4K","Meeting around the table, with a 4K display"), cap:P("12 lugares · 30,18 m²","12 seats · 30.18 m²"),
@@ -637,11 +604,11 @@ const FAQ = [
     [P("Sim. A Meeting Room reserva-se à hora, para até 12 pessoas, sem burocracias.","Yes. The Meeting Room is booked by the hour, for up to 12 people, with instant confirmation.")]],
   ["workspaces", P("O que está incluído no Flex Desk?","What’s included with a Flex Desk?"),
     [P("Um lugar no open space com secretária ergonómica, Wi-Fi em fibra de alta velocidade, copa e phone booths para chamadas privadas.","A seat in the open space with an ergonomic desk, high-speed fiber Wi-Fi, a kitchen lounge and phone booths for private calls."),
-     P("Pode reservá-lo à hora, ao dia, à semana ou ao mês.","You can book it by the hour, day, week or month.")]],
+     P("Reserva-se à hora.","It is booked by the hour.")]],
   ["reservas", P("Qual é o período mínimo de reserva?","What’s the minimum booking period?"),
     [P("Boxes a partir de 1 mês, ao mês; postos no open space e a Meeting Room a partir de uma hora.","Units from 1 month, monthly; open-space desks and the Meeting Room from one hour.")]],
   ["reservas", P("Existe fidelização obrigatória?","Is there a minimum commitment?"),
-    [P("Não. As boxes reservam-se ao mês, a partir de 1 mês; os Workspaces à hora, ao dia, à semana ou ao mês.","No. Units are booked monthly, from 1 month; Workspaces by the hour, day, week or month."),
+    [P("Não. As boxes reservam-se ao mês, a partir de 1 mês; os Workspaces à hora, ao dia ou ao mês.","No. Units are booked monthly, from 1 month; Workspaces by the hour, day or month."),
      P("Para terminar ou mudar de tipologia, basta avisar na Área de cliente com 15 a 30 dias de antecedência.","To cancel or change, give 15 to 30 days notice via Member login.")]],
   ["reservas", P("Como pago?","How do I pay?"),
     [P("No portal de reservas, com cartão de crédito, MB WAY ou Multibanco, e faturação automática. As boxes são cobradas ao mês.","On the booking portal, by card, MB WAY or Multibanco (Portuguese payment methods), with an instant invoice. Units are billed monthly.")]],
@@ -664,8 +631,8 @@ const FAQ = [
     [P("Sim. A fatura é emitida automaticamente com o NIF indicado na reserva.","Yes. The invoice is issued automatically with the tax number (NIF) given in the booking.")]],
   ["faturacao", P("Posso ter uma box e um escritório na mesma conta?","Can I have a unit and an office on the same account?"),
     [P("Sim. Storage e Workspaces ficam na mesma Área de cliente, com reservas e faturas no mesmo sítio.","Yes. Storage and Workspaces sit in the same Member login, with bookings and invoices in one place.")]],
-  ["faturacao", P("A ROOM2 tem serviços de domiciliação e logística?","Does ROOM2 offer business address and logistics services?"),
-    [P("Sim. A domiciliação empresarial e o apoio logístico são serviços à parte, independentes do espaço contratado. [Condições a confirmar.]","Yes. Business address and logistics support are separate services, independent of the space you rent. [Terms to be confirmed.]")]]
+  ["faturacao", P("A ROOM2 tem serviço de domiciliação de sede fiscal?","Does ROOM2 offer a business address service?"),
+    [P("Sim. A domiciliação de sede fiscal é um serviço à parte, independente do espaço reservado. [Condições a confirmar.]","Yes. A registered business address is a separate service, independent of the space you book. [Terms to be confirmed.]")]]
 ];
 
 /* ================= icons (inline stroke SVG) ================= */
@@ -694,8 +661,6 @@ const ph = (kind, desc, cls, attrs) => {
 };
 /* external links (booking platform, customer portal, social, legal): shown in a notice in the wireframe */
 const ext = (type, label, cls, name) => `<a href="#ext-${type}" class="${cls || ""}" data-ext="${type}"${name ? ` data-name="${esc(name)}"` : ""}>${label}</a>`;
-const reqMsg = n => t("req_msg").replace("{x}", n ? t("req_msg_named").replace("{n}", n) : t("req_msg_one"));
-const reqBtn = (cls, n) => `<a class="${cls}" href="${href("contact")}" data-prefill="0|${esc(reqMsg(n))}">${esc(t(n ? "req_unit" : "req_any"))}</a>`;
 const bookBtn = (cls) => ext("book", esc(t("book")), "btn btn-solid " + (cls || ""));
 const handoff = () => `<p class="note handoff">${I.info}<span>${esc(t("handoff"))}</span></p>`;
 const secHead = (id, title, intro, right) => `<div class="sec-head"><div class="txt"><h2 class="h2" id="${id}">${title}</h2>${intro ? `<p class="body">${intro}</p>` : ""}</div>${right || ""}</div>`;
@@ -704,7 +669,7 @@ const secHead = (id, title, intro, right) => `<div class="sec-head"><div class="
 const unitCard = x => {
   const isS = x.vert === "storage";
   const facts = isS
-    ? [[t("f_dims"), L(x.dims)], [t("f_unit"), L(x.unitLabel)], [t("f_use"), L(x.use)]]
+    ? [[t("f_dims"), L(x.dims)], [t("f_unit"), t("ul_" + x.unit)], [t("f_use"), L(x.use)]]
     : [[t("f_cap"), L(x.cap)], [t("f_unit"), x.unitLabel ? L(x.unitLabel) : t("ul_" + x.unit)], [t("f_use"), L(x.use)]];
   return `<li class="card unit">
     ${ph("img", x.img, "r-43")}
@@ -746,7 +711,7 @@ V.home = () => `
     <div class="hero-card">
       <p class="claim" lang="en">Got plans? Get a room.</p>
       <h1 id="h-hero" data-focus>${lang === "pt" ? "Self Storage e Workspaces em Aveiro." : "Self Storage and Workspaces in Aveiro."}</h1>
-      <p class="h1-sub">${lang === "pt" ? "Coworking, escritórios privados e sala de reuniões, à hora, ao dia, à semana ou ao mês, com reserva online. Boxes de 4 a 14 m², a partir de 1 mês, com acesso 24/7." : "Coworking, private offices and a meeting room, by the hour, day, week or month, booked online. Units from 4 to 14 m², from 1 month, with 24/7 access."}</p>
+      <p class="h1-sub">${lang === "pt" ? "Coworking, escritórios privados e sala de reuniões, à hora, ao dia ou ao mês, com reserva online. Boxes de 4 a 14 m², a partir de 1 mês, com acesso 24/7." : "Coworking, private offices and a meeting room, by the hour, day or month, booked online. Units from 4 to 14 m², from 1 month, with 24/7 access."}</p>
       
       <div class="btn-row">${bookBtn()}</div>
     </div>
@@ -760,7 +725,7 @@ V.home = () => `
           ["Room to store.", P("Mudanças, obras ou coisas a mais em casa. Boxes de 4 a 14 m², a partir de 1 mês.","Moving, renovating or just too much at home. Units from 4 to 14 m², from 1 month."), P("Para particulares","For individuals"), P("Caixas de uma mudança a entrar numa box","Moving boxes going into a unit")],
           ["Room to stock up.", P("O negócio cresceu e a garagem já não chega. Stock e arquivo com zona de descarga e acesso 24/7.","The business grew and the garage no longer does. Stock and archive with an unloading area and 24/7 access."), P("Para PME e lojas online","For SMEs and online shops"), P("Prateleiras com stock e embalagens","Shelves with stock and packaging")]]],
        ["work", "nav_work", "see_spaces", [
-          ["Room to work.", P("Um posto à hora, ao dia, à semana ou ao mês, secretárias dedicadas e 14 escritórios privados.","A desk by the hour, day, week or month, dedicated desks and 14 private offices."), P("Para profissionais independentes","For independent professionals"), P("Pessoa a trabalhar num posto do open space","Person working at an open-space desk")],
+          ["Room to work.", P("Um posto à hora, ao dia ou ao mês, secretárias dedicadas e 14 escritórios privados.","A desk by the hour, day or month, dedicated desks and 14 private offices."), P("Para profissionais independentes","For independent professionals"), P("Pessoa a trabalhar num posto do open space","Person working at an open-space desk")],
           ["Room to meet.", P("Uma boa reunião começa por ter onde acontecer. Sala de 30,18 m² para 12 pessoas, à hora.","A good meeting starts with somewhere to have it. A 30.18 m² room for 12 people, by the hour."), P("Para equipas, PME e independentes","For teams, SMEs and freelancers"), P("Equipa reunida à volta da mesa oval","Team gathered around the oval table")]]]
       ].map(g => `<div class="vgroup" role="group" aria-labelledby="vg-${g[0]}">
         <div class="vgroup-head"><h3 class="h3" id="vg-${g[0]}">${esc(t(g[1]))}</h3><a class="link" href="${href(g[0])}">${esc(t(g[2]))} ${I.arrow}</a></div>
@@ -774,7 +739,7 @@ V.home = () => `
 
 <section class="trust" aria-label="${lang === "pt" ? "Destaques" : "Highlights"}"><ul class="wrap trust-list">
   ${[[P("Acesso 24/7","24/7 access"), P("À zona de storage, com cartão ou PIN, a qualquer hora.","To the storage area, with a card or PIN, any time.")],
-     [P("À hora, ao dia, à semana ou ao mês","By the hour, day, week or month"), P("Workspaces pelo tempo que for preciso; boxes a partir de 1 mês.","Workspaces for as long as you need; units from 1 month.")],
+     [P("À hora, ao dia ou ao mês","By the hour, day or month"), P("Workspaces pelo tempo que for preciso; boxes a partir de 1 mês.","Workspaces for as long as you need; units from 1 month.")],
      [P("Seguro","Secure"), P("Só entra quem tem reserva, com PIN, cartão ou chave digital pessoal.","Only people with a booking get in, with a personal PIN, card or digital key.")],
      [P("Em Aveiro","In Aveiro"), P("Junto à A25, com estacionamento gratuito e zona de descarga.","Right off the A25, with free parking and an unloading area.")]]
     .map(x => `<li>${I.check}<span><span class="t">${esc(L(x[0]))}</span><span class="d">${esc(L(x[1]))}</span></span></li>`).join("")}
@@ -785,7 +750,7 @@ V.home = () => `
   ${secHead("h-steps", lang === "pt" ? "Simples, do primeiro contacto à porta." : "Simple, from first contact to front door.")}
   <ol class="grid g-3 steps">
     ${[[P("Escolha a tipologia","Choose your space"), P("Escolha a tipologia ideal no catálogo online, com as dimensões, a área ou a capacidade e a utilização aconselhada de cada espaço.","Select your ideal unit or space in the online catalogue, with the dimensions, area or capacity and recommended use of each one.")],
-       [P("Reserva online","Online booking"), P("Reserve no portal em poucos minutos, com pagamento online e fatura automática: Workspaces à hora, ao dia, à semana ou ao mês; boxes ao mês, a partir de 1 mês.","Book on the portal in a few minutes, with online payment and automatic invoicing: Workspaces by the hour, day, week or month; units monthly, from 1 month.")],
+       [P("Reserva online","Online booking"), P("Reserve no portal em poucos minutos, com pagamento online e fatura automática: Workspaces à hora, ao dia ou ao mês; boxes ao mês, a partir de 1 mês.","Book on the portal in a few minutes, with online payment and automatic invoicing: Workspaces by the hour, day or month; units monthly, from 1 month.")],
        [P("Acesso ao seu espaço","Access to your space"), P("Nos Workspaces, recebe a chave digital no smartphone e um PIN. Nas boxes, a equipa entrega-lhe em mão o acesso à zona de storage e o cadeado da box.","For Workspaces, you get a digital key on your smartphone and a PIN. For units, the team hands you access to the storage area and your padlock in person.")]
       ].map((st, i) => `<li class="card"><span class="num" aria-hidden="true">${i + 1}</span><h3 class="h3">${esc(L(st[0]))}</h3><p class="body" style="font-size:14px">${esc(L(st[1]))}</p></li>`).join("")}
   </ol>
@@ -841,9 +806,9 @@ const SERVICE = {
   },
   work: {
     display:"Room to work.",
-    h1:P("Coworking, escritórios privados e sala de reuniões em Aveiro, à hora, ao dia, à semana ou ao mês.","Coworking, private offices and a meeting room in Aveiro, by the hour, day, week or month."),
-    intro:P("O ambiente ideal para profissionais independentes, nómadas digitais, PME e equipas em crescimento, e para reuniões com clientes. Fibra gigabit redundante, climatização inteligente e acesso 24/7 com o seu smartphone.",
-            "The ideal environment for independent professionals, digital nomads, SMEs and growing teams, and for client meetings. Gigabit fiber, smart climate control, and 24/7 smartphone access."),
+    h1:P("Coworking, escritórios privados e sala de reuniões em Aveiro.","Coworking, private offices and a meeting room in Aveiro."),
+    intro:P("À hora, ao dia ou ao mês: o ambiente ideal para profissionais independentes, nómadas digitais, PME e equipas em crescimento, e para reuniões com clientes. Fibra gigabit redundante, climatização inteligente e acesso 24/7 com o seu smartphone.",
+            "By the hour, day or month: the ideal environment for independent professionals, digital nomads, SMEs and growing teams, and for client meetings. Gigabit fiber, smart climate control, and 24/7 smartphone access."),
     img:P("Pessoas a trabalhar no open space com luz natural","People working in the naturally lit open space"),
     benTitle:P("O que está incluído","What’s included"),
     benefits: () => `<ul class="grid g-5">${[
@@ -852,7 +817,14 @@ const SERVICE = {
       [P("Iluminação natural","Natural light"), P("Luz do dia no open space e janelas exteriores nos escritórios.","Daylight in the open space and outside windows in the private offices.")],
       [P("Climatização","Air conditioning"), P("Climatização autónoma inverter nos escritórios e no cowork.","Individual inverter climate control in the offices and coworking area.")],
       [P("Zonas de pausa","Break areas"), P("Copa com café de especialidade e phone booths para chamadas privadas.","Kitchen lounge with specialty coffee and phone booths for private calls.")]
-    ].map(b => `<li class="card"><span class="ico" aria-hidden="true">${I.sq}</span><h3 class="h3">${esc(L(b[0]))}</h3><p class="body" style="font-size:14px">${esc(L(b[1]))}</p></li>`).join("")}</ul>`,
+    ].map(b => `<li class="card"><span class="ico" aria-hidden="true">${I.sq}</span><h3 class="h3">${esc(L(b[0]))}</h3><p class="body" style="font-size:14px">${esc(L(b[1]))}</p></li>`).join("")}</ul>
+    <div class="card" style="margin-top:20px"><h3 class="h3" style="font-size:20px">${esc(L(P("Para empresas","For business")))}</h3><p class="body" style="font-size:14px">${esc(L(P("Uma base para a equipa e um sítio para receber clientes.","A base for the team and a place to welcome clients.")))}</p>
+      <ul class="checks biz">${[
+        P("Escritórios privados para equipas pequenas, com porta própria e chave digital.","Private offices for small teams, with their own door and digital key."),
+        P("Sala de reuniões para 12 pessoas, para receber clientes ou reunir a equipa.","A meeting room for 12 people, to welcome clients or bring the team together."),
+        P("Fatura automática com o NIF da empresa.","Automatic invoices with your company’s tax number."),
+        P("Boxes de Self Storage no mesmo edifício e na mesma conta, para arquivo ou equipamento.","Self Storage units in the same building and on the same account, for archive or equipment.")
+      ].map(i => `<li>${I.check}<span>${esc(L(i))}</span></li>`).join("")}</ul></div>`,
     moment:P("Isto podia ser uma reunião. Não tem de ser num café.","This could have been a meeting. It doesn’t have to be in a café."),
     typesTitle:P("Tipologias de espaços","Space types"),
     typesIntro:P("De uma hora no open space aos 14 escritórios privados, com a capacidade e a unidade de reserva de cada espaço.","From an hour in the open space to the 14 private offices, with each space’s capacity and booking unit."),
@@ -1041,7 +1013,7 @@ V.contact = () => {
 
 const LEGAL = {
   privacy:[
-    [P("Responsável pelo tratamento","Data controller"), P("A sociedade gestora Unit2Rent Lda. (NIF 516 000 000), operadora da marca ROOM2 com sede em Aveiro, garante o cumprimento rigoroso do Regulamento Geral sobre a Proteção de Dados (RGPD - Regulamento UE 2016/679).","Unit2Rent Lda. (VAT PT 516 000 000), operating the ROOM2 brand headquartered in Aveiro, strictly complies with the General Data Protection Regulation (GDPR - EU 2016/679).")],
+    [P("Responsável pelo tratamento","Data controller"), P("A sociedade gestora Unit2Rent Lda. (NIF [NIF]), operadora da marca ROOM2 com sede em Aveiro, garante o cumprimento rigoroso do Regulamento Geral sobre a Proteção de Dados (RGPD - Regulamento UE 2016/679).","Unit2Rent Lda. (VAT [NIF]), operating the ROOM2 brand headquartered in Aveiro, strictly complies with the General Data Protection Regulation (GDPR - EU 2016/679).")],
     [P("Que dados recolhemos","What data we collect"), P("No formulário de contacto: nome, email, assunto e mensagem. Durante a navegação, e só com o seu acordo, dados de utilização através do Google Tag Manager e do Microsoft Clarity.","In the contact form: name, email, subject and message. While you browse, and only with your consent, usage data through Google Tag Manager and Microsoft Clarity.")],
     [P("Para que os usamos","Why we use it"), P("Os dados do formulário servem apenas para responder à sua mensagem. O fundamento é o consentimento dado no formulário.","Form data is used only to reply to your message. The legal basis is the consent given in the form.")],
     [P("Reservas e pagamentos","Bookings and payments"), P("As reservas e os pagamentos são feitos na plataforma de reservas ROOM2, que tem a sua própria política de privacidade. [Ligação a indicar.]","Bookings and payments happen on the ROOM2 booking platform, which has its own privacy policy. [Link to be supplied.]")],
@@ -1056,7 +1028,7 @@ const LEGAL = {
     [P("Alterar a sua escolha","Changing your choice"), P("Pode mudar de ideias a qualquer momento no botão Definições de cookies, abaixo.","You can change your mind at any time with the Cookie settings button below.")]
   ],
   terms:[
-    [P("Sobre este website","About this website"), P("Este website pertence à Unit2Rent Lda. (NIF 516 000 000), que opera a marca ROOM2.","This website belongs to Unit2Rent Lda. (VAT PT 516 000 000), which operates the ROOM2 brand.")],
+    [P("Sobre este website","About this website"), P("Este website pertence à Unit2Rent Lda. (NIF [NIF]), que opera a marca ROOM2.","This website belongs to Unit2Rent Lda. (VAT [NIF]), which operates the ROOM2 brand.")],
     [P("Natureza do serviço e pagamentos","Nature of the service and payments"), P("Este website informa e orienta. As reservas, a verificação de disponibilidade em tempo real e os pagamentos são feitos na plataforma de reservas ROOM2, com as suas próprias condições.","This website informs and guides. Bookings, real-time availability checks and payments are made on the ROOM2 booking platform, under its own terms.")],
     [P("Bens excluídos","Excluded goods"), P("[Lista de bens que não podem ser guardados nas boxes, a fornecer pelo cliente.]","[List of goods that cannot be kept in the units, to be supplied by the client.]")],
     [P("Propriedade intelectual","Intellectual property"), P("A marca ROOM2, textos e imagens estão protegidos e não podem ser reproduzidos sem autorização.","The ROOM2 brand, texts and images are protected and may not be reproduced without permission.")],
@@ -1112,14 +1084,15 @@ function renderChrome(key){
     ${ext("account", `${esc(t("account"))} ${I.ext}`, "acct")}
     <div class="foot"><span>[email]@room2.pt</span><span>+351 [000 000 000]</span><span>Rua das Pombas, Zona Industrial de Taboeira, 3800-055 Aveiro</span></div>`;
   document.getElementById("siteFooter").innerHTML = `<div class="wrap">
+    <p class="wf-note" role="note" style="margin:28px 0 0"><span class="wf-tag">${esc(t("wf_note_t"))}</span>${esc(t("wf_facts"))}</p>
     <div class="f-top">
       <div class="f-brand">
         <a class="brand" href="${href("home")}" aria-label="${esc(t("home_aria"))}"><span class="logo">room2</span></a>
         <span class="meta" lang="en">Flexible workspaces &amp; storage</span>
         <p class="f-claim" lang="en">Make room for what’s next.</p>
         <p style="font-size:13px;line-height:1.65;color:var(--muted);max-width:36rem">${lang === "pt"
-          ? "A ROOM2 junta self storage e coworking em Aveiro: 40 boxes de 4 a 14 m² para guardar recheios, stock e arquivo, a partir de 1 mês, e postos de trabalho, 14 escritórios privados e sala de reuniões, à hora, ao dia, à semana ou ao mês. Junto à A25."
-          : "ROOM2 brings self storage and coworking together in Aveiro: 40 units from 4 to 14 m² for household goods, stock and archives, from 1 month, plus desks, 14 private offices and a meeting room, by the hour, day, week or month. Right off the A25."}</p>
+          ? "A ROOM2 junta Self Storage e coworking em Aveiro: 40 boxes de 4 a 14 m² para guardar recheios, stock e arquivo, a partir de 1 mês, e postos de trabalho, 14 escritórios privados e sala de reuniões, à hora, ao dia ou ao mês. Junto à A25."
+          : "ROOM2 brings Self Storage and coworking together in Aveiro: 40 units from 4 to 14 m² for household goods, stock and archives, from 1 month, plus desks, 14 private offices and a meeting room, by the hour, day or month. Right off the A25."}</p>
         <div class="btn-row" style="margin-top:8px">${bookBtn("btn-sm")}${ext("account", `${esc(t("account"))} ${I.ext}`, "btn btn-line btn-sm")}</div>
       </div>
       <div class="f-cols">
@@ -1151,7 +1124,7 @@ function renderChrome(key){
 
 /* ================= router ================= */
 const app = document.getElementById("app");
-let unlocked = false, prev = { key:undefined, lang:undefined }, prefill = null;
+let prev = { key:undefined, lang:undefined };
 function route(){
   let raw = location.hash.replace(/^#/, "") || "/";
   if (raw[0] !== "/") return;
@@ -1160,7 +1133,6 @@ function route(){
   const r = resolve(path);
   lang = r.lang;
   document.documentElement.lang = lang === "pt" ? "pt-PT" : "en";
-  if (!unlocked){ renderGate(); return; }
   const key = r.key;
   let html;
   if (key === "home") html = V.home();
@@ -1173,12 +1145,6 @@ function route(){
   const langOnly = prev.key === key && prev.lang !== lang;
   renderChrome(key);
   app.innerHTML = html;
-  if (key === "contact" && prefill){
-    const sel = app.querySelector("#f-subject"), msg = app.querySelector("#f-msg");
-    if (sel) sel.value = t("subjects")[prefill[0]] || "";
-    if (msg) msg.value = prefill[1] || "";
-    prefill = null;
-  }
   const seo = key && SEO[key];
   document.title = seo ? L(seo.title) : t("nf_title") + " | ROOM2";
   const md = document.querySelector('meta[name="description"]');
@@ -1234,8 +1200,6 @@ panel.addEventListener("keydown", e => {
 window.addEventListener("resize", () => { if (window.innerWidth > 1060) closeMenu(false); });
 
 document.addEventListener("click", e => {
-  const pf = e.target.closest("[data-prefill]");
-  if (pf){ const parts = pf.dataset.prefill.split("|"); prefill = [Number(parts[0]), parts.slice(1).join("|")]; }
   const x = e.target.closest("[data-ext]");
   if (x){ e.preventDefault(); if (!panel.hidden) closeMenu(false); openExt(x); return; }
   if (e.target.closest("#menuOpen")){ openMenu(); return; }
@@ -1275,17 +1239,6 @@ document.addEventListener("input", e => {
 });
 document.addEventListener("change", e => { if (e.target.id === "f-subject" || e.target.id === "f-consent") e.target.dispatchEvent(new Event("input", { bubbles:true })); });
 document.addEventListener("submit", e => {
-  if (e.target.id === "gateForm"){ e.preventDefault(); tryGate(); return; }
-  if (e.target.id === "nlform"){
-    e.preventDefault();
-    const nf = e.target, em = nf.querySelector("#nl-email"), ck = nf.querySelector("#nl-consent");
-    setErr(em, "e-nl-email", !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim()));
-    setErr(ck, "e-nl-consent", !ck.checked);
-    const nbad = nf.querySelector('[aria-invalid="true"]');
-    if (nbad){ nbad.focus(); return; }
-    const ok = document.getElementById("nlok"); ok.textContent = t("nl_ok"); ok.hidden = false; nf.hidden = true; ok.setAttribute("tabindex", "-1"); ok.focus();
-    return;
-  }
   if (e.target.id !== "cform") return;
   e.preventDefault();
   const f = e.target, $ = s => f.querySelector(s);
@@ -1337,61 +1290,8 @@ cookieEl.addEventListener("click", e => {
   hideCookie(); refreshMap();
 });
 
-/* ================= password gate (preview only: client-side check, not real security) ================= */
-const GATE_HASH = "d111372e6999eed7d34733ee30966772f8ba522624020069c70320e635f66d4e";
-function sha256hex(str){
-  const K=[1116352408,1899447441,3049323471,3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,604807628,770255983,1249150122,1555081692,1996064986,2554220882,2821834349,2952996808,3210313671,3336571891,3584528711,113926993,338241895,666307205,773529912,1294757372,1396182291,1695183700,1986661051,2177026350,2456956037,2730485921,2820302411,3259730800,3345764771,3516065817,3600352804,4094571909,275423344,430227734,506948616,659060556,883997877,958139571,1322822218,1537002063,1747873779,1955562222,2024104815,2227730452,2361852424,2428436474,2756734187,3204031479,3329325298];
-  const bytes = Array.from(new TextEncoder().encode(str)); const l = bytes.length * 8;
-  bytes.push(0x80); while (bytes.length % 64 !== 56) bytes.push(0);
-  for (let i = 7; i >= 0; i--) bytes.push(i > 3 ? 0 : (l >>> (i * 8)) & 255);
-  let h=[1779033703,3144134277,1013904242,2773480762,1359893119,2600822924,528734635,1541459225];
-  const r=(x,n)=>(x>>>n)|(x<<(32-n));
-  for (let o = 0; o < bytes.length; o += 64){
-    const w = new Array(64);
-    for (let i = 0; i < 16; i++) w[i] = (bytes[o+i*4]<<24)|(bytes[o+i*4+1]<<16)|(bytes[o+i*4+2]<<8)|bytes[o+i*4+3];
-    for (let i = 16; i < 64; i++){ const s0=r(w[i-15],7)^r(w[i-15],18)^(w[i-15]>>>3), s1=r(w[i-2],17)^r(w[i-2],19)^(w[i-2]>>>10); w[i]=(w[i-16]+s0+w[i-7]+s1)|0; }
-    let [a,b,c,d,e,f,g,hh]=h;
-    for (let i = 0; i < 64; i++){ const t1=(hh+(r(e,6)^r(e,11)^r(e,25))+((e&f)^(~e&g))+K[i]+w[i])|0, t2=((r(a,2)^r(a,13)^r(a,22))+((a&b)^(a&c)^(b&c)))|0; hh=g; g=f; f=e; e=(d+t1)|0; d=c; c=b; b=a; a=(t1+t2)|0; }
-    h=h.map((v,i)=>(v+[a,b,c,d,e,f,g,hh][i])|0);
-  }
-  return h.map(v=>(v>>>0).toString(16).padStart(8,"0")).join("");
-}
-const gate = document.getElementById("gate");
-function renderGate(){
-  document.title = "ROOM2 — Wireframe";
-  const typed = document.getElementById("gatePw");
-  const val = typed ? typed.value : "";
-  gate.innerHTML = `${ph("hero", "")}
-  <form id="gateForm" novalidate aria-labelledby="gateTitle">
-    <div class="lang" role="group" aria-label="${esc(t("lang_group"))}" style="align-self:flex-start;margin-bottom:-8px">
-      <a href="#/" lang="pt-PT" aria-label="Português" aria-current="${lang === "pt"}">PT</a><span class="sep" aria-hidden="true">|</span><a href="#/en" lang="en" aria-label="English" aria-current="${lang === "en"}">EN</a></div>
-    <h1 id="gateTitle" class="logo">room2</h1>
-    <p class="sig" lang="en" style="border:0;padding:0">Flexible workspaces &amp; storage</p>
-    <p class="note">${esc(t("g_note"))}</p>
-    <div class="field"><label for="gatePw">${esc(t("g_pw"))}</label>
-      <div class="pw"><input id="gatePw" type="password" autocomplete="current-password" aria-describedby="gateErr"><button class="show" type="button" id="gateShow" aria-pressed="false" aria-controls="gatePw">${esc(t("g_show"))}</button></div>
-      <span class="err" id="gateErr" role="alert" hidden>${esc(t("g_err"))}</span></div>
-    <button class="btn btn-solid" type="submit">${esc(t("g_enter"))}</button>
-  </form>`;
-  const pw = document.getElementById("gatePw"); pw.value = val; pw.focus();
-  pw.addEventListener("input", () => { document.getElementById("gateErr").hidden = true; pw.setAttribute("aria-invalid", "false"); });
-  document.getElementById("gateShow").addEventListener("click", function(){
-    const show = pw.type === "password"; pw.type = show ? "text" : "password";
-    this.setAttribute("aria-pressed", String(show)); this.textContent = show ? t("g_hide") : t("g_show"); pw.focus();
-  });
-}
-function tryGate(){
-  const pw = document.getElementById("gatePw");
-  if (sha256hex(pw.value.trim().toLowerCase()) === GATE_HASH){ unlock(); return; }
-  document.getElementById("gateErr").hidden = false; pw.setAttribute("aria-invalid", "true"); pw.select();
-  const f = document.getElementById("gateForm"); f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake");
-}
-function unlock(){
-  try { sessionStorage.setItem("room2-preview", GATE_HASH); } catch(e){}
-  gate.remove(); document.body.classList.remove("locked"); unlocked = true;
-  route(); showCookie(false);
-}
-unlock();
+/* ================= start ================= */
+route(); showCookie(false);
 })();
 </script>
 </body>
