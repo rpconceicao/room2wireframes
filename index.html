@@ -44,7 +44,8 @@
 *,*::before,*::after{box-sizing:border-box}
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px);background:var(--bg)}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{font-family:var(--sans);line-height:1.5}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:auto;overflow-x:hidden}
 a{color:var(--fg)} a:hover{color:var(--muted)}
 :focus-visible{outline:2px solid var(--fg);outline-offset:2px;border-radius:8px}
 button{font-family:inherit}
@@ -653,6 +654,39 @@ h3.h2{font-weight:600}
 .more-card.dark{background:#18181b}
 .more-card.dark .body{color:#d4d4d8}
 @media (max-width:860px){ .more-grid{grid-template-columns:1fr} .more-card{padding:32px} }
+/* ================= footer (v25) ================= */
+.site-footer.dark{background:#09090b;color:#d4d4d8;border-top:1px solid #27272a}
+.ft{padding-top:64px;padding-bottom:32px}
+.ft-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:40px}
+.ft-brand{grid-column:span 4;display:flex;flex-direction:column;align-items:flex-start}
+.ft-brand .logo-svg{height:26px;color:#f4f4f5}
+.ft-sig{margin-top:8px;font-size:12px;color:#71717a}
+.ft-claim{margin-top:24px;font-size:24px;font-weight:600;letter-spacing:-.025em;line-height:1.25;color:#fff}
+.ft-seo{margin-top:12px;font-size:13px;line-height:1.625;color:#a1a1aa;max-width:30rem}
+.ft-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.ft-c2{grid-column:span 2}
+.ft-c3{grid-column:span 3}
+.ft-h{margin:0 0 16px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#71717a}
+.ft-h2{margin:32px 0 12px}
+.ft-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.ft-list a{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#a1a1aa;text-decoration:none;border-radius:8px}
+.ft-list a:hover{color:#fff}
+.ft-contacts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:13px;line-height:1.5;color:#a1a1aa}
+.ft-contacts li{display:flex;gap:8px}
+.ft-contacts svg{flex-shrink:0;margin-top:2px}
+.ft-contacts small{display:block;font-size:11px;color:#71717a}
+.ft-social{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.ft-social .soc{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #27272a;border-radius:8px;color:#a1a1aa}
+.ft-social .soc:hover{color:#fff;border-color:#52525b}
+.ft-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:56px;padding-top:24px;border-top:1px solid #27272a}
+.ft-copy{font-size:12px;color:#71717a}
+.ft-right{display:flex;align-items:center;gap:24px}
+.ft-top{display:inline-flex;align-items:center;gap:6px;padding:0;border:0;background:none;font-size:12px;color:#71717a;cursor:pointer}
+.ft-top:hover{color:#fff}
+.ft-loba{display:inline-flex;opacity:.3;transition:opacity .15s}
+.ft-loba:hover{opacity:.8}
+@media (max-width:860px){ .ft-grid{grid-template-columns:1fr 1fr} .ft-brand{grid-column:1 / -1} .ft-c2,.ft-c3{grid-column:auto} }
+@media (max-width:560px){ .ft-grid{grid-template-columns:1fr} .ft-bottom{flex-direction:column;align-items:flex-start} }
 </style>
 </head>
 <body>
@@ -938,12 +972,12 @@ I.hero = I.video;
 const PH = {"caret": "<path d=\"M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z\"></path>", "user": "<path d=\"M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z\"></path>", "ext": "<path d=\"M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z\"></path>", "list": "<path d=\"M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z\"></path>", "cam": "<path d=\"M208,58H179.21L165,36.67A6,6,0,0,0,160,34H96a6,6,0,0,0-5,2.67L76.78,58H48A22,22,0,0,0,26,80V192a22,22,0,0,0,22,22H208a22,22,0,0,0,22-22V80A22,22,0,0,0,208,58Zm10,134a10,10,0,0,1-10,10H48a10,10,0,0,1-10-10V80A10,10,0,0,1,48,70H80a6,6,0,0,0,5-2.67L99.21,46h57.57L171,67.33A6,6,0,0,0,176,70h32a10,10,0,0,1,10,10ZM128,90a42,42,0,1,0,42,42A42,42,0,0,0,128,90Zm0,72a30,30,0,1,1,30-30A30,30,0,0,1,128,162Z\"></path>", "arrow": "<path d=\"M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z\"></path>", "clock": "<path d=\"M128,26A102,102,0,1,0,230,128,102.12,102.12,0,0,0,128,26Zm0,192a90,90,0,1,1,90-90A90.1,90.1,0,0,1,128,218Zm62-90a6,6,0,0,1-6,6H128a6,6,0,0,1-6-6V72a6,6,0,0,1,12,0v50h50A6,6,0,0,1,190,128Z\"></path>", "cal": "<path d=\"M208,34H182V24a6,6,0,0,0-12,0V34H86V24a6,6,0,0,0-12,0V34H48A14,14,0,0,0,34,48V208a14,14,0,0,0,14,14H208a14,14,0,0,0,14-14V48A14,14,0,0,0,208,34ZM48,46H74V56a6,6,0,0,0,12,0V46h84V56a6,6,0,0,0,12,0V46h26a2,2,0,0,1,2,2V82H46V48A2,2,0,0,1,48,46ZM208,210H48a2,2,0,0,1-2-2V94H210V208A2,2,0,0,1,208,210Z\"></path>", "shield": "<path d=\"M208,42H48A14,14,0,0,0,34,56v56c0,51.94,25.12,83.4,46.2,100.64,22.73,18.6,45.27,24.89,46.22,25.15a6,6,0,0,0,3.16,0c.95-.26,23.49-6.55,46.22-25.15C196.88,195.4,222,163.94,222,112V56A14,14,0,0,0,208,42Zm2,70c0,37.76-13.94,68.39-41.44,91.06A131.17,131.17,0,0,1,128,225.72a130.94,130.94,0,0,1-40.56-22.66C59.94,180.39,46,149.76,46,112V56a2,2,0,0,1,2-2H208a2,2,0,0,1,2,2ZM172.24,99.76a6,6,0,0,1,0,8.48l-56,56a6,6,0,0,1-8.48,0l-24-24a6,6,0,0,1,8.48-8.48L112,151.51l51.76-51.75A6,6,0,0,1,172.24,99.76Z\"></path>", "pin": "<path d=\"M128,66a38,38,0,1,0,38,38A38,38,0,0,0,128,66Zm0,64a26,26,0,1,1,26-26A26,26,0,0,1,128,130Zm0-112a86.1,86.1,0,0,0-86,86c0,30.91,14.34,63.74,41.47,94.94a252.32,252.32,0,0,0,41.09,38,6,6,0,0,0,6.88,0,252.32,252.32,0,0,0,41.09-38c27.13-31.2,41.47-64,41.47-94.94A86.1,86.1,0,0,0,128,18Zm0,206.51C113,212.93,54,163.62,54,104a74,74,0,0,1,148,0C202,163.62,143,212.93,128,224.51Z\"></path>", "left": "<path d=\"M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z\"></path>", "right": "<path d=\"M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z\"></path>", "pinF": "<path d=\"M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z\"></path>", "phone": "<path d=\"M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z\"></path>", "mail": "<path d=\"M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z\"></path>", "insta": "<path d=\"M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z\"></path>", "linkedin": "<path d=\"M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z\"></path>", "facebook": "<path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z\"></path>", "checkc": "<path d=\"M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z\"></path>", "info": "<path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z\"></path>", "plus": "<path d=\"M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z\"></path>", "clock2": "<path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z\"></path>", "nav": "<path d=\"M240,104H229.2L201.42,41.5A16,16,0,0,0,186.8,32H69.2a16,16,0,0,0-14.62,9.5L26.8,104H16a8,8,0,0,0,0,16h8v80a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V184h96v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V120h8a8,8,0,0,0,0-16ZM69.2,48H186.8l24.89,56H44.31ZM64,200H40V184H64Zm128,0V184h24v16Zm24-32H40V120H216ZM56,144a8,8,0,0,1,8-8H80a8,8,0,0,1,0,16H64A8,8,0,0,1,56,144Zm112,0a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H176A8,8,0,0,1,168,144Z\"></path>", "map": "<path d=\"M227.69,51.27a6,6,0,0,0-5.15-1.09L160.7,65.64l-62-31a6,6,0,0,0-4.14-.45l-64,16A6,6,0,0,0,26,56V200a6,6,0,0,0,7.46,5.82L95.3,190.36l62,31a6,6,0,0,0,4.14.45l64-16A6,6,0,0,0,230,200V56A6,6,0,0,0,227.69,51.27ZM102,49.71l52,26V206.29l-52-26Zm-64,11,52-13V179.32l-52,13ZM218,195.32l-52,13V76.68l52-13Z\"></path>", "x": "<path d=\"M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z\"></path>"};
 const ph16 = (name, size, cls) => `<svg aria-hidden="true" width="${size}" height="${size}" viewBox="0 0 256 256" fill="currentColor"${cls ? ` class="${cls}"` : ""}>${PH[name]}</svg>`;
 Object.assign(I, {
-  ext: ph16("ext", 14, "ext-ico"), ext13: ph16("ext", 13, "ext-ico"), user: ph16("user", 15), caret: ph16("caret", 10, "caret"),
+  ext: ph16("ext", 14, "ext-ico"), ext12: ph16("ext", 12, "ext-ico"), ext13: ph16("ext", 13, "ext-ico"), user: ph16("user", 15), caret: ph16("caret", 10, "caret"),
   list: ph16("list", 22), close: ph16("x", 20), arrow: ph16("arrow", 16), check: ph16("checkc", 16), info: ph16("info", 16),
   left: ph16("left", 16), right: ph16("right", 16), plus: ph16("plus", 20, "pm"), cam: ph16("cam", 28),
   clock: ph16("clock", 28, "hl-ico"), cal: ph16("cal", 28, "hl-ico"), shield: ph16("shield", 28, "hl-ico"), map28: ph16("pin", 28, "hl-ico"),
-  map: ph16("map", 28), pinS: ph16("pinF", 20), phone: ph16("phone", 20), mail: ph16("mail", 20), clockS: ph16("clock2", 20), navS: ph16("nav", 20), pinF: ph16("pinF", 14), phoneF: ph16("phone", 14), mailF: ph16("mail", 14),
-  insta: ph16("insta", 18), linkedin: ph16("linkedin", 18), facebook: ph16("facebook", 18),
+  map: ph16("map", 28), pinS: ph16("pinF", 20), phone: ph16("phone", 20), mail: ph16("mail", 20), clockS: ph16("clock2", 20), navS: ph16("nav", 20), pinF: ph16("pinF", 16), phoneF: ph16("phone", 16), mailF: ph16("mail", 16),
+  insta: ph16("insta", 20), linkedin: ph16("linkedin", 20), facebook: ph16("facebook", 20),
   logo: `<svg class="logo-svg" viewBox="0 0 96 26" fill="currentColor" role="img" aria-label="ROOM2"><path d="M0 4h10l-6 6v12H0z" opacity=".9"></path><text x="14" y="20" font-size="20" font-weight="700" font-family="system-ui, sans-serif" letter-spacing="-0.5">room2</text></svg>`,
   quote: `<svg class="quote-mark" aria-hidden="true" width="36" height="18" viewBox="0 0 36 18"><path d="M0 0 L18 18 L36 0 L30 0 L18 12 L6 0 Z" fill="currentColor"></path></svg>`
 });
@@ -1387,39 +1421,42 @@ function renderChrome(key){
       <div class="mp-lang"><a href="${href(key || "home", "pt")}" lang="pt-PT" aria-current="${lang === "pt"}">Português</a><a href="${href(key || "home", "en")}" lang="en" aria-current="${lang === "en"}">English</a></div>
       ${ext("account", `${I.user} ${esc(t("account"))} ${I.ext}`, "mp-acct")}
     </div>`;
-  document.getElementById("siteFooter").innerHTML = `<div class="wrap">
-    <div class="f-top">
-      <div class="f-brand">
+  document.getElementById("siteFooter").innerHTML = `<div class="wrap ft">
+    <div class="ft-grid">
+      <div class="ft-brand">
         <a class="brand" href="${href("home")}" aria-label="${esc(t("home_aria"))}">${I.logo}</a>
-        <span class="meta" lang="en">Flexible workspaces &amp; storage</span>
-        <p class="f-claim" lang="en">Make room for what’s next.</p>
-        <p style="font-size:13px;line-height:1.65;color:var(--muted);max-width:36rem">${lang === "pt"
+        <p class="ft-sig" lang="en">Flexible workspaces &amp; storage</p>
+        <p class="ft-claim" lang="en">Make room for what’s next.</p>
+        <p class="ft-seo">${lang === "pt"
           ? "A ROOM2 junta Self Storage e coworking em Aveiro: 40 boxes de 4 a 14 m² para guardar recheios, stock e arquivo, a partir de 1 mês, e postos de trabalho, 14 escritórios privados e sala de reuniões, à hora, ao dia ou ao mês. Junto à A25."
           : "ROOM2 brings Self Storage and coworking together in Aveiro: 40 units from 4 to 14 m² for household goods, stock and archives, from 1 month, plus desks, 14 private offices and a meeting room, by the hour, day or month. Right off the A25."}</p>
-        <div class="btn-row" style="margin-top:8px">${bookBtn("btn-sm")}${ext("account", `${I.user} ${esc(t("account"))} ${I.ext}`, "btn btn-line btn-sm")}</div>
+        <div class="ft-btns">${bookBtn("btn-sm")}${ext("account", esc(t("account")), "btn btn-line btn-sm")}</div>
       </div>
-      <div class="f-cols">
-        <nav aria-labelledby="fh-pages"><h2 class="f-h" id="fh-pages">${esc(t("f_pages"))}</h2>
-          <ul class="f-list">${["home"].concat(NAV).map(k => `<li><a href="${href(k)}">${esc(k === "home" ? (lang === "pt" ? "Início" : "Home") : t("nav_" + k))}</a></li>`).join("")}</ul></nav>
-        <div><h2 class="f-h">${esc(t("f_contact"))}</h2>
-          <address class="f-addr">
-            <span class="f-row">${I.pinF}<span>Rua das Pombas, Zona Industrial de Taboeira, 3800-055 Aveiro, Portugal</span></span>
-            <span class="f-row">${I.phoneF}<span>+351 [000 000 000]<br><small>${esc(t("d_call"))}</small></span></span>
-            <span class="f-row">${I.mailF}<span>[email]@room2.pt</span></span>
-          </address></div>
-        <div><h2 class="f-h" id="fh-follow">${esc(t("f_follow"))}</h2>
-          <div class="f-social">${[["Instagram", I.insta], ["LinkedIn", I.linkedin], ["Facebook", I.facebook]].map(([n, ic]) => ext("social", `${ic}<span class="sr-only">ROOM2 ${lang === "pt" ? "no" : "on"} ${n}</span>`, "soc", n)).join("")}</div></div>
+      <nav class="ft-col ft-c2" aria-labelledby="fh-pages"><h2 class="ft-h" id="fh-pages">${esc(t("f_pages"))}</h2>
+        <ul class="ft-list">${["home"].concat(NAV).map(k => `<li><a href="${href(k)}">${esc(k === "home" ? (lang === "pt" ? "Início" : "Home") : t("nav_" + k))}</a></li>`).join("")}</ul></nav>
+      <div class="ft-col ft-c3"><h2 class="ft-h">${esc(t("f_contact"))}</h2>
+        <ul class="ft-contacts">
+          <li>${I.pinF}<span>Rua das Pombas, Zona Industrial de Taboeira, 3800-055 Aveiro, Portugal</span></li>
+          <li>${I.phoneF}<span>+351 [000 000 000]<small>${esc(t("d_call"))}</small></span></li>
+          <li>${I.mailF}<span>[email]@room2.pt</span></li>
+        </ul>
+        <h2 class="ft-h ft-h2" id="fh-follow">${esc(t("f_follow"))}</h2>
+        <ul class="ft-social" aria-labelledby="fh-follow">${[["Instagram", I.insta], ["LinkedIn", I.linkedin], ["Facebook", I.facebook]].map(([n, ic]) => `<li>${ext("social", `${ic}<span class="sr-only">ROOM2 ${lang === "pt" ? "no" : "on"} ${n}</span>`, "soc", n)}</li>`).join("")}</ul>
       </div>
+      <nav class="ft-col ft-c3" aria-labelledby="fh-legal"><h2 class="ft-h" id="fh-legal">${lang === "pt" ? "Informação legal" : "Legal information"}</h2>
+        <ul class="ft-list">
+          <li><a href="${href("terms")}">${esc(t("terms"))}</a></li>
+          <li><a href="${href("privacy")}">${esc(t("privacy"))}</a></li>
+          <li><a href="${href("cookies")}">${esc(t("cookies"))}</a></li>
+          <li>${ext("complaints", `${esc(t("complaints"))} ${I.ext12}`)}</li>
+          <li>${ext("ral", `${esc(t("ral"))} ${I.ext12}`)}</li>
+        </ul></nav>
     </div>
-    <div class="f-bottom">
-      <span class="f-copy">${esc(t("copy"))}</span>
-      <div class="f-legal">
-        <a href="${href("terms")}">${esc(t("terms"))}</a><a href="${href("privacy")}">${esc(t("privacy"))}</a><a href="${href("cookies")}">${esc(t("cookies"))}</a>
-        ${ext("complaints", `${esc(t("complaints"))} ${I.ext}`)}${ext("ral", `${esc(t("ral"))} ${I.ext}`)}
-      </div>
-      <div class="f-right">
-        <button type="button" id="backTop">${esc(t("back_top"))} ${I.up}</button>
-        <a class="f-loba" href="https://www.loba.com/" target="_blank" rel="noopener" title="LOBA" aria-label="${esc(t("developed_aria"))}"><span class="f-loba-txt" aria-hidden="true">${esc(t("developed"))}</span><span class="f-loba-mark" aria-hidden="true"></span></a>
+    <div class="ft-bottom">
+      <p class="ft-copy">${esc(t("copy"))}</p>
+      <div class="ft-right">
+        <button type="button" id="backTop" class="ft-top">${esc(t("back_top"))} ${I.up}</button>
+        <a class="ft-loba" href="https://www.loba.com/" target="_blank" rel="noopener" aria-label="${esc(t("developed_aria"))}"><svg width="50" height="14" viewBox="0 0 50 14" fill="none" aria-hidden="true"><path d="M9.64511 11.4418V13.1099C9.64511 13.4764 9.5233 13.7002 9.05518 13.7002H0.590187C0.122072 13.7002 0 13.4764 0 13.1099V0.900527C0 0.432541 0.223842 0.310857 0.590187 0.310857H2.60463C2.97072 0.310857 3.19482 0.432541 3.19482 0.900527V10.8516H9.05518C9.5233 10.8516 9.64511 11.0753 9.64511 11.4418ZM22.0822 9.40135C22.0822 12.6165 19.0301 14 16.6086 14C14.1867 14 11.1751 12.6165 11.1751 9.40135V4.59878C11.1751 1.38378 14.1867 0 16.6086 0C19.0301 0 22.0822 1.38404 22.0822 4.59904V9.40135ZM18.8874 4.88391C18.8874 3.5816 17.9515 2.82848 16.6086 2.82848C15.2856 2.82848 14.3498 3.58134 14.3498 4.88366V9.11635C14.3498 10.4189 15.2856 11.1715 16.6086 11.1715C17.9515 11.1715 18.8874 10.4189 18.8874 9.11635V4.88391ZM30.6814 13.6908H24.7064C24.2389 13.6908 24.117 13.4674 24.117 13.1014V0.887479C24.117 0.522039 24.2389 0.298456 24.7064 0.298456H30.3967C33.7095 0.298456 35.132 2.06643 35.132 3.97704C35.132 6.02937 33.8313 6.67969 33.6484 6.76103C33.8111 6.82219 35.5182 7.59446 35.5182 9.78929C35.5182 12.37 33.5062 13.6908 30.6814 13.6908ZM29.5432 7.5995V6.05485L32.0836 4.30187C32.0836 4.30187 31.4536 3.16379 30.3967 3.16379H27.3077V10.8051H30.7222C31.7178 10.8051 32.2869 9.48437 32.2869 9.48437L29.5432 7.5995ZM48.7228 13.7003H46.5861C46.1384 13.7003 45.9757 13.5782 45.8129 13.0898L45.243 11.4824H40.2577L39.6878 13.0898C39.5249 13.5782 39.3622 13.7003 38.9145 13.7003H36.7779C36.3303 13.7003 36.3303 13.3744 36.432 13.1304L40.9494 0.941545C41.1122 0.514164 41.3361 0.310883 41.7839 0.310883H43.7373C44.185 0.310883 44.3884 0.514164 44.5716 0.941545L49.0686 13.1304C49.1704 13.3744 49.1704 13.7003 48.7228 13.7003ZM44.2867 8.63376L42.7603 4.13637L41.2343 8.63376H44.2867Z" fill="white"></path></svg></a>
       </div>
     </div></div>`;
   const sk = document.querySelector("[data-skip]"); sk.textContent = t("skip");
