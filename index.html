@@ -687,6 +687,10 @@ h3.h2{font-weight:600}
 .ft-loba:hover{opacity:.8}
 @media (max-width:860px){ .ft-grid{grid-template-columns:1fr 1fr} .ft-brand{grid-column:1 / -1} .ft-c2,.ft-c3{grid-column:auto} }
 @media (max-width:560px){ .ft-grid{grid-template-columns:1fr} .ft-bottom{flex-direction:column;align-items:flex-start} }
+/* gallery tags (v25) */
+.gal-item{position:relative}
+.gal-tag{position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;background:#fff;color:#27272a;border:1px solid #d4d4d8;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.gal-tag.is-dark{background:#18181b;color:#fff;border-color:#18181b}
 </style>
 </head>
 <body>
@@ -738,7 +742,6 @@ pt: {
   see_units:"Ver boxes", see_spaces:"Ver espaços", see_work:"Ver Workspaces", see_storage:"Ver Self Storage", talk:"Falar connosco", see_faq:"Ver FAQs",
   ph_img:"Imagem", ph_video:"Vídeo", ph_hero:"Imagem ou vídeo · largura total", ph_map:"Mapa · Google Maps",
   price_note:"Preço de referência. O valor final e a disponibilidade confirmam-se na reserva.",
-  size_tip:"Na dúvida entre dois tamanhos? Escolha o maior: pode mudar depois.",
   from:"desde", u_hour:"/hora", u_day:"/dia", u_month:"/mês", ul_hour:"À hora", ul_day:"Ao dia", ul_month:"Ao mês",
   th_dims:"Dimensões e área", th_cap:"Capacidade", th_unit:"Unidade de reserva", th_price:"Preço desde",
   f_dims:"Dimensões e área", f_cap:"Capacidade", f_use:"Utilização aconselhada", f_incl:"O que inclui", f_unit:"Unidade de reserva",
@@ -792,7 +795,6 @@ en: {
   see_units:"See units", see_spaces:"See spaces", see_work:"See Workspaces", see_storage:"See Self Storage", talk:"Talk to us", see_faq:"See FAQs",
   ph_img:"Image", ph_video:"Video", ph_hero:"Image or video · full width", ph_map:"Map · Google Maps",
   price_note:"Reference price. The final price and availability are confirmed when you book.",
-  size_tip:"Torn between two sizes? Choose the larger one: you can change later.",
   from:"from", u_hour:"/hour", u_day:"/day", u_month:"/month", ul_hour:"By the hour", ul_day:"By the day", ul_month:"By the month",
   th_dims:"Dimensions and area", th_cap:"Capacity", th_unit:"Booked", th_price:"Price from",
   f_dims:"Dimensions and area", f_cap:"Capacity", f_use:"Recommended use", f_incl:"What’s included", f_unit:"Booked",
@@ -863,14 +865,14 @@ const SEO = {
 
 /* ================= CMS: collection “Tipologias” (section 10.1) — every value is a placeholder ================= */
 const TYPES = [
-  { name:"Box S", vert:"storage", group:"box", img:P("Bicicletas, malas e caixas de roupa numa box pequena","Bikes, suitcases and boxed clothing in a small unit"), dims:P("[a × b] m · 4 m²","[a × b] m · 4 m²"),
-    use:P("Recheio de um quarto ou stock de loja online","One bedroom’s contents or online shop stock"), unit:"month", price:"[00]", order:1 },
+  { name:"Box S", vert:"storage", group:"box", img:P("Bicicletas, tenda de campismo e caixas de arquivo numa box pequena","Bikes, a camping tent and archive boxes in a small unit"), dims:P("[a × b] m · 4 m²","[a × b] m · 4 m²"),
+    use:P("Bicicletas, material de campismo ou caixas de arquivo","Bikes, camping gear or archive boxes"), unit:"month", price:"[00]", order:1 },
   { name:"Box M", vert:"storage", group:"box", img:P("Caixas de calçado e vestuário em estantes","Boxed shoes and apparel on shelving"), dims:P("[a × b] m · 5 m²","[a × b] m · 5 m²"),
-    use:P("Recheio de um T1 durante obras","A one-bedroom flat during renovation"), unit:"month", price:"[00]", order:2 },
-  { name:"Box L", vert:"storage", group:"box", img:P("Paletes de produto e material de feira","Product pallets and trade-show material"), dims:P("[a × b] m · 8 m²","[a × b] m · 8 m²"),
-    use:P("Recheio de um T2 ou arquivo de empresa","A two-bedroom flat or a company archive"), unit:"month", price:"[00]", order:3 },
-  { name:"Box XL", vert:"storage", group:"box", img:P("Porta-paletes a entrar numa box grande","Pallet truck entering a large unit"), dims:P("[a × b] m · 14 m²","[a × b] m · 14 m²"),
-    use:P("Recheio de um T3 ou T4, ou equipamento de obra","A three- or four-bedroom home, or site equipment"), unit:"month", price:"[00]", order:4 },
+    use:P("Recheio de um T1 durante obras, ou stock de uma loja online","A one-bedroom flat during renovation, or online shop stock"), unit:"month", price:"[00]", order:2 },
+  { name:"Box L", vert:"storage", group:"box", img:P("Expositores e material de feira arrumados numa box","Trade-show displays and event material stored in a unit"), dims:P("[a × b] m · 8 m²","[a × b] m · 8 m²"),
+    use:P("Material de feiras e eventos, ou a mudança de um escritório","Trade-show and event material, or an office move"), unit:"month", price:"[00]", order:3 },
+  { name:"Box XL", vert:"storage", group:"box", img:P("Ferramentas e materiais de obra numa box grande","Tools and building materials in a large unit"), dims:P("[a × b] m · 14 m²","[a × b] m · 14 m²"),
+    use:P("Ferramentas e materiais de obra, mobiliário de loja ou arquivo de empresa","Tools and building materials, shop fittings or a company archive"), unit:"month", price:"[00]", order:4 },
   { name:P("Flex Desk · Open space","Flex Desk · Open space"), short:"Flex Desk", vert:"work", group:"cowork", img:P("Pessoa ao portátil no open space com luz natural","Person on a laptop in the naturally lit open space"), cap:P("1 pessoa","1 person"),
     use:P("Umas horas de trabalho concentrado no open space, sem lugar fixo.","A few hours of focused work in the open space, no fixed desk."), unit:"hour", price:"[00]", order:1 },
   { name:P("Dedicated Desk · Mensal","Dedicated Desk · Monthly"), short:"Dedicated Desk", vert:"work", group:"cowork", img:P("Secretária fixa com cadeira ergonómica e cacifo","Dedicated desk with ergonomic chair and locker"), cap:P("1 pessoa","1 person"),
@@ -900,8 +902,8 @@ const FAQ = [
     [P("Na Rua das Pombas, Zona Industrial de Taboeira, 3800-055 Aveiro.","At Rua das Pombas, Zona Industrial de Taboeira, 3800-055 Aveiro."),
      P("Apenas a 4 minutos da saída Taboeira / Zona Industrial da A25 e a 8 minutos do centro da cidade de Aveiro, com estacionamento gratuito no local.","Just 4 minutes from the Taboeira / Industrial Zone exit on the A25 motorway, and 8 minutes from central Aveiro, with free on-site parking.")]],
   ["storage", P("Que tamanho de box preciso?","What size unit do I need?"),
-    [P("Uma box de 4 m² guarda o recheio de um quarto; uma de 8 m², o de um T2; uma de 14 m², o de um T3 ou T4.","A 4 m² unit holds one bedroom’s contents; an 8 m² unit, a two-bedroom flat; a 14 m² unit, a three- or four-bedroom home."),
-     P("Há 40 boxes, de 4 a 14 m². Na dúvida entre dois tamanhos, escolha o maior: pode mudar depois.","There are 40 units, from 4 to 14 m². Torn between two sizes? Choose the larger one: you can change later.")]],
+    [P("Uma box de 4 m² guarda as caixas do sótão e as bicicletas; uma de 8 m², a mudança de um T2; uma de 14 m², o recheio de uma moradia.","A 4 m² unit holds the attic boxes and the bikes; an 8 m² unit, a two-bedroom move; a 14 m² unit, the contents of a house."),
+     P("Há 40 boxes, de 4 a 14 m².","There are 40 units, from 4 to 14 m².")]],
   ["storage", P("Como reservo uma box?","How do I book a unit?"),
     [P("Online, no portal de reservas: escolhe a box, paga e recebe a confirmação. A reserva é mensal, com mínimo de 1 mês.","Online, on the booking portal: choose the unit, pay and get your confirmation. Bookings are monthly, with a 1-month minimum."),
      P("O acesso à zona de storage e o cadeado da box são entregues em mão.","Access to the storage area and the unit’s padlock are handed over in person.")]],
@@ -1023,7 +1025,33 @@ const ctaBand = (title, text, buttons, withHandoff, light, quote) => `<section c
   <div class="cta-txt">${quote ? `<p class="cta-quote">${quote}</p>` : ""}<h2 class="h2" id="h-cta">${title}</h2>${text ? `<p class="body">${text}</p>` : ""}</div>
   <div class="btn-row">${buttons}</div>
 </div></section>`;
-const moment = (line, sub) => `<section class="light moment" aria-label="${esc(line.replace(/<[^>]+>/g, ""))}">${I.quote}<blockquote>${line}</blockquote>${sub ? `<p class="body">${sub}</p>` : ""}</section>`;
+const GAL_HOME = [
+  ["Self Storage", P("Corredor das boxes, com cadeado em cada porta","Unit corridor, a padlock on each door")],
+  ["Self Storage", P("Zona de descarga e rampa de acesso à cave","Unloading area and basement ramp")],
+  ["Workspaces", P("Open space com luz natural","Open space in natural light")],
+  ["Workspaces", P("Sala de reuniões para 12 pessoas","Meeting room for 12 people")],
+  ["Workspaces", P("Entrada com chave digital no smartphone","Entrance with phone digital key")],
+  ["Workspaces", P("Copa e phone booths","Kitchen lounge and phone booths")]
+];
+const GAL_ABOUT = [
+  ["ROOM2", P("A equipa ROOM2 a receber um cliente na entrada","The ROOM2 team welcoming a client at the entrance")],
+  ["Self Storage", P("Cliente a carregar caixas na zona de descarga","Client loading boxes in the unloading area")],
+  ["Workspaces", P("Profissionais a trabalhar no open space","Professionals working in the open space")],
+  ["Workspaces", P("Reunião de equipa na sala para 12 pessoas","Team meeting in the 12-person room")],
+  ["Workspaces", P("Pequena equipa num escritório privado","Small team in a private office")],
+  ["Self Storage", P("Corredor das boxes, com cadeado em cada porta","Unit corridor, a padlock on each door")]
+];
+const gallery = (items, light) => `<section${light ? ' class="light"' : ""} aria-labelledby="h-gal"><div class="wrap sec">
+  ${secHead("h-gal", esc(t("gal_title")), esc(t("gal_intro")))}
+  <div class="slider" id="gal" role="region" aria-label="${esc(t("gal_aria"))}" tabindex="0">
+    ${items.map(([tag, d]) => `<div class="gal-item">${ph("img", d, "r-43")}<span class="gal-tag${tag === "Self Storage" ? "" : " is-dark"}">${tag}</span></div>`).join("")}
+  </div>
+  <div class="gal-foot">
+    <div class="dots" id="galDots">${items.map((_, i) => `<button type="button" class="dot" data-dot="${i}" aria-label="${lang === "pt" ? "Imagem" : "Image"} ${i + 1}"${i === 0 ? ' aria-current="true"' : ""}></button>`).join("")}</div>
+    <div class="slide-nav"><button class="round-btn" type="button" data-slide="-1" aria-controls="gal" aria-label="${esc(t("prev"))}">${I.left}</button><button class="round-btn" type="button" data-slide="1" aria-controls="gal" aria-label="${esc(t("next"))}">${I.right}</button></div>
+  </div>
+</div></section>`;
+const moment = (line, sub) => `<section class="moment" aria-label="${esc(line.replace(/<[^>]+>/g, ""))}">${I.quote}<blockquote>${line}</blockquote>${sub ? `<p class="body">${sub}</p>` : ""}</section>`;
 
 /* ================= views ================= */
 const V = {};
@@ -1077,18 +1105,7 @@ V.home = () => `
   <div class="btn-row" style="margin-top:28px">${bookBtn()}</div>
 </div></section>
 
-<section class="light" aria-labelledby="h-gal"><div class="wrap sec">
-  ${secHead("h-gal", esc(t("gal_title")), esc(t("gal_intro")))}
-  <div class="slider" id="gal" role="region" aria-label="${esc(t("gal_aria"))}" tabindex="0">
-    ${[P("Corredor das boxes, com cadeado em cada porta","Unit corridor, a padlock on each door"), P("Zona de descarga e rampa de acesso à cave","Unloading area and basement ramp"), P("Open space com luz natural","Open space in natural light"),
-       P("Sala de reuniões para 12 pessoas","Meeting room for 12 people"), P("Entrada com chave digital no smartphone","Entrance with phone digital key"), P("Copa e phone booths","Kitchen lounge and phone booths")]
-       .map((d, i) => ph("img", d, "r-43" + (i === 0 ? " mask-a" : ""))).join("")}
-  </div>
-  <div class="gal-foot">
-    <div class="dots" id="galDots">${[0, 1, 2, 3, 4, 5].map(i => `<button type="button" class="dot" data-dot="${i}" aria-label="${lang === "pt" ? "Imagem" : "Image"} ${i + 1}"${i === 0 ? ' aria-current="true"' : ""}></button>`).join("")}</div>
-    <div class="slide-nav"><button class="round-btn" type="button" data-slide="-1" aria-controls="gal" aria-label="${esc(t("prev"))}">${I.left}</button><button class="round-btn" type="button" data-slide="1" aria-controls="gal" aria-label="${esc(t("next"))}">${I.right}</button></div>
-  </div>
-</div></section>
+${gallery(GAL_HOME, true)}
 
 ${ctaBand(EN("Make room for what’s next."), esc(t("final_text")), bookBtn() + `<a class="btn btn-line" href="${href("contact")}">${esc(t("talk"))}</a>`, true, true)}`;
 
@@ -1119,7 +1136,7 @@ const SERVICE = {
     moment:EN("Too much stuff. Not enough room."),
     typesTitle:P("Tipologias de boxes","Unit sizes"),
     typesIntro:P("40 boxes, de 4 a 14 m². As dimensões, a área e a utilização aconselhada de cada box funcionam como guia de tamanhos.","40 units, from 4 to 14 m². Each unit’s dimensions, area and recommended use work as a size guide."),
-    tip:true, cols:"g-4",
+    cols:"g-4",
     adv:[
       [P("Reserva mensal","Monthly booking"), P("A partir de 1 mês. Para mudar de box ou terminar, basta avisar na Área de cliente com 15 a 30 dias de antecedência.","From 1 month. To change units or cancel, give 15 to 30 days notice via Member login.")],
       [P("Zona de descarga","Unloading area"), P("Zona de descarga de 24 m² na cave, com acesso direto pela rampa, sem passar pelos escritórios.","A 24 m² unloading area in the basement, with direct access via the ramp, without going through the offices.")],
@@ -1193,7 +1210,6 @@ ${s.ben.map((b, i) => `<section aria-labelledby="h-ben-${i}"><div class="wrap se
   ${secHead("h-types", esc(L(s.typesTitle)), esc(L(s.typesIntro)))}
   <ul class="grid ${s.cols}">${types.map(unitCard).join("")}</ul>
   ${priceBar(key)}
-  ${s.tip ? `<p class="tip">${I.info}<span>${esc(t("size_tip"))}</span></p>` : ""}
 </div></section>
 
 <section aria-labelledby="h-adv"><div class="wrap sec">
@@ -1236,8 +1252,8 @@ ${moment(lang === "pt"
   ? "«A ROOM2 transcende a definição tradicional de espaço físico. Não é um destino final, mas o meio flexível que permite criar, colaborar e fazer acontecer.»"
   : "“ROOM2 transcends the traditional definition of physical space. It is not a final destination, but the flexible vehicle that empowers people and businesses to create, collaborate, and make things happen.”")}
 
-<section aria-labelledby="h-concept"><div class="wrap sec">
-  <h2 class="sr-only" id="h-concept">${lang === "pt" ? "O conceito" : "The concept"}</h2>
+<section class="light" aria-labelledby="h-concept"><div class="wrap sec">
+  <div class="sec-head"><div class="txt"><p class="kicker">${lang === "pt" ? "Conceito" : "Concept"}</p><h2 class="h2" id="h-concept">${lang === "pt" ? "Espaço para guardar, trabalhar, reunir e crescer" : "Space to store, work, meet and grow"}</h2></div></div>
   <div class="split" style="gap:40px 56px">
     ${[[P("Mais do que um lugar","More than a place"),
         P("Uma box para o stock, um posto para hoje, uma sala para a reunião de quinta-feira. A ROOM2 junta tudo no mesmo sítio, para que cada pessoa e cada negócio encontre o espaço certo para o que precisa de fazer agora, e outro quando precisar de mais.",
@@ -1250,6 +1266,8 @@ ${moment(lang === "pt"
       ].map(c => `<div style="display:flex;flex-direction:column;gap:14px">${ph("img", c[2], "r-32")}<h3 class="h2" style="font-size:22px">${esc(L(c[0]))}</h3><p class="lead" style="font-size:16px">${esc(L(c[1]))}</p></div>`).join("")}
   </div>
 </div></section>
+
+${gallery(GAL_ABOUT, false)}
 
 <section class="light" aria-labelledby="h-diff"><div class="wrap sec">
   ${secHead("h-diff", lang === "pt" ? "O que nos distingue" : "What makes us different")}
@@ -1488,7 +1506,7 @@ function route(){
   const gal = app.querySelector("#gal");
   if (gal) gal.addEventListener("scroll", () => {
     const first = gal.firstElementChild, step = first ? first.getBoundingClientRect().width + 16 : 300;
-    const idx = Math.min(5, Math.round(gal.scrollLeft / step));
+    const idx = Math.min(gal.children.length - 1, Math.round(gal.scrollLeft / step));
     app.querySelectorAll("#galDots .dot").forEach((d, i) => d.toggleAttribute("aria-current", i === idx));
   }, { passive:true });
   const seo = key && SEO[key];
