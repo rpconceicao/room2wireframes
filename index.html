@@ -204,6 +204,13 @@ a.card:hover{border-color:var(--fg);color:var(--fg)}
 .facts dd{margin:0;font-size:14px;line-height:1.45;color:var(--fg2)}
 .unit .btn{margin-top:auto;width:100%}
 .unit .btn-wrap{margin-top:auto;padding-top:8px}
+.pricebar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;margin-top:24px;padding:22px 24px;border:1px solid var(--border-2);border-radius:12px;background:var(--surface-2)}
+.pb-txt{display:flex;flex-direction:column;gap:6px;min-width:0}
+.pb-prices{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:0;font-size:18px;color:var(--fg)}
+.pb-g{font-weight:600}
+.pb-item strong{font-weight:700}
+.pb-u{margin-left:1px;font-size:13px;color:var(--muted)}
+.pb-sep{color:var(--faint)}
 .tip{display:flex;gap:12px;align-items:flex-start;margin-top:20px;padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--band);font-size:14px;color:var(--fg2)}
 
 /* price table */
@@ -309,8 +316,6 @@ details .ans p + p{margin-top:8px}
 
 /* ================= footer ================= */
 .site-footer{background:var(--band);border-top:1px solid var(--border);color:var(--muted)}
-.wf-note{display:block;align-self:flex-start;max-width:34rem;margin:0 0 4px;font-size:10.5px;line-height:1.45;color:var(--faint);border-left:2px dashed var(--border-2);padding:2px 0 2px 8px;opacity:.85}
-.wf-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:6px}
 .f-top{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px 72px;padding-top:56px;padding-bottom:48px}
 .f-brand{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
 .f-brand .logo{font-size:30px}
@@ -427,10 +432,10 @@ pt: {
   handoff:"A reserva continua na plataforma segura de reservas ROOM2.",
   size_tip:"Na dúvida entre dois tamanhos? Escolha o maior: pode mudar depois.",
   from:"desde", u_hour:"/hora", u_day:"/dia", u_month:"/mês", ul_hour:"À hora", ul_day:"Ao dia", ul_month:"Ao mês",
-  th_type:"Tipologia", th_group:"Grupo", th_types:"Tipologias", th_dims:"Dimensões e área", th_cap:"Capacidade", th_unit:"Unidade de reserva", th_price:"Preço desde",
+  th_dims:"Dimensões e área", th_cap:"Capacidade", th_unit:"Unidade de reserva", th_price:"Preço desde",
   f_dims:"Dimensões e área", f_cap:"Capacidade", f_use:"Utilização aconselhada", f_incl:"O que inclui", f_unit:"Unidade de reserva",
   g_box:"Box", g_cowork:"Coworking", g_room:"Sala", g_office:"Escritório",
-  prices:"Preços de referência", advantages:"Vantagens",
+  prices:"Preços de referência", pb_boxes:"Boxes", advantages:"Vantagens",
   sel_title:"De que precisa?", sel_intro:"Comece pelo que precisa de fazer. O espaço certo vem a seguir.",
   sel_store:"Mudanças, obras ou coisas a mais em casa.", sel_stock:"O negócio cresceu e a garagem já não chega.",
   sel_work:"Um posto à hora, ao dia ou ao mês.", sel_meet:"Uma boa reunião começa por ter onde acontecer.",
@@ -459,7 +464,6 @@ pt: {
   ck_accept:"Aceitar", ck_reject:"Recusar", ck_choose:"Escolher", ck_hide:"Esconder opções",
   ck_ess:"Essenciais (sempre ativos)", ck_an:"Análise (Google Tag Manager, Microsoft Clarity)", ck_maps:"Mapas (Google Maps)", ck_save:"Guardar escolhas",
   f_pages:"Sitemap", f_contact:"Contactos", f_follow:"Redes sociais",
-  wf_note_t:"Nota de wireframe", wf_steps:"Conteúdo a confirmar após a escolha da plataforma (caderno de encargos, secção 9.4).", wf_note:"Não previsto no caderno de encargos. A newsletter está fora do âmbito (secção 8) e pode ser orçamentada à parte, incluindo a ferramenta de email marketing e a gestão de consentimento.",
   copy:"© 2026 ROOM2. Operado por Unit2Rent Lda. Todos os direitos reservados. Flexible workspaces & storage em Aveiro.",
   privacy:"Política de Privacidade", cookies:"Política de Cookies", terms:"Termos e Condições", ck_settings:"Definições de cookies",
   complaints:"Livro de Reclamações Eletrónico", ral:"Resolução Alternativa de Litígios", back_top:"Voltar ao topo",
@@ -483,10 +487,10 @@ en: {
   handoff:"Your booking continues on the secure ROOM2 booking platform.",
   size_tip:"Torn between two sizes? Choose the larger one: you can change later.",
   from:"from", u_hour:"/hour", u_day:"/day", u_month:"/month", ul_hour:"By the hour", ul_day:"By the day", ul_month:"By the month",
-  th_type:"Type", th_group:"Group", th_types:"Types", th_dims:"Dimensions and area", th_cap:"Capacity", th_unit:"Booked", th_price:"Price from",
+  th_dims:"Dimensions and area", th_cap:"Capacity", th_unit:"Booked", th_price:"Price from",
   f_dims:"Dimensions and area", f_cap:"Capacity", f_use:"Recommended use", f_incl:"What’s included", f_unit:"Booked",
   g_box:"Unit", g_cowork:"Coworking", g_room:"Room", g_office:"Office",
-  prices:"Reference prices", advantages:"Why ROOM2",
+  prices:"Reference prices", pb_boxes:"Units", advantages:"Why ROOM2",
   sel_title:"What do you need room for?", sel_intro:"Start with what you need to do. The right space follows.",
   sel_store:"Moving, renovating or just too much at home.", sel_stock:"The business grew and the garage no longer does.",
   sel_work:"A desk by the hour, day or month.", sel_meet:"A good meeting starts with somewhere to have it.",
@@ -515,7 +519,6 @@ en: {
   ck_accept:"Accept", ck_reject:"Reject", ck_choose:"Choose", ck_hide:"Hide options",
   ck_ess:"Essential (always on)", ck_an:"Analytics (Google Tag Manager, Microsoft Clarity)", ck_maps:"Maps (Google Maps)", ck_save:"Save choices",
   f_pages:"Sitemap", f_contact:"Contact", f_follow:"Follow",
-  wf_note_t:"Wireframe note", wf_steps:"Content to be confirmed once the booking platform is chosen (project brief, section 9.4).", wf_note:"Not included in the project brief. The newsletter is out of scope (section 8) and can be quoted separately, including the email marketing tool and consent management.",
   copy:"© 2026 ROOM2. Operated by Unit2Rent Lda. All rights reserved. Flexible workspaces & storage in Aveiro.",
   privacy:"Privacy Policy", cookies:"Cookie Policy", terms:"Terms and Conditions", ck_settings:"Cookie settings",
   complaints:"Electronic Complaints Book", ral:"Alternative Dispute Resolution", back_top:"Back to top",
@@ -680,17 +683,16 @@ const unitCard = x => {
       <div class="btn-wrap">${ext("unit", esc(t(isS ? "book_unit" : "book_space")), "btn btn-line", x.short || typeName(x))}</div>
     </div></li>`;
 };
-const priceTable = vert => {
+const priceBar = vert => {
   const rows = TYPES.filter(x => x.vert === vert).sort((a, b) => a.order - b.order);
   const groups = [...new Set(rows.map(x => x.group))];
-  return `<div class="tbl-wrap" tabindex="0" role="region" aria-labelledby="h-prices"><table>
-    <thead><tr><th scope="col">${t("th_group")}</th><th scope="col">${t("th_types")}</th><th scope="col">${t("th_price")}</th></tr></thead>
-    <tbody>${groups.map(g => { const items = rows.filter(x => x.group === g), first = items[0];
-      return `<tr><th scope="row" style="background:none;font-size:14px;color:var(--fg)">${esc(t("g_" + g))}</th>
-      <td>${esc(items.map(x => x.short || typeName(x)).join(", "))}</td>
-      <td class="num">${esc(t("from"))} ${esc(priceTxt(first))}<span class="sub" style="display:inline;margin-left:2px">${esc(t("u_" + first.unit))}</span></td></tr>`; }).join("")}</tbody>
-  </table></div>
-  <p class="note" style="margin-top:14px;display:flex;gap:10px;align-items:flex-start">${I.info}<span>${esc(t("price_note"))}</span></p>`;
+  const items = groups.map(g => { const first = rows.find(x => x.group === g);
+    return `<span class="pb-item"><span class="pb-g">${esc(vert === "storage" ? t("pb_boxes") : t("g_" + g))}</span> ${esc(t("from"))} <strong>${esc(priceTxt(first))}</strong><span class="pb-u">${esc(t("u_" + first.unit))}</span></span>`; })
+    .join('<span class="pb-sep" aria-hidden="true">·</span>');
+  return `<div class="pricebar" role="region" aria-labelledby="h-prices">
+    <div class="pb-txt"><h3 class="sr-only" id="h-prices">${esc(t("prices"))}</h3><p class="pb-prices">${items}</p><p class="note">${esc(t("price_note"))}</p></div>
+    ${bookBtn()}
+  </div>`;
 };
 const ctaBand = (title, text, buttons, withHandoff, light, quote) => `<section class="cta ${light ? "light" : ""}" aria-labelledby="h-cta">
   <span class="angle" aria-hidden="true"></span>
@@ -746,7 +748,6 @@ V.home = () => `
 </ul></section>
 
 <section class="light" aria-labelledby="h-steps"><div class="wrap sec">
-  <p class="wf-note" role="note"><span class="wf-tag">${esc(t("wf_note_t"))}</span>${esc(t("wf_steps"))}</p>
   ${secHead("h-steps", lang === "pt" ? "Simples, do primeiro contacto à porta." : "Simple, from first contact to front door.")}
   <ol class="grid g-3 steps">
     ${[[P("Escolha a tipologia","Choose your space"), P("Escolha a tipologia ideal no catálogo online, com as dimensões, a área ou a capacidade e a utilização aconselhada de cada espaço.","Select your ideal unit or space in the online catalogue, with the dimensions, area or capacity and recommended use of each one.")],
@@ -852,7 +853,7 @@ V.service = key => {
     <p class="display" lang="en">${s.display}</p>
     <h1 id="h-page" data-focus>${esc(L(s.h1))}</h1>
     <p class="lead">${L(s.intro)}</p>
-    <div class="btn-row">${bookBtn()}<a class="btn btn-line" href="${href(key)}" data-scroll="#tipologias">${esc(t(key === "storage" ? "see_units" : "see_spaces"))}</a></div>
+    <div class="btn-row">${bookBtn()}</div>
   </div>
   ${ph("img", s.img, "r-45 mask-b")}
 </div></section>
@@ -865,15 +866,11 @@ V.service = key => {
 <section id="tipologias" aria-labelledby="h-types"><div class="wrap sec">
   ${secHead("h-types", esc(L(s.typesTitle)), esc(L(s.typesIntro)))}
   <ul class="grid ${s.cols}">${types.map(unitCard).join("")}</ul>
+  ${priceBar(key)}
   ${s.tip ? `<p class="tip">${I.info}<span>${esc(t("size_tip"))}</span></p>` : ""}
 </div></section>
 
-<section class="light" aria-labelledby="h-prices"><div class="wrap sec">
-  ${secHead("h-prices", esc(t("prices")))}
-  ${priceTable(key)}
-</div></section>
-
-<section aria-labelledby="h-adv"><div class="wrap sec">
+<section class="light" aria-labelledby="h-adv"><div class="wrap sec">
   ${secHead("h-adv", esc(t("advantages")))}
   <ul class="grid g-${s.adv.length}">${s.adv.map(a => `<li class="card"><span class="ico" aria-hidden="true">${I.sq}</span><h3 class="h3">${esc(L(a[0]))}</h3><p class="body" style="font-size:14px">${esc(L(a[1]))}</p></li>`).join("")}</ul>
 </div></section>
