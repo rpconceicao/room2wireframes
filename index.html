@@ -29,7 +29,7 @@
   --fg:#18181b; --fg2:#3f3f46; --muted:#52525b; --faint:#71717a;
   --btn-bg:#18181b; --btn-fg:#ffffff; --btn-hover:#3f3f46;
   --ph-fill:#f4f4f5; --ph-line:transparent; --ph-border:#d4d4d8; --ph-tag:transparent;
-  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --sans:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   --max:1280px; --pad:24px;
 }
 .light{ --bg:#fafafa; --band:#f4f4f5; --surface:#ffffff; background:var(--bg); color:var(--fg); }
@@ -257,7 +257,6 @@ table .sub{display:block;font-size:12px;color:var(--faint);margin-top:2px}
 .cta-quote{max-width:18em;margin:0 0 10px;font-size:clamp(28px,3.6vw,44px);font-weight:500;letter-spacing:-.03em;line-height:1.15;color:var(--fg)}
 .cta .body{max-width:34rem}
 .cta .btn-row{justify-content:center;margin-top:8px}
-.cta .handoff{display:inline-flex;align-items:center;gap:8px;margin-top:4px}
 
 /* cross sell */
 .xsell{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--surface)}
@@ -455,7 +454,6 @@ body::before{background:rgba(255,255,255,.92)}
 .cta .h2{font-size:clamp(32px,4vw,48px);line-height:1.05;max-width:none}
 .cta .body{max-width:34rem}
 .cta .btn-row{justify-content:flex-end;margin:0}
-.cta .handoff{margin-top:4px}
 .cta-quote{margin:0 0 4px;font-size:clamp(20px,2.4vw,28px);font-weight:500;color:var(--muted)}
 /* cross sell */
 .xsell .ph{border-width:0 1.5px 0 0;border-style:dashed;border-radius:0}
@@ -470,6 +468,80 @@ body::before{background:rgba(255,255,255,.92)}
 .cookie .row{display:flex;gap:8px;grid-template-columns:none}
 .cookie .opts{flex:1 1 100%;order:3}
 .cookie .btn{padding:0 18px;min-height:40px}
+/* ================= v25: header, menu, buttons, icons ================= */
+body{font-size:16px}
+.logo-svg{display:block;height:30px;width:auto;color:var(--fg)}
+.f-brand .logo-svg{height:26px}
+.menu-panel .logo-svg{height:26px}
+.brand{gap:12px}
+.sig{font-size:11px;line-height:1.25;max-width:110px;text-align:left;border-left:1px solid var(--border);padding-left:12px;color:var(--faint)}
+.nav{gap:4px}
+.nav a{font-size:14px;font-weight:500;color:#52525b;padding:8px 12px;border-radius:8px}
+.nav a:hover{color:var(--fg);background:#fafafa}
+.nav a[aria-current="page"]{color:var(--fg);background:#f4f4f5}
+.actions{gap:4px}
+.lang-dd{position:relative}
+.lang-btn{display:inline-flex;align-items:center;gap:4px;padding:8px 12px;border:0;background:none;border-radius:8px;font-size:12px;font-weight:600;color:#71717a;cursor:pointer}
+.lang-btn:hover{color:var(--fg)}
+.lang-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.lang-menu{position:absolute;right:0;top:100%;margin-top:4px;width:128px;padding:6px 0;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 10px 15px -3px rgba(0,0,0,.1);z-index:70;display:flex;flex-direction:column}
+.lang-menu[hidden]{display:none}
+.lang-menu a{padding:8px 14px;font-size:13px;font-weight:500;color:#71717a;text-decoration:none;border-radius:8px;margin:0 4px}
+.lang-menu a:hover{color:var(--fg)}
+.lang-menu a[aria-current="true"]{color:var(--fg);background:#fafafa}
+.acct{gap:6px;padding:8px 12px;border-radius:8px;font-size:13px;font-weight:500;color:#52525b;min-height:0}
+.acct:hover{color:var(--fg)}
+@media (max-width:1279px){ .acct .acct-t{display:none} }
+.menu-btn{width:44px;height:44px;justify-content:center;padding:0;border-radius:8px;color:#3f3f46}
+.menu-btn:hover{background:#f4f4f5}
+/* buttons */
+.btn{gap:8px;min-height:0;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:500;border:1px solid transparent;transition:background-color .15s,color .15s}
+.btn-sm{padding:8px 16px;font-size:13px}
+.btn-lg{padding:12px 24px;font-size:15px;min-height:0}
+.btn-solid{background:#18181b;color:#fff;border-color:#18181b}
+.btn-solid:hover{background:#3f3f46;border-color:#3f3f46;color:#fff}
+.btn-line{background:transparent;color:#18181b;border-color:#18181b}
+.btn-line:hover{background:#f4f4f5;color:#18181b}
+.dark .btn-solid{background:#fff;color:#18181b;border-color:#fff}
+.dark .btn-solid:hover{background:#e4e4e7;border-color:#e4e4e7;color:#18181b}
+.dark .btn-line{background:transparent;color:#fff;border-color:#fff}
+.dark .btn-line:hover{background:#27272a;color:#fff}
+.btn .ext-ico{opacity:1}
+.ext-ico{flex-shrink:0}
+@media (max-width:640px){ .site-header .btn-sm{min-height:44px} }
+/* mobile side sheet */
+.menu-panel{left:auto;right:0;width:min(100%,384px);padding:0;border-left:1px solid var(--border);box-shadow:0 0 0 100vmax rgba(0,0,0,.4)}
+.menu-panel .top{height:64px;min-height:64px;padding:0 16px;border-bottom:1px solid var(--border)}
+.menu-panel nav{margin:0;padding:16px;gap:4px}
+.menu-panel nav a{font-size:17px;font-weight:500;color:var(--fg);padding:12px;border:0;border-radius:8px}
+.menu-panel nav a:hover{background:#fafafa}
+.menu-panel nav a[aria-current="page"]{background:#f4f4f5}
+.mp-bottom{margin-top:auto;padding:16px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:12px}
+.mp-label{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#71717a}
+.mp-lang{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mp-lang a{display:flex;align-items:center;justify-content:center;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:500;color:#71717a;text-decoration:none}
+.mp-lang a[aria-current="true"]{border-color:#18181b;color:#18181b}
+.mp-acct{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-weight:500;color:var(--fg);text-decoration:none}
+/* icons in content */
+.checks li{align-items:flex-start}
+.checks svg{margin-top:1px;color:#71717a}
+.hl-ico{color:var(--fg)}
+.quote-mark{color:var(--fg);opacity:.85}
+.dl dt{display:flex;align-items:center;gap:6px}
+.dl dt svg{color:var(--faint)}
+.tip{border:0;background:none;padding:0;margin-top:16px;font-size:13px;color:var(--muted);align-items:center}
+.note svg{flex-shrink:0;margin-top:1px}
+/* footer */
+.f-addr{gap:10px}
+.f-row{display:flex;align-items:flex-start;gap:8px}
+.f-row svg{flex-shrink:0;margin-top:2px;color:#a1a1aa}
+.f-social{display:flex;gap:8px;margin-top:4px}
+.f-social .soc{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid #3f3f46;border-radius:8px;color:#d4d4d8;text-decoration:none}
+.f-social .soc:hover{color:#fff;border-color:#a1a1aa}
+.f-list a{font-size:13px;color:#a1a1aa}
+.f-list a:hover{color:#fff}
+@media (max-width:1060px){ .actions .lang-dd{display:none} }
+@media (max-width:640px){ .menu-panel{width:100%;border-left:0} }
 </style>
 </head>
 <body>
@@ -515,13 +587,12 @@ function resolve(path){
 /* ================= UI text (EN microcopy = proposal to be validated by the client, section 12) ================= */
 const T = {
 pt: {
-  skip:"Saltar para o conteúdo", home_aria:"ROOM2, página inicial", nav_main:"Principal", nav_mobile:"Navegação", menu:"Menu", close_menu:"Fechar menu", lang_group:"Idioma",
+  skip:"Saltar para o conteúdo", open_menu:"Abrir menu", home_aria:"ROOM2, página inicial", nav_main:"Principal", nav_mobile:"Navegação", menu:"Menu", close_menu:"Fechar menu", lang_group:"Idioma",
   nav_storage:"Self Storage", nav_work:"Workspaces", nav_about:"Quem somos", nav_support:"Suporte", nav_contact:"Contactos",
   account:"Área de cliente", book:"Reservar", book_unit:"Reservar esta box", book_space:"Reservar este espaço",
   see_units:"Ver boxes", see_spaces:"Ver espaços", see_work:"Ver Workspaces", see_storage:"Ver Self Storage", talk:"Falar connosco", see_faq:"Ver perguntas frequentes",
   ph_img:"Imagem", ph_video:"Vídeo", ph_hero:"Imagem ou vídeo · largura total", ph_map:"Mapa · Google Maps",
   price_note:"Preço de referência. O valor final e a disponibilidade confirmam-se na reserva.",
-  handoff:"A reserva continua na plataforma segura de reservas ROOM2.",
   size_tip:"Na dúvida entre dois tamanhos? Escolha o maior: pode mudar depois.",
   from:"desde", u_hour:"/hora", u_day:"/dia", u_month:"/mês", ul_hour:"À hora", ul_day:"Ao dia", ul_month:"Ao mês",
   th_dims:"Dimensões e área", th_cap:"Capacidade", th_unit:"Unidade de reserva", th_price:"Preço desde",
@@ -561,7 +632,7 @@ pt: {
   complaints:"Livro de Reclamações Eletrónico", ral:"Resolução Alternativa de Litígios", back_top:"Voltar ao topo",
   developed:"Desenvolvido por", developed_aria:"Desenvolvido pela LOBA (abre num novo separador)",
   x_title:"Link externo", x_close:"Fechar", x_same:"Abre no mesmo separador.", x_new:"Abre num novo separador.",
-  x_book:"Portal de reservas ROOM2", x_book_url:"[URL do portal de reservas, versão PT]", x_book_note:"Endereço a fornecer pelo cliente, por idioma.", booking_notice:"O website ROOM2 informa e orienta, mas não processa reservas nem pagamentos. A reserva, a disponibilidade em tempo real e o pagamento seguro acontecem na plataforma de reservas ROOM2.",
+  x_book:"Portal de reservas ROOM2", x_book_url:"[URL do portal de reservas, versão PT]", x_book_note:"Endereço a fornecer pelo cliente, por idioma.",
   x_unit:"Plataforma de reservas: {name}", x_unit_url:"[Campo CMS “URL de reserva” · {name} · PT]", x_unit_note:"Cada tipologia aponta para o endereço do seu campo no CMS, atualizável sem desenvolvimento.",
   x_account:"Área de cliente (portal do cliente)", x_account_url:"[URL do portal do cliente, versão PT]", x_account_note:"Para clientes existentes. Presença no menu a confirmar com o cliente.",
   x_social_url:"[Perfil da ROOM2 em {name}]", x_social_note:"Perfil a indicar pelo cliente.",
@@ -570,13 +641,12 @@ pt: {
   legal_intro:"[Texto legal a fornecer pelo cliente.] Estrutura de referência. Última atualização: [data]."
 },
 en: {
-  skip:"Skip to content", home_aria:"ROOM2, homepage", nav_main:"Main", nav_mobile:"Navigation", menu:"Menu", close_menu:"Close menu", lang_group:"Language",
+  skip:"Skip to content", open_menu:"Open menu", home_aria:"ROOM2, homepage", nav_main:"Main", nav_mobile:"Navigation", menu:"Menu", close_menu:"Close menu", lang_group:"Language",
   nav_storage:"Self Storage", nav_work:"Workspaces", nav_about:"About", nav_support:"Support", nav_contact:"Contact",
   account:"Member login", book:"Book now", book_unit:"Book this unit", book_space:"Book this space",
   see_units:"See units", see_spaces:"See spaces", see_work:"See Workspaces", see_storage:"See Self Storage", talk:"Talk to us", see_faq:"See the FAQ",
   ph_img:"Image", ph_video:"Video", ph_hero:"Image or video · full width", ph_map:"Map · Google Maps",
   price_note:"Reference price. The final price and availability are confirmed when you book.",
-  handoff:"Your booking continues on the secure ROOM2 booking platform.",
   size_tip:"Torn between two sizes? Choose the larger one: you can change later.",
   from:"from", u_hour:"/hour", u_day:"/day", u_month:"/month", ul_hour:"By the hour", ul_day:"By the day", ul_month:"By the month",
   th_dims:"Dimensions and area", th_cap:"Capacity", th_unit:"Booked", th_price:"Price from",
@@ -616,7 +686,7 @@ en: {
   complaints:"Electronic Complaints Book", ral:"Alternative Dispute Resolution", back_top:"Back to top",
   developed:"Developed by", developed_aria:"Developed by LOBA (opens in a new tab)",
   x_title:"External link", x_close:"Close", x_same:"Opens in the same tab.", x_new:"Opens in a new tab.",
-  x_book:"ROOM2 booking portal", x_book_url:"[Booking portal URL, EN version]", x_book_note:"Address to be supplied by the client, per language.", booking_notice:"The ROOM2 website informs and guides, but does not process bookings or payments. Booking, real-time availability and secure payment happen on the ROOM2 booking platform.",
+  x_book:"ROOM2 booking portal", x_book_url:"[Booking portal URL, EN version]", x_book_note:"Address to be supplied by the client, per language.",
   x_unit:"Booking platform: {name}", x_unit_url:"[CMS field “Booking URL” · {name} · EN]", x_unit_note:"Each type points to the address in its CMS field, editable without development.",
   x_account:"Member login (customer portal)", x_account_url:"[Customer portal URL, EN version]", x_account_note:"For existing customers. Menu placement to be confirmed with the client.",
   x_social_url:"[ROOM2 profile on {name}]", x_social_note:"Profile to be supplied by the client.",
@@ -754,6 +824,19 @@ const I = {
   map28: svg(28, 28, '<path d="M14 25s8-7.2 8-13a8 8 0 0 0-16 0c0 5.8 8 13 8 13z"/><circle cx="14" cy="12" r="3"/>', 'class="hl-ico"')
 };
 I.hero = I.video;
+const PH = {"caret": "<path d=\"M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z\"></path>", "user": "<path d=\"M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z\"></path>", "ext": "<path d=\"M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z\"></path>", "list": "<path d=\"M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z\"></path>", "cam": "<path d=\"M208,58H179.21L165,36.67A6,6,0,0,0,160,34H96a6,6,0,0,0-5,2.67L76.78,58H48A22,22,0,0,0,26,80V192a22,22,0,0,0,22,22H208a22,22,0,0,0,22-22V80A22,22,0,0,0,208,58Zm10,134a10,10,0,0,1-10,10H48a10,10,0,0,1-10-10V80A10,10,0,0,1,48,70H80a6,6,0,0,0,5-2.67L99.21,46h57.57L171,67.33A6,6,0,0,0,176,70h32a10,10,0,0,1,10,10ZM128,90a42,42,0,1,0,42,42A42,42,0,0,0,128,90Zm0,72a30,30,0,1,1,30-30A30,30,0,0,1,128,162Z\"></path>", "arrow": "<path d=\"M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z\"></path>", "clock": "<path d=\"M128,26A102,102,0,1,0,230,128,102.12,102.12,0,0,0,128,26Zm0,192a90,90,0,1,1,90-90A90.1,90.1,0,0,1,128,218Zm62-90a6,6,0,0,1-6,6H128a6,6,0,0,1-6-6V72a6,6,0,0,1,12,0v50h50A6,6,0,0,1,190,128Z\"></path>", "cal": "<path d=\"M208,34H182V24a6,6,0,0,0-12,0V34H86V24a6,6,0,0,0-12,0V34H48A14,14,0,0,0,34,48V208a14,14,0,0,0,14,14H208a14,14,0,0,0,14-14V48A14,14,0,0,0,208,34ZM48,46H74V56a6,6,0,0,0,12,0V46h84V56a6,6,0,0,0,12,0V46h26a2,2,0,0,1,2,2V82H46V48A2,2,0,0,1,48,46ZM208,210H48a2,2,0,0,1-2-2V94H210V208A2,2,0,0,1,208,210Z\"></path>", "shield": "<path d=\"M208,42H48A14,14,0,0,0,34,56v56c0,51.94,25.12,83.4,46.2,100.64,22.73,18.6,45.27,24.89,46.22,25.15a6,6,0,0,0,3.16,0c.95-.26,23.49-6.55,46.22-25.15C196.88,195.4,222,163.94,222,112V56A14,14,0,0,0,208,42Zm2,70c0,37.76-13.94,68.39-41.44,91.06A131.17,131.17,0,0,1,128,225.72a130.94,130.94,0,0,1-40.56-22.66C59.94,180.39,46,149.76,46,112V56a2,2,0,0,1,2-2H208a2,2,0,0,1,2,2ZM172.24,99.76a6,6,0,0,1,0,8.48l-56,56a6,6,0,0,1-8.48,0l-24-24a6,6,0,0,1,8.48-8.48L112,151.51l51.76-51.75A6,6,0,0,1,172.24,99.76Z\"></path>", "pin": "<path d=\"M128,66a38,38,0,1,0,38,38A38,38,0,0,0,128,66Zm0,64a26,26,0,1,1,26-26A26,26,0,0,1,128,130Zm0-112a86.1,86.1,0,0,0-86,86c0,30.91,14.34,63.74,41.47,94.94a252.32,252.32,0,0,0,41.09,38,6,6,0,0,0,6.88,0,252.32,252.32,0,0,0,41.09-38c27.13-31.2,41.47-64,41.47-94.94A86.1,86.1,0,0,0,128,18Zm0,206.51C113,212.93,54,163.62,54,104a74,74,0,0,1,148,0C202,163.62,143,212.93,128,224.51Z\"></path>", "left": "<path d=\"M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z\"></path>", "right": "<path d=\"M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z\"></path>", "pinF": "<path d=\"M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z\"></path>", "phone": "<path d=\"M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z\"></path>", "mail": "<path d=\"M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z\"></path>", "insta": "<path d=\"M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z\"></path>", "linkedin": "<path d=\"M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z\"></path>", "facebook": "<path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z\"></path>", "checkc": "<path d=\"M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z\"></path>", "info": "<path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z\"></path>", "plus": "<path d=\"M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z\"></path>", "clock2": "<path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z\"></path>", "nav": "<path d=\"M240,104H229.2L201.42,41.5A16,16,0,0,0,186.8,32H69.2a16,16,0,0,0-14.62,9.5L26.8,104H16a8,8,0,0,0,0,16h8v80a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V184h96v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V120h8a8,8,0,0,0,0-16ZM69.2,48H186.8l24.89,56H44.31ZM64,200H40V184H64Zm128,0V184h24v16Zm24-32H40V120H216ZM56,144a8,8,0,0,1,8-8H80a8,8,0,0,1,0,16H64A8,8,0,0,1,56,144Zm112,0a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H176A8,8,0,0,1,168,144Z\"></path>", "map": "<path d=\"M227.69,51.27a6,6,0,0,0-5.15-1.09L160.7,65.64l-62-31a6,6,0,0,0-4.14-.45l-64,16A6,6,0,0,0,26,56V200a6,6,0,0,0,7.46,5.82L95.3,190.36l62,31a6,6,0,0,0,4.14.45l64-16A6,6,0,0,0,230,200V56A6,6,0,0,0,227.69,51.27ZM102,49.71l52,26V206.29l-52-26Zm-64,11,52-13V179.32l-52,13ZM218,195.32l-52,13V76.68l52-13Z\"></path>", "x": "<path d=\"M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z\"></path>"};
+const ph16 = (name, size, cls) => `<svg aria-hidden="true" width="${size}" height="${size}" viewBox="0 0 256 256" fill="currentColor"${cls ? ` class="${cls}"` : ""}>${PH[name]}</svg>`;
+Object.assign(I, {
+  ext: ph16("ext", 14, "ext-ico"), ext13: ph16("ext", 13, "ext-ico"), user: ph16("user", 15), caret: ph16("caret", 10, "caret"),
+  list: ph16("list", 22), close: ph16("x", 20), arrow: ph16("arrow", 16), check: ph16("checkc", 18), info: ph16("info", 16),
+  left: ph16("left", 18), right: ph16("right", 18), plus: ph16("plus", 18, "pm"), cam: ph16("cam", 28),
+  clock: ph16("clock", 28, "hl-ico"), cal: ph16("cal", 28, "hl-ico"), shield: ph16("shield", 28, "hl-ico"), map28: ph16("pin", 28, "hl-ico"),
+  map: ph16("map", 28), pinS: ph16("pinF", 16), phone: ph16("phone", 16), mail: ph16("mail", 16), clockS: ph16("clock2", 16), navS: ph16("nav", 16),
+  insta: ph16("insta", 18), linkedin: ph16("linkedin", 18), facebook: ph16("facebook", 18),
+  logo: `<svg class="logo-svg" viewBox="0 0 96 26" fill="currentColor" role="img" aria-label="ROOM2"><path d="M0 4h10l-6 6v12H0z" opacity=".9"></path><text x="14" y="20" font-size="20" font-weight="700" font-family="system-ui, sans-serif" letter-spacing="-0.5">room2</text></svg>`,
+  quote: `<svg class="quote-mark" aria-hidden="true" width="36" height="18" viewBox="0 0 36 18"><path d="M0 0 L18 18 L36 0 L30 0 L18 12 L6 0 Z" fill="currentColor"></path></svg>`
+});
+
 
 /* image placeholder: kind + the photography it stands for (brand guide: action and function, real moments) */
 const ph = (kind, desc, cls, attrs) => {
@@ -763,7 +846,6 @@ const ph = (kind, desc, cls, attrs) => {
 /* external links (booking platform, customer portal, social, legal): shown in a notice in the wireframe */
 const ext = (type, label, cls, name) => `<a href="#ext-${type}" class="${cls || ""}" data-ext="${type}"${name ? ` data-name="${esc(name)}"` : ""}>${label}</a>`;
 const bookBtn = (cls) => ext("book", `${esc(t("book"))} ${I.ext}`, "btn btn-solid " + (cls || ""));
-const handoff = () => `<p class="note handoff">${I.info}<span>${esc(t("handoff"))}</span></p>`;
 const secHead = (id, title, intro, right) => `<div class="sec-head"><div class="txt"><h2 class="h2" id="${id}">${title}</h2>${intro ? `<p class="body">${intro}</p>` : ""}</div>${right || ""}</div>`;
 
 /* ================= shared blocks ================= */
@@ -793,10 +875,10 @@ const priceBar = vert => {
   </div>`;
 };
 const ctaBand = (title, text, buttons, withHandoff, light, quote) => `<section class="cta dark" aria-labelledby="h-cta"><div class="wrap cta-in">
-  <div class="cta-txt">${quote ? `<p class="cta-quote">${quote}</p>` : ""}<h2 class="h2" id="h-cta">${title}</h2>${text ? `<p class="body">${text}</p>` : ""}${withHandoff ? handoff() : ""}</div>
+  <div class="cta-txt">${quote ? `<p class="cta-quote">${quote}</p>` : ""}<h2 class="h2" id="h-cta">${title}</h2>${text ? `<p class="body">${text}</p>` : ""}</div>
   <div class="btn-row">${buttons}</div>
 </div></section>`;
-const moment = (line, sub) => `<section class="light moment" aria-label="${esc(line.replace(/<[^>]+>/g, ""))}"><span class="angle" aria-hidden="true"></span><blockquote>${line}</blockquote>${sub ? `<p class="body">${sub}</p>` : ""}</section>`;
+const moment = (line, sub) => `<section class="light moment" aria-label="${esc(line.replace(/<[^>]+>/g, ""))}">${I.quote}<blockquote>${line}</blockquote>${sub ? `<p class="body">${sub}</p>` : ""}</section>`;
 
 /* ================= views ================= */
 const V = {};
@@ -1094,11 +1176,11 @@ V.contact = () => {
     <aside aria-labelledby="h-direct" style="display:flex;flex-direction:column;gap:16px">
       <h2 class="h2" id="h-direct">${esc(t("direct"))}</h2>
       <dl class="dl">
-        <div><dt>${esc(t("d_address"))}</dt><dd>Rua das Pombas, Zona Industrial de Taboeira<br>3800-055 Aveiro, Portugal</dd></div>
-        <div><dt>${esc(t("d_phone"))}</dt><dd>+351 [000 000 000]<small>${esc(t("d_call"))}</small></dd></div>
-        <div><dt>${esc(t("d_email"))}</dt><dd>[email]@room2.pt</dd></div>
-        <div><dt>${esc(t("d_hours"))}</dt><dd>${esc(t("hours_v"))}</dd></div>
-        <div><dt>${esc(t("how"))}</dt><dd>${esc(t("how_v"))}</dd></div>
+        <div><dt>${I.pinS}${esc(t("d_address"))}</dt><dd>Rua das Pombas, Zona Industrial de Taboeira<br>3800-055 Aveiro, Portugal</dd></div>
+        <div><dt>${I.phone}${esc(t("d_phone"))}</dt><dd>+351 [000 000 000]<small>${esc(t("d_call"))}</small></dd></div>
+        <div><dt>${I.mail}${esc(t("d_email"))}</dt><dd>[email]@room2.pt</dd></div>
+        <div><dt>${I.clockS}${esc(t("d_hours"))}</dt><dd>${esc(t("hours_v"))}</dd></div>
+        <div><dt>${I.navS}${esc(t("how"))}</dt><dd>${esc(t("how_v"))}</dd></div>
       </dl>
     </aside>
   </div>
@@ -1163,46 +1245,53 @@ const langSwitch = key => {
   return `<div class="lang" role="group" aria-label="${esc(t("lang_group"))}">
     <a href="${href(k, "pt")}" lang="pt-PT" hreflang="pt-PT" aria-label="Português" aria-current="${lang === "pt"}">PT</a><span class="sep" aria-hidden="true">|</span><a href="${href(k, "en")}" lang="en" hreflang="en" aria-label="English" aria-current="${lang === "en"}">EN</a></div>`;
 };
-const brand = () => `<a class="brand" href="${href("home")}" aria-label="${esc(t("home_aria"))}"><span class="logo">${I.mark}room2</span><span class="sig" lang="en">Flexible workspaces &amp; storage</span></a>`;
+const langDD = key => {
+  const k = key || "home";
+  return `<div class="lang-dd"><button type="button" class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu" aria-label="${esc(t("lang_group"))}: ${lang.toUpperCase()}">${lang.toUpperCase()}${I.caret}</button>
+    <div class="lang-menu" id="langMenu" hidden><a href="${href(k, "pt")}" lang="pt-PT" hreflang="pt-PT" aria-current="${lang === "pt"}">Português</a><a href="${href(k, "en")}" lang="en" hreflang="en" aria-current="${lang === "en"}">English</a></div></div>`;
+};
+const brand = () => `<a class="brand" href="${href("home")}" aria-label="${esc(t("home_aria"))}">${I.logo}<span class="sig" lang="en">Flexible workspaces &amp; storage</span></a>`;
 function renderChrome(key){
   document.getElementById("siteHeader").innerHTML = `<div class="wrap bar">
     ${brand()}
     <nav class="nav" aria-label="${esc(t("nav_main"))}">${NAV.map(k => `<a href="${href(k)}"${k === key ? ' aria-current="page"' : ""}>${esc(t("nav_" + k))}</a>`).join("")}</nav>
     <div class="actions">
-      ${langSwitch(key)}
-      ${ext("account", `${esc(t("account"))} ${I.ext}`, "acct")}
+      ${langDD(key)}
+      ${ext("account", `${I.user}<span class="acct-t">${esc(t("account"))}</span>${I.ext13}`, "acct")}
       ${bookBtn("btn-sm")}
-      <button class="menu-btn" id="menuOpen" type="button" aria-expanded="false" aria-controls="menuPanel">${esc(t("menu"))} <span class="lines" aria-hidden="true"><i></i><i></i></span></button>
+      <button class="menu-btn" id="menuOpen" type="button" aria-expanded="false" aria-controls="menuPanel" aria-label="${esc(t("open_menu"))}">${I.list}</button>
     </div></div>`;
   const panel = document.getElementById("menuPanel");
   panel.setAttribute("aria-label", t("menu"));
-  panel.innerHTML = `<div class="top">${brand()}<div class="actions">${bookBtn("btn-sm")}<button class="icon-btn" id="menuClose" type="button" aria-label="${esc(t("close_menu"))}">${I.close}</button></div></div>
+  panel.innerHTML = `<div class="top">${brand()}<button class="icon-btn" id="menuClose" type="button" aria-label="${esc(t("close_menu"))}">${I.close}</button></div>
     <nav aria-label="${esc(t("nav_mobile"))}">${NAV.map(k => `<a href="${href(k)}"${k === key ? ' aria-current="page"' : ""}>${esc(t("nav_" + k))}</a>`).join("")}</nav>
-    ${langSwitch(key)}
-    ${ext("account", `${esc(t("account"))} ${I.ext}`, "acct")}
-    <div class="foot"><span>[email]@room2.pt</span><span>+351 [000 000 000]</span><span>Rua das Pombas, Zona Industrial de Taboeira, 3800-055 Aveiro</span></div>`;
+    <div class="mp-bottom">
+      <p class="mp-label">${esc(t("lang_group"))}</p>
+      <div class="mp-lang"><a href="${href(key || "home", "pt")}" lang="pt-PT" aria-current="${lang === "pt"}">Português</a><a href="${href(key || "home", "en")}" lang="en" aria-current="${lang === "en"}">English</a></div>
+      ${ext("account", `${I.user} ${esc(t("account"))} ${I.ext}`, "mp-acct")}
+    </div>`;
   document.getElementById("siteFooter").innerHTML = `<div class="wrap">
     <div class="f-top">
       <div class="f-brand">
-        <a class="brand" href="${href("home")}" aria-label="${esc(t("home_aria"))}"><span class="logo">${I.mark}room2</span></a>
+        <a class="brand" href="${href("home")}" aria-label="${esc(t("home_aria"))}">${I.logo}</a>
         <span class="meta" lang="en">Flexible workspaces &amp; storage</span>
         <p class="f-claim" lang="en">Make room for what’s next.</p>
         <p style="font-size:13px;line-height:1.65;color:var(--muted);max-width:36rem">${lang === "pt"
           ? "A ROOM2 junta Self Storage e coworking em Aveiro: 40 boxes de 4 a 14 m² para guardar recheios, stock e arquivo, a partir de 1 mês, e postos de trabalho, 14 escritórios privados e sala de reuniões, à hora, ao dia ou ao mês. Junto à A25."
           : "ROOM2 brings Self Storage and coworking together in Aveiro: 40 units from 4 to 14 m² for household goods, stock and archives, from 1 month, plus desks, 14 private offices and a meeting room, by the hour, day or month. Right off the A25."}</p>
-        <div class="btn-row" style="margin-top:8px">${bookBtn("btn-sm")}${ext("account", `${esc(t("account"))} ${I.ext}`, "btn btn-line btn-sm")}</div>
+        <div class="btn-row" style="margin-top:8px">${bookBtn("btn-sm")}${ext("account", `${I.user} ${esc(t("account"))} ${I.ext}`, "btn btn-line btn-sm")}</div>
       </div>
       <div class="f-cols">
         <nav aria-labelledby="fh-pages"><h2 class="f-h" id="fh-pages">${esc(t("f_pages"))}</h2>
           <ul class="f-list">${["home"].concat(NAV).map(k => `<li><a href="${href(k)}">${esc(k === "home" ? (lang === "pt" ? "Início" : "Home") : t("nav_" + k))}</a></li>`).join("")}</ul></nav>
         <div><h2 class="f-h">${esc(t("f_contact"))}</h2>
           <address class="f-addr">
-            <span><span class="k">${esc(t("d_address"))}</span>Rua das Pombas, Zona Industrial de Taboeira<br>3800-055 Aveiro, Portugal</span>
-            <span><span class="k">${esc(t("d_phone"))}</span>+351 [000 000 000]<br><small>${esc(t("d_call"))}</small></span>
-            <span><span class="k">${esc(t("d_email"))}</span>[email]@room2.pt</span>
+            <span class="f-row">${I.pinS}<span>Rua das Pombas, Zona Industrial de Taboeira, 3800-055 Aveiro, Portugal</span></span>
+            <span class="f-row">${I.phone}<span>+351 [000 000 000]<br><small>${esc(t("d_call"))}</small></span></span>
+            <span class="f-row">${I.mail}<span>[email]@room2.pt</span></span>
           </address></div>
         <div><h2 class="f-h" id="fh-follow">${esc(t("f_follow"))}</h2>
-          <ul class="f-list" aria-labelledby="fh-follow">${["Instagram", "LinkedIn", "Facebook"].map(n => `<li>${ext("social", `${n} ${I.ext}`, "", n)}</li>`).join("")}</ul></div>
+          <div class="f-social">${[["Instagram", I.insta], ["LinkedIn", I.linkedin], ["Facebook", I.facebook]].map(([n, ic]) => ext("social", `${ic}<span class="sr-only">ROOM2 ${lang === "pt" ? "no" : "on"} ${n}</span>`, "soc", n)).join("")}</div></div>
       </div>
     </div>
     <div class="f-bottom">
@@ -1272,7 +1361,6 @@ function openExt(a){
   xdlg.innerHTML = `<div class="bar" style="display:flex;align-items:center;justify-content:space-between;gap:12px"><p class="kicker" id="xdTitle">${esc(t("x_title"))}</p><button class="icon-btn" type="button" data-xclose aria-label="${esc(t("x_close"))}">${I.close}</button></div>
     <div class="in"><p class="target">${esc(target)}</p><p class="url">${esc(url)}</p>
     <p class="note">${esc(note)} ${esc(same ? t("x_same") : t("x_new"))}</p>
-    ${type === "book" || type === "unit" ? `<p class="note" style="display:flex;gap:10px">${I.info}<span>${esc(t("booking_notice"))}</span></p>` : ""}
     <div><button class="btn btn-solid btn-sm" type="button" data-xclose>${esc(t("x_close"))}</button></div></div>`;
   xOpener = a;
   if (typeof xdlg.showModal === "function") xdlg.showModal(); else xdlg.setAttribute("open", "");
@@ -1297,6 +1385,9 @@ panel.addEventListener("keydown", e => {
 window.addEventListener("resize", () => { if (window.innerWidth > 1060) closeMenu(false); });
 
 document.addEventListener("click", e => {
+  const lb = e.target.closest("#langBtn"), lm = document.getElementById("langMenu");
+  if (lb && lm){ const open = lm.hidden; lm.hidden = !open; lb.setAttribute("aria-expanded", String(open)); return; }
+  if (lm && !lm.hidden && !e.target.closest("#langMenu")){ lm.hidden = true; const b = document.getElementById("langBtn"); if (b) b.setAttribute("aria-expanded", "false"); }
   const x = e.target.closest("[data-ext]");
   if (x){ e.preventDefault(); if (!panel.hidden) closeMenu(false); openExt(x); return; }
   if (e.target.closest("#menuOpen")){ openMenu(); return; }
