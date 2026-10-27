@@ -1107,7 +1107,7 @@ V.home = () => `
 
 ${gallery(GAL_HOME, true)}
 
-${ctaBand(EN("Make room for what’s next."), esc(t("final_text")), bookBtn() + `<a class="btn btn-line" href="${href("contact")}">${esc(t("talk"))}</a>`, true, true)}`;
+${ctaBand(EN("Make room for what’s next."), esc(t("final_text")), bookBtn(), true, true)}`;
 
 /* ---------- one template, two pages (section 6.3): Self Storage and Workspaces ---------- */
 const SERVICE = {
@@ -1223,7 +1223,7 @@ ${s.ben.map((b, i) => `<section aria-labelledby="h-ben-${i}"><div class="wrap se
   <div class="more-card">
     <h2 class="h2" id="h-cta">${esc(L(s.ctaTitle))}</h2>
     <p class="body">${esc(L(s.ctaText))}</p>
-    <div class="btn-row">${bookBtn()}<a class="btn btn-line" href="${href("support")}">${esc(t("see_faq"))}</a></div>
+    <div class="btn-row">${bookBtn()}</div>
   </div>
   <div class="more-card dark">
     <p class="kicker">${esc(t(s.x.kicker))}</p>
@@ -1297,7 +1297,7 @@ ${gallery(GAL_ABOUT, false)}
 </div></section>
 
 ${ctaBand(lang === "pt" ? "Seja o que for, há espaço para isso." : "Whatever it is, there’s room for it.", "",
-  `<a class="btn btn-solid" href="${href("work")}">${esc(t("see_spaces"))}</a><a class="btn btn-line" href="${href("contact")}">${esc(t("talk"))}</a>`)}`;
+  `<a class="btn btn-solid" href="${href("contact")}">${esc(t("talk"))}</a>`)}`;
 
 V.support = () => `
 <section class="page-head" aria-labelledby="h-page"><div class="wrap" style="grid-template-columns:1fr">
@@ -1443,11 +1443,7 @@ function renderChrome(key){
     <div class="ft-grid">
       <div class="ft-brand">
         <a class="brand" href="${href("home")}" aria-label="${esc(t("home_aria"))}">${I.logo}</a>
-        <p class="ft-sig" lang="en">Flexible workspaces &amp; storage</p>
         <p class="ft-claim" lang="en">Make room for what’s next.</p>
-        <p class="ft-seo">${lang === "pt"
-          ? "A ROOM2 junta Self Storage e coworking em Aveiro: 40 boxes de 4 a 14 m² para guardar recheios, stock e arquivo, a partir de 1 mês, e postos de trabalho, 14 escritórios privados e sala de reuniões, à hora, ao dia ou ao mês. Junto à A25."
-          : "ROOM2 brings Self Storage and coworking together in Aveiro: 40 units from 4 to 14 m² for household goods, stock and archives, from 1 month, plus desks, 14 private offices and a meeting room, by the hour, day or month. Right off the A25."}</p>
         <div class="ft-btns">${bookBtn("btn-sm")}${ext("account", esc(t("account")), "btn btn-line btn-sm")}</div>
       </div>
       <nav class="ft-col ft-c2" aria-labelledby="fh-pages"><h2 class="ft-h" id="fh-pages">${esc(t("f_pages"))}</h2>
